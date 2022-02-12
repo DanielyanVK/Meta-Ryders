@@ -9,21 +9,28 @@
 /* Begin PBXBuildFile section */
 		E447CCF927B786BC0095CB91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447CCF827B786BC0095CB91 /* AppDelegate.swift */; };
 		E447CCFB27B786BC0095CB91 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447CCFA27B786BC0095CB91 /* SceneDelegate.swift */; };
-		E447CCFD27B786BC0095CB91 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447CCFC27B786BC0095CB91 /* ViewController.swift */; };
-		E447CD0027B786BC0095CB91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E447CCFE27B786BC0095CB91 /* Main.storyboard */; };
 		E447CD0227B786BD0095CB91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E447CD0127B786BD0095CB91 /* Assets.xcassets */; };
 		E447CD0527B786BD0095CB91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E447CD0327B786BD0095CB91 /* LaunchScreen.storyboard */; };
+		E447CD1027B7875F0095CB91 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447CD0F27B7875F0095CB91 /* HomeViewController.swift */; };
+		E447CD1327B788200095CB91 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E447CD1227B788200095CB91 /* SnapKit */; };
+		E447CD1C27B78A2D0095CB91 /* HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447CD1B27B78A2D0095CB91 /* HorizontalCollectionViewCell.swift */; };
+		E447CD1E27B78A530095CB91 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447CD1D27B78A530095CB91 /* CollectionTableViewCell.swift */; };
+		E447CD2127B78F6E0095CB91 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447CD2027B78F6E0095CB91 /* Item.swift */; };
+		E447CD2427B7A7A60095CB91 /* UIFont+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447CD2327B7A7A60095CB91 /* UIFont+Rounded.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E447CCF527B786BC0095CB91 /* Meta Ryders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meta Ryders.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E447CCF827B786BC0095CB91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E447CCFA27B786BC0095CB91 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E447CCFC27B786BC0095CB91 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E447CCFF27B786BC0095CB91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E447CD0127B786BD0095CB91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E447CD0427B786BD0095CB91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E447CD0627B786BD0095CB91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E447CD0F27B7875F0095CB91 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E447CD1B27B78A2D0095CB91 /* HorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
+		E447CD1D27B78A530095CB91 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
+		E447CD2027B78F6E0095CB91 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		E447CD2327B7A7A60095CB91 /* UIFont+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Rounded.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E447CD1327B788200095CB91 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +64,82 @@
 		E447CCF727B786BC0095CB91 /* Meta Ryders */ = {
 			isa = PBXGroup;
 			children = (
-				E447CCF827B786BC0095CB91 /* AppDelegate.swift */,
-				E447CCFA27B786BC0095CB91 /* SceneDelegate.swift */,
-				E447CCFC27B786BC0095CB91 /* ViewController.swift */,
-				E447CCFE27B786BC0095CB91 /* Main.storyboard */,
+				E447CD0D27B7873B0095CB91 /* ViewControllers */,
+				E447CD1427B7897F0095CB91 /* CustomViews */,
+				E447CD1F27B78F630095CB91 /* Models */,
+				E447CD0C27B787030095CB91 /* Delegates */,
+				E447CD2227B7A7840095CB91 /* Extensions */,
 				E447CD0127B786BD0095CB91 /* Assets.xcassets */,
 				E447CD0327B786BD0095CB91 /* LaunchScreen.storyboard */,
 				E447CD0627B786BD0095CB91 /* Info.plist */,
 			);
 			path = "Meta Ryders";
+			sourceTree = "<group>";
+		};
+		E447CD0C27B787030095CB91 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				E447CCF827B786BC0095CB91 /* AppDelegate.swift */,
+				E447CCFA27B786BC0095CB91 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		E447CD0D27B7873B0095CB91 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E447CD0E27B787450095CB91 /* HomeViewController */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E447CD0E27B787450095CB91 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E447CD0F27B7875F0095CB91 /* HomeViewController.swift */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		E447CD1427B7897F0095CB91 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				E447CD1827B789DA0095CB91 /* CollectionViewCells */,
+				E447CD1727B789CD0095CB91 /* TableViewCells */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		E447CD1727B789CD0095CB91 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				E447CD1D27B78A530095CB91 /* CollectionTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		E447CD1827B789DA0095CB91 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				E447CD1B27B78A2D0095CB91 /* HorizontalCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		E447CD1F27B78F630095CB91 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E447CD2027B78F6E0095CB91 /* Item.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E447CD2227B7A7840095CB91 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E447CD2327B7A7A60095CB91 /* UIFont+Rounded.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +158,9 @@
 			dependencies = (
 			);
 			name = "Meta Ryders";
+			packageProductDependencies = (
+				E447CD1227B788200095CB91 /* SnapKit */,
+			);
 			productName = "Meta Ryders";
 			productReference = E447CCF527B786BC0095CB91 /* Meta Ryders.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +189,9 @@
 				Base,
 			);
 			mainGroup = E447CCEC27B786BC0095CB91;
+			packageReferences = (
+				E447CD1127B788200095CB91 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = E447CCF627B786BC0095CB91 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +208,6 @@
 			files = (
 				E447CD0527B786BD0095CB91 /* LaunchScreen.storyboard in Resources */,
 				E447CD0227B786BD0095CB91 /* Assets.xcassets in Resources */,
-				E447CD0027B786BC0095CB91 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +218,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E447CCFD27B786BC0095CB91 /* ViewController.swift in Sources */,
+				E447CD1E27B78A530095CB91 /* CollectionTableViewCell.swift in Sources */,
+				E447CD1C27B78A2D0095CB91 /* HorizontalCollectionViewCell.swift in Sources */,
 				E447CCF927B786BC0095CB91 /* AppDelegate.swift in Sources */,
 				E447CCFB27B786BC0095CB91 /* SceneDelegate.swift in Sources */,
+				E447CD2127B78F6E0095CB91 /* Item.swift in Sources */,
+				E447CD1027B7875F0095CB91 /* HomeViewController.swift in Sources */,
+				E447CD2427B7A7A60095CB91 /* UIFont+Rounded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E447CCFE27B786BC0095CB91 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E447CCFF27B786BC0095CB91 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E447CD0327B786BD0095CB91 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,7 +370,6 @@
 				INFOPLIST_FILE = "Meta Ryders/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -322,7 +397,6 @@
 				INFOPLIST_FILE = "Meta Ryders/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -360,6 +434,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E447CD1127B788200095CB91 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E447CD1227B788200095CB91 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E447CD1127B788200095CB91 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E447CCED27B786BC0095CB91 /* Project object */;
 }
