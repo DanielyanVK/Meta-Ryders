@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class HomeViewController: UIViewController {
-
+    
     private var mainTableView: UITableView?
     
     //MARK: MOCKUP DATA - REMOVE LATER
@@ -24,12 +24,22 @@ class HomeViewController: UIViewController {
         items.append(item1)
         items.append(item2)
         
-        
         setupMainTableView()
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     // MARK: Main Table View Setup
+    
+    func font() {
+        UIFont.familyNames.forEach { family in
+            print("Family: \(family)")
+            let fonts = UIFont.fontNames(forFamilyName: family)
+            for font in fonts {
+                print("\tfont: \(font)")
+            }
+        }
+    }
+    
     func setupMainTableView() {
         mainTableView = UITableView(frame: view.bounds)
         
@@ -62,15 +72,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = mainTableView?.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
-            cell.configureTableViewCell(with: items)
-    //   mainTableView?.reloadData()
-        print(1)
+        cell.configureTableViewCell(with: items)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 390.0
+        return 390
     }
     
 }
