@@ -17,6 +17,8 @@
 		E447CD1E27B78A530095CB91 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447CD1D27B78A530095CB91 /* CollectionTableViewCell.swift */; };
 		E447CD2127B78F6E0095CB91 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447CD2027B78F6E0095CB91 /* Item.swift */; };
 		E447CD2427B7A7A60095CB91 /* UIFont+Default+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447CD2327B7A7A60095CB91 /* UIFont+Default+Rounded.swift */; };
+		E4A0FDA027BB8F7D0099EEDB /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0FD9F27BB8F7D0099EEDB /* UIColor+Hex.swift */; };
+		E4A0FDA227BB91470099EEDB /* UIColor+Additionals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0FDA127BB91470099EEDB /* UIColor+Additionals.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		E447CD1D27B78A530095CB91 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		E447CD2027B78F6E0095CB91 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		E447CD2327B7A7A60095CB91 /* UIFont+Default+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Default+Rounded.swift"; sourceTree = "<group>"; };
+		E4A0FD9F27BB8F7D0099EEDB /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		E4A0FDA127BB91470099EEDB /* UIColor+Additionals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additionals.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				E447CD2327B7A7A60095CB91 /* UIFont+Default+Rounded.swift */,
+				E4A0FD9F27BB8F7D0099EEDB /* UIColor+Hex.swift */,
+				E4A0FDA127BB91470099EEDB /* UIColor+Additionals.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -219,6 +225,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E447CD1E27B78A530095CB91 /* CollectionTableViewCell.swift in Sources */,
+				E4A0FDA027BB8F7D0099EEDB /* UIColor+Hex.swift in Sources */,
+				E4A0FDA227BB91470099EEDB /* UIColor+Additionals.swift in Sources */,
 				E447CD1C27B78A2D0095CB91 /* HorizontalCollectionViewCell.swift in Sources */,
 				E447CCF927B786BC0095CB91 /* AppDelegate.swift in Sources */,
 				E447CCFB27B786BC0095CB91 /* SceneDelegate.swift in Sources */,

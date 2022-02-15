@@ -14,7 +14,6 @@ class CollectionTableViewCell: UITableViewCell {
     
     var items: [Item] = []
     
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -43,8 +42,7 @@ class CollectionTableViewCell: UITableViewCell {
         horizontalCollectionView.register(HorizontalCollectionViewCell.self, forCellWithReuseIdentifier: HorizontalCollectionViewCell.identifier)
         horizontalCollectionView.delegate = self
         horizontalCollectionView.dataSource = self
-        horizontalCollectionView.backgroundColor = UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
-        
+        horizontalCollectionView.backgroundColor = .mediumWeightGray
     }
     
     private func setupLayout() -> UICollectionViewLayout {
@@ -62,12 +60,9 @@ class CollectionTableViewCell: UITableViewCell {
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: spacing, bottom: 0, trailing: spacing)
         section.orthogonalScrollingBehavior = .continuous
         
-        
-        
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
-    
     
     private func setupCollectionViewConstraints () {
         horizontalCollectionView?.snp.makeConstraints { (make) in

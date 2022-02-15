@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //MARK: MOCKUP DATA - REMOVE LATER
+    //MARK: MOCKUP DATA - REMOVE LATER
         items.append(item1)
         items.append(item2)
         
@@ -30,17 +30,7 @@ class HomeViewController: UIViewController {
     
     // MARK: Main Table View Setup
     
-    func font() {
-        UIFont.familyNames.forEach { family in
-            print("Family: \(family)")
-            let fonts = UIFont.fontNames(forFamilyName: family)
-            for font in fonts {
-                print("\tfont: \(font)")
-            }
-        }
-    }
-    
-    func setupMainTableView() {
+    private func setupMainTableView() {
         mainTableView = UITableView(frame: view.bounds)
         
         guard let mainTableView = mainTableView else {
@@ -50,15 +40,11 @@ class HomeViewController: UIViewController {
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.register(CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.identifier)
-        mainTableView.backgroundColor = UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
+        mainTableView.backgroundColor = .mediumWeightGray
         
         view.addSubview(mainTableView)
-        setupMainTableViewConstraints()
-    }
-    
-    // MARK: Constraints
-    private func setupMainTableViewConstraints() {
-        mainTableView?.snp.makeConstraints { make in
+        
+        mainTableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
