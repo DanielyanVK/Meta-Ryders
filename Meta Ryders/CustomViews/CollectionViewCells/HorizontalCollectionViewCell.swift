@@ -81,7 +81,7 @@ class HorizontalCollectionViewCell: UICollectionViewCell {
     }
     
     //MARK: Cell configuration
-    public func configureCell(by item: Item) {
+    public func configureHorizontalCollectionViewCell(by item: Item) {
         
         nameLabel.text = item.name
         backgroundImageView.image = UIImage(named: item.imageName)

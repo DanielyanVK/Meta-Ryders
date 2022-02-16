@@ -23,4 +23,12 @@ extension UIColor {
     static var lightweightGreen: UIColor {
         return UIColor(rgb: 0x19976a)
     }
+    
+    static var highlithenedColor: UIColor {
+        return UIColor(rgb: 0xe6daf4)
+    }
+    
+    static var highlightenedTextColor: UIColor {
+        return UIColor(rgb: 0x9b51e0)
+    }
 }

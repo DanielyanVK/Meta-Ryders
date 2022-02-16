@@ -43,6 +43,7 @@ class CollectionTableViewCell: UITableViewCell {
         horizontalCollectionView.delegate = self
         horizontalCollectionView.dataSource = self
         horizontalCollectionView.backgroundColor = .mediumWeightGray
+        
     }
     
     private func setupLayout() -> UICollectionViewLayout {
@@ -83,7 +84,7 @@ extension CollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
         
         let item = items[indexPath.item]
         
-        cell.configureCell(by: item)
+        cell.configureHorizontalCollectionViewCell(by: item)
         return cell
         
     }
