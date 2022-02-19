@@ -12,6 +12,9 @@ class HomeViewController: UIViewController {
     
     private var mainTableView: UITableView?
     
+    // We can remove the array and implement dataSources individually in tableView through "if" statement. Done it like that because I've seen it on the internet and wanted to try out
+    private var dataSources: [HorizontalCollectionViewDataSource] = []
+    
     //MARK: MOCKUP DATA - REMOVE LATER
     private var items: [Item] = []
     let item1 = Item(name: "Bella Doll", imageName: "BellaDoll", description: "These ancient beings have been around since the dawn of time...", price: 9861.37, growth: 136.54)
@@ -23,17 +26,24 @@ class HomeViewController: UIViewController {
     let category3 = Category(name: "Collectibles")
     let category4 = Category(name: "Music")
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    //MARK: MOCKUP DATA - REMOVE LATER
-        items.append(item1)
-        items.append(item2)
-        categories.append(category1)
-        categories.append(category2)
-        categories.append(category3)
-        categories.append(category4)
 
+        let categoryCollectionViewDataSource = CategoriesCollectionViewDataSource()
+        let itemsCollectionViewDataSource = ItemsCollectionViewDataSource()
+    //MARK: MOCKUP DATA - REMOVE LATER
+        categoryCollectionViewDataSource.categories.append(category1)
+        categoryCollectionViewDataSource.categories.append(category2)
+        categoryCollectionViewDataSource.categories.append(category3)
+        categoryCollectionViewDataSource.categories.append(category4)
+        
+        itemsCollectionViewDataSource.items.append(item1)
+        itemsCollectionViewDataSource.items.append(item2)
+        
+        dataSources.append(categoryCollectionViewDataSource)
+        dataSources.append(itemsCollectionViewDataSource)
         
         setupMainTableView()
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -50,11 +60,11 @@ class HomeViewController: UIViewController {
         
         mainTableView.delegate = self
         mainTableView.dataSource = self
+       
         mainTableView.register(CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.identifier)
         
-        mainTableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.identifier)
-        
         mainTableView.backgroundColor = .mediumWeightGray
+        mainTableView.separatorColor = .clear
         
         view.addSubview(mainTableView)
         
@@ -69,7 +79,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-       return 2
+        return dataSources.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,17 +88,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 {
-            let cell = mainTableView?.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier, for: indexPath) as! CategoryTableViewCell
-            cell.configureTableViewCell(with: categories)
+            let cell = mainTableView?.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
+        cell.configureTableViewCell(with: dataSources[indexPath.section], layout: dataSources[indexPath.section].collectionViewLayout)
             
             return cell
-        }
-        
-        let cell = mainTableView?.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
-        cell.configureTableViewCell(with: items)
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -8,14 +8,11 @@
 import UIKit
 import SnapKit
 
-class HorizontalCollectionViewCell: UICollectionViewCell {
-    
-    static let identifier = "HorizontalCollectionViewCell"
-    
+class ItemCollectionViewCell: UICollectionViewCell {
+        
     //MARK: Initializing cell's elements
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
-        // cant add this one to custom method for some reason. Image just dissappears. Keeping it here for now
         imageView.image = UIImage()
         
         return imageView

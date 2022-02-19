@@ -8,7 +8,6 @@
 import UIKit
 
 class CategoryCollectionViewCell: UICollectionViewCell {
-    static let identifier = "CategoryCollectionViewCell"
     
     private let nameLabel: UILabel = {
         let label = UILabel()
