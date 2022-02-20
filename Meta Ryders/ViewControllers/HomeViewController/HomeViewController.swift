@@ -11,7 +11,6 @@ import SnapKit
 class HomeViewController: UIViewController {
     
     private var mainTableView: UITableView?
-    
     // We can remove the array and implement dataSources individually in tableView through "if" statement. Done it like that because I've seen it on the internet and wanted to try out
     private var dataSources: [HorizontalCollectionViewDataSource] = []
     
@@ -38,14 +37,15 @@ class HomeViewController: UIViewController {
         itemsCollectionViewDataSource.itemSelected = { item in
             let vc = ItemViewController(item: item, heroId: item.imageName)
             vc.hero.isEnabled = true
-
+            
             vc.modalPresentationStyle = .custom
             self.present(vc, animated: true, completion: nil)
             
         }
         
-        dataSources.append(categoryCollectionViewDataSource)
         dataSources.append(itemsCollectionViewDataSource)
+        dataSources.append(categoryCollectionViewDataSource)
+        
         
         setupMainTableView()
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -62,7 +62,7 @@ class HomeViewController: UIViewController {
         
         mainTableView.delegate = self
         mainTableView.dataSource = self
-       
+        
         mainTableView.register(CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.identifier)
         
         mainTableView.backgroundColor = .mediumWeightGray
@@ -90,39 +90,39 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-            let cell = mainTableView?.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
+        let cell = mainTableView?.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
         cell.configureTableViewCell(with: dataSources[indexPath.section], layout: dataSources[indexPath.section].collectionViewLayout)
-            
-            return cell
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0{
+        let dataSource = dataSources[indexPath.section]
+        if dataSource is CategoriesCollectionViewDataSource {
             return 42
+        } else if dataSource is ItemsCollectionViewDataSource {
+            return 390
+        } else {
+            return 0
         }
-        
-        return 390
     }
     
     
     //MARK: Adding space between sections in TableView. Not sure if done correctly. Might want to look at it and change further on
     
-     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let dataSource = dataSources[section]
+        if dataSource is CategoriesCollectionViewDataSource {
             return CGFloat.leastNormalMagnitude
-        } else {
+        } else if dataSource is ItemsCollectionViewDataSource {
             return 36/2
+        } else {
+            return 0
         }
+        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         nil
     }
 }
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        nil
-//    }
-//
-//   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        CGFloat.leastNormalMagnitude
-//    }
