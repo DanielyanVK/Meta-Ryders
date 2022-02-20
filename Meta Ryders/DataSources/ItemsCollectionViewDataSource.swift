@@ -9,6 +9,8 @@ import UIKit
 
 class ItemsCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
     
+    var itemSelected: ItemClosure<Item>?
+    
     var collectionViewLayout: UICollectionViewLayout {
         return setupLayout()
     }
@@ -41,6 +43,11 @@ class ItemsCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSourc
 
 extension ItemsCollectionViewDataSource: UICollectionViewDelegate, UICollectionViewDataSource {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = items[indexPath.item]
+        itemSelected?(item)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
@@ -50,7 +57,8 @@ extension ItemsCollectionViewDataSource: UICollectionViewDelegate, UICollectionV
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.identifier, for: indexPath) as! ItemCollectionViewCell
         
         let item = items[indexPath.item]
-        cell.configureHorizontalCollectionViewCell(by: item)
+        cell.configureHorizontalCollectionViewCell(by: item, imageViewHeroId: item.imageName)
+        
         return cell
         
     }

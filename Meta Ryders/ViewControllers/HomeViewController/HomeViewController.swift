@@ -20,20 +20,29 @@ class HomeViewController: UIViewController {
     let item1 = Item(name: "Bella Doll", imageName: "BellaDoll", description: "These ancient beings have been around since the dawn of time...", price: 9861.37, growth: 136.54)
     let item2 = Item(name: "Abstract Pink", imageName: "AbstractPainting", description: "A CNS or UNS blockhain domain.", price: 0.906, growth: 6.2)
     
+    
+    private let categoryCollectionViewDataSource = CategoriesCollectionViewDataSource()
+    private let itemsCollectionViewDataSource = ItemsCollectionViewDataSource()
     private var categories: [Category] = ["1", "12", "123", "1234", "12345", "123456x§  "].map { Category(name: $0) }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let categoryCollectionViewDataSource = CategoriesCollectionViewDataSource()
-        let itemsCollectionViewDataSource = ItemsCollectionViewDataSource()
-    //MARK: MOCKUP DATA - REMOVE LATER
-        
+        // MARK: MOCKUP DATA - REMOVE LATER
         
         categoryCollectionViewDataSource.update(with: categories)
         
         itemsCollectionViewDataSource.items.append(item1)
         itemsCollectionViewDataSource.items.append(item2)
+        
+        hero.isEnabled = true
+        itemsCollectionViewDataSource.itemSelected = { item in
+            let vc = ItemViewController(item: item, heroId: item.imageName)
+            vc.hero.isEnabled = true
+
+            vc.modalPresentationStyle = .custom
+            self.present(vc, animated: true, completion: nil)
+            
+        }
         
         dataSources.append(categoryCollectionViewDataSource)
         dataSources.append(itemsCollectionViewDataSource)

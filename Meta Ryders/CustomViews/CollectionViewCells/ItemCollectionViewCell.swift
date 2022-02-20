@@ -78,13 +78,13 @@ class ItemCollectionViewCell: UICollectionViewCell {
     }
     
     //MARK: Cell configuration
-    public func configureHorizontalCollectionViewCell(by item: Item) {
+    public func configureHorizontalCollectionViewCell(by item: Item, imageViewHeroId: String?) {
         
         nameLabel.text = item.name
         backgroundImageView.image = UIImage(named: item.imageName)
         descriptionLabel.text = item.description
         priceLabel.text = "\(item.price.description) ETH"
-        
+        backgroundImageView.hero.id = imageViewHeroId
         // Later we will have to update this so we display + or - symbols and change color from green to red depending on if the value is negative or positive
         growthLabel.text = "+\(item.growth.description)%"
     }
@@ -108,9 +108,8 @@ class ItemCollectionViewCell: UICollectionViewCell {
     }
     
     private func addBackgroundImageView() {
-        backgroundImageView.contentMode = .scaleAspectFill
         backgroundImageView.clipsToBounds = true
-        backgroundImageView.layer.cornerRadius = 13
+//        backgroundImageView.layer.cornerRadius = 13
         shadowView.addSubview(backgroundImageView)
         
         backgroundImageView.snp.makeConstraints { make in

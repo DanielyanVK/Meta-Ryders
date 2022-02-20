@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7CB7826A27C2711400872546 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7826827C2711400872546 /* ItemViewController.swift */; };
+		7CB7826B27C2711400872546 /* ItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CB7826927C2711400872546 /* ItemViewController.xib */; };
+		7CB7826E27C271A000872546 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 7CB7826D27C271A000872546 /* Hero */; };
+		7CB7827127C2724300872546 /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7827027C2724300872546 /* Closures.swift */; };
 		E43B859827C0D6CC008854D8 /* TableViewCell+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43B859727C0D6CC008854D8 /* TableViewCell+Identifier.swift */; };
 		E447CCF927B786BC0095CB91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447CCF827B786BC0095CB91 /* AppDelegate.swift */; };
 		E447CCFB27B786BC0095CB91 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447CCFA27B786BC0095CB91 /* SceneDelegate.swift */; };
@@ -29,6 +33,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7CB7826827C2711400872546 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		7CB7826927C2711400872546 /* ItemViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemViewController.xib; sourceTree = "<group>"; };
+		7CB7827027C2724300872546 /* Closures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closures.swift; sourceTree = "<group>"; };
 		E43B859727C0D6CC008854D8 /* TableViewCell+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell+Identifier.swift"; sourceTree = "<group>"; };
 		E447CCF527B786BC0095CB91 /* Meta Ryders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meta Ryders.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E447CCF827B786BC0095CB91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CB7826E27C271A000872546 /* Hero in Frameworks */,
 				E447CD1327B788200095CB91 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +71,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7CB7826727C270BF00872546 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				7CB7826827C2711400872546 /* ItemViewController.swift */,
+				7CB7826927C2711400872546 /* ItemViewController.xib */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		7CB7826F27C2723B00872546 /* Typealiases */ = {
+			isa = PBXGroup;
+			children = (
+				7CB7827027C2724300872546 /* Closures.swift */,
+			);
+			path = Typealiases;
+			sourceTree = "<group>";
+		};
 		E447CCEC27B786BC0095CB91 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +107,7 @@
 		E447CCF727B786BC0095CB91 /* Meta Ryders */ = {
 			isa = PBXGroup;
 			children = (
+				7CB7826F27C2723B00872546 /* Typealiases */,
 				E4B0F09027BCFC6400965A17 /* DataSources */,
 				E4B0F08D27BCFC2600965A17 /* Protocols */,
 				E447CD0D27B7873B0095CB91 /* ViewControllers */,
@@ -108,6 +134,7 @@
 		E447CD0D27B7873B0095CB91 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7CB7826727C270BF00872546 /* Item */,
 				E447CD0E27B787450095CB91 /* HomeViewController */,
 			);
 			path = ViewControllers;
@@ -203,6 +230,7 @@
 			name = "Meta Ryders";
 			packageProductDependencies = (
 				E447CD1227B788200095CB91 /* SnapKit */,
+				7CB7826D27C271A000872546 /* Hero */,
 			);
 			productName = "Meta Ryders";
 			productReference = E447CCF527B786BC0095CB91 /* Meta Ryders.app */;
@@ -234,6 +262,7 @@
 			mainGroup = E447CCEC27B786BC0095CB91;
 			packageReferences = (
 				E447CD1127B788200095CB91 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				7CB7826C27C271A000872546 /* XCRemoteSwiftPackageReference "Hero" */,
 			);
 			productRefGroup = E447CCF627B786BC0095CB91 /* Products */;
 			projectDirPath = "";
@@ -250,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E447CD0527B786BD0095CB91 /* LaunchScreen.storyboard in Resources */,
+				7CB7826B27C2711400872546 /* ItemViewController.xib in Resources */,
 				E447CD0227B786BD0095CB91 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,9 +302,11 @@
 				E447CD1027B7875F0095CB91 /* HomeViewController.swift in Sources */,
 				E483804E27BFBF09008C686B /* CollectionViewCell+Identifier.swift in Sources */,
 				E43B859827C0D6CC008854D8 /* TableViewCell+Identifier.swift in Sources */,
+				7CB7827127C2724300872546 /* Closures.swift in Sources */,
 				E4B0F08F27BCFC3F00965A17 /* HorizontalCollectionViewDataSource.swift in Sources */,
 				E447CD2427B7A7A60095CB91 /* UIFont+Default+Rounded.swift in Sources */,
 				E4C10DAB27BCCFB7002387DC /* CategoryCollectionViewCell.swift in Sources */,
+				7CB7826A27C2711400872546 /* ItemViewController.swift in Sources */,
 				E4ECCDBA27BE3EDB0050A6CF /* ItemsCollectionViewDataSource.swift in Sources */,
 				E4C10DAD27BCD14F002387DC /* Category.swift in Sources */,
 			);
@@ -488,6 +520,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7CB7826C27C271A000872546 /* XCRemoteSwiftPackageReference "Hero" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/HeroTransitions/Hero.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		E447CD1127B788200095CB91 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -499,6 +539,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7CB7826D27C271A000872546 /* Hero */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7CB7826C27C271A000872546 /* XCRemoteSwiftPackageReference "Hero" */;
+			productName = Hero;
+		};
 		E447CD1227B788200095CB91 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E447CD1127B788200095CB91 /* XCRemoteSwiftPackageReference "SnapKit" */;
