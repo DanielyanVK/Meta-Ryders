@@ -11,31 +11,31 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        
         return label
     }()
     
-    
     override func didMoveToSuperview() {
-        layer.cornerRadius = 20
+        super.didMoveToSuperview()
+        
         backgroundColor = .white
         clipsToBounds = true
-        
+         
         addNameLabel()
     }
     
-    override var isSelected: Bool {
-            didSet {
-                self.backgroundColor = isSelected ? UIColor.highlithenedColor : UIColor.white
-                nameLabel.textColor = isSelected ? UIColor.highlightenedTextColor : UIColor.lightweightGray
-            }
-        }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        layer.cornerRadius = bounds.height / 2
+    }
     
     //MARK: Cell configuration
-    public func configureCategoryCollectionViewCell(by category: Category) {
-        
+    public func configureCategoryCollectionViewCell(by category: Category, selectedCategory: Category?) {
         nameLabel.text = category.name
-      
+        
+        let isSelected = selectedCategory == category
+        backgroundColor = isSelected ? UIColor.highlithenedColor : UIColor.white
+        nameLabel.textColor = isSelected ? UIColor.highlightenedTextColor : UIColor.lightweightGray
     }
     
     private func addNameLabel() {
@@ -46,7 +46,10 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         addSubview(nameLabel)
         
         nameLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(12)
+            make.leading.equalTo(24)
+            make.trailing.equalTo(-24)
+            make.bottom.equalTo(-12)
         }
     }
 }

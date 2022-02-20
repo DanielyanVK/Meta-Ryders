@@ -20,13 +20,7 @@ class HomeViewController: UIViewController {
     let item1 = Item(name: "Bella Doll", imageName: "BellaDoll", description: "These ancient beings have been around since the dawn of time...", price: 9861.37, growth: 136.54)
     let item2 = Item(name: "Abstract Pink", imageName: "AbstractPainting", description: "A CNS or UNS blockhain domain.", price: 0.906, growth: 6.2)
     
-    private var categories: [Category] = []
-    let category1 = Category(name: "Trending")
-    let category2 = Category(name: "Art")
-    let category3 = Category(name: "Collectibles")
-    let category4 = Category(name: "Music")
-    
-    
+    private var categories: [Category] = ["1", "12", "123", "1234", "12345", "123456x§  "].map { Category(name: $0) }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +28,9 @@ class HomeViewController: UIViewController {
         let categoryCollectionViewDataSource = CategoriesCollectionViewDataSource()
         let itemsCollectionViewDataSource = ItemsCollectionViewDataSource()
     //MARK: MOCKUP DATA - REMOVE LATER
-        categoryCollectionViewDataSource.categories.append(category1)
-        categoryCollectionViewDataSource.categories.append(category2)
-        categoryCollectionViewDataSource.categories.append(category3)
-        categoryCollectionViewDataSource.categories.append(category4)
+        
+        
+        categoryCollectionViewDataSource.update(with: categories)
         
         itemsCollectionViewDataSource.items.append(item1)
         itemsCollectionViewDataSource.items.append(item2)
@@ -96,7 +89,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0{
-            return 40
+            return 42
         }
         
         return 390

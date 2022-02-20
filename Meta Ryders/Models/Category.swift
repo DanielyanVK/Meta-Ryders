@@ -10,3 +10,10 @@ import Foundation
 struct Category: Codable {
     let name: String
 }
+
+
+extension Category: Equatable {
+    static func == (lhs: Category, rhs: Category) -> Bool {
+        lhs.name == rhs.name
+    }
+}

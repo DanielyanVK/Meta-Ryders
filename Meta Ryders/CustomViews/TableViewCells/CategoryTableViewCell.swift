@@ -19,15 +19,16 @@ class CollectionTableViewCell: UITableViewCell {
     }
     
     func configureTableViewCell(with dataSource: HorizontalCollectionViewDataSource, layout: UICollectionViewLayout) {
+        collectionView.register(dataSource.cellType, forCellWithReuseIdentifier: dataSource.cellType.identifier)
         collectionView.collectionViewLayout = dataSource.collectionViewLayout
         collectionView.delegate = dataSource
         collectionView.dataSource = dataSource
-        collectionView.register(dataSource.cellType, forCellWithReuseIdentifier: dataSource.cellType.identifier)
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.reloadData()
     }
     
     private func setupCollectionView() {
-        
         addSubview(collectionView)
         setupCollectionViewConstraints()
         collectionView.backgroundColor = .mediumWeightGray

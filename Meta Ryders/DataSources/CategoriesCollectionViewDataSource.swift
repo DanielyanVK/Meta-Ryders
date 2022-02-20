@@ -17,30 +17,55 @@ class CategoriesCollectionViewDataSource: NSObject, HorizontalCollectionViewData
         return CategoryCollectionViewCell.self
     }
     
-    var categories: [Category] = []
+    private var categories: [Category] = []
+    
+    func update(with categories:  [Category]) {
+        self.categories = categories
+    }
+    
+    private var selectedCategory: Category?
     
     internal func setupLayout() -> UICollectionViewLayout {
-        // section -> groups -> items -> size
-        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(100),
-                                              heightDimension: .absolute(40))
+       
+        let estimatedHeight: CGFloat = 42
+        let estimatedWidth: CGFloat = 100
+
+        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(estimatedWidth),
+                                              heightDimension: .absolute(estimatedHeight))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        //      let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-        //                                               heightDimension: .absolute(40))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: itemSize, subitem: item, count: 1)
-        let spacing = CGFloat(12)
-        group.interItemSpacing = .fixed(spacing)
+//
+//        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: nil, trailing: .fixed(12), bottom: nil)
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: .absolute(estimatedHeight))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+                                                       subitems: [item])
+        
+
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = spacing
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: spacing, bottom: 0, trailing: spacing)
-        section.orthogonalScrollingBehavior = .continuous
-        
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        
+        section.contentInsets.leading = 20
+        section.interGroupSpacing = 12
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.scrollDirection = .horizontal
+        let layout = UICollectionViewCompositionalLayout(section: section, configuration: config)
         return layout
+        
     }
 }
 
 extension CategoriesCollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let category = categories[indexPath.item]
+        
+        if category == selectedCategory {
+            self.selectedCategory = nil
+        } else {
+            self.selectedCategory = category
+        }
+        
+        collectionView.reloadData()
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categories.count
@@ -52,7 +77,7 @@ extension CategoriesCollectionViewDataSource {
         
         let category = categories[indexPath.item]
         
-        cell.configureCategoryCollectionViewCell(by: category)
+        cell.configureCategoryCollectionViewCell(by: category, selectedCategory: selectedCategory)
         
         return cell
     }
