@@ -9,7 +9,13 @@ import UIKit
 import Hero
 
 class ItemViewController: UIViewController {
-    @IBOutlet weak var imageView: UIImageView!
+
+    private let heroImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage()
+        
+        return imageView
+    }()
     
     private var item: Item?
     private var heroId: String?
@@ -23,9 +29,11 @@ class ItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.hero.id = heroId
-        imageView.image = UIImage(named: item?.imageName ?? "")
-        imageView.clipsToBounds = true
+        heroImageView.hero.id = heroId
+        heroImageView.image = UIImage(named: item?.imageName ?? "")
+        heroImageView.clipsToBounds = true
+        addHeroImageView()
+        view.backgroundColor = .white
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -34,15 +42,17 @@ class ItemViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func addHeroImageView() {
+        heroImageView.clipsToBounds = true
+        heroImageView.layer.cornerRadius = 13
+        view.addSubview(heroImageView)
+        
+        heroImageView.snp.makeConstraints { make in
+            make.top.equalTo(60)
+            make.height.equalTo(350)
+            make.leading.equalTo(20)
+            make.trailing.equalTo(-20)
+        }
     }
-    */
 
 }

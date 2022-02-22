@@ -26,25 +26,22 @@ class CategoriesCollectionViewDataSource: NSObject, HorizontalCollectionViewData
     private var selectedCategory: Category?
     
     internal func setupLayout() -> UICollectionViewLayout {
-       
+        
         let estimatedHeight: CGFloat = 42
         let estimatedWidth: CGFloat = 100
-
+        
         let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(estimatedWidth),
                                               heightDimension: .absolute(estimatedHeight))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-//
-//        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: nil, trailing: .fixed(12), bottom: nil)
-
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(estimatedWidth),
                                                heightDimension: .absolute(estimatedHeight))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                        subitems: [item])
         
-
+        
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets.leading = 20
-        section.interGroupSpacing = 12
+        section.interGroupSpacing = 6
         let config = UICollectionViewCompositionalLayoutConfiguration()
         config.scrollDirection = .horizontal
         let layout = UICollectionViewCompositionalLayout(section: section, configuration: config)
