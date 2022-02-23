@@ -69,12 +69,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7CB7826727C270BF00872546 /* Item */ = {
+		7CB7826727C270BF00872546 /* ItemViewController */ = {
 			isa = PBXGroup;
 			children = (
 				7CB7826827C2711400872546 /* ItemViewController.swift */,
 			);
-			path = Item;
+			path = ItemViewController;
 			sourceTree = "<group>";
 		};
 		7CB7826F27C2723B00872546 /* Typealiases */ = {
@@ -131,7 +131,7 @@
 		E447CD0D27B7873B0095CB91 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7CB7826727C270BF00872546 /* Item */,
+				7CB7826727C270BF00872546 /* ItemViewController */,
 				E447CD0E27B787450095CB91 /* HomeViewController */,
 			);
 			path = ViewControllers;

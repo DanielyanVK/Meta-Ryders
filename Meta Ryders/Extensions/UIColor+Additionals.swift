@@ -31,4 +31,9 @@ extension UIColor {
     static var highlightenedTextColor: UIColor {
         return UIColor(rgb: 0x9b51e0)
     }
+    
+    static var purpleHeaderButton: UIColor {
+        return UIColor(rgb: 0xa05be2)
+    }
 }
+

@@ -13,8 +13,6 @@ class HomeViewController: UIViewController {
     private var mainTableView: UITableView?
     private var dataSources: [HorizontalCollectionViewDataSource] = []
     
-    private lazy var navigationBar = UINavigationBar(frame: .zero)
-    
     //MARK: MOCKUP DATA - REMOVE LATER
     let item1 = Item(name: "Bella Doll", imageName: "BellaDoll", description: "These ancient beings have been around since the dawn of time...", price: 9861.37, growth: 136.54)
     let item2 = Item(name: "Abstract Pink", imageName: "AbstractPainting", description: "A CNS or UNS blockhain domain.", price: 0.906, growth: 6.2)
@@ -45,10 +43,7 @@ class HomeViewController: UIViewController {
         dataSources.append(itemsCollectionViewDataSource)
         
         addMainTableView()
-        addNavigationBar()
-        
-        navigationController?.setNavigationBarHidden(true, animated: false)
-       
+        configureNavBar()
         
         view.backgroundColor = .mediumWeightGray
     }
@@ -77,23 +72,41 @@ class HomeViewController: UIViewController {
         }
     }
     
-    private func addNavigationBar() {
-     //   navigationBar.backgroundColor = .blue
-        view.addSubview(navigationBar)
+    //MARK: Navigation Ban Configuration
+    private func configureNavBar() {
+        navigationController?.navigationBar.barTintColor = .mediumWeightGray
+        navigationController?.navigationBar.tintColor = .lightweightGray
+        
+        let titleLabel = UILabel()
+        titleLabel.textColor = .black
+        titleLabel.text = "Meta-Ryders"
+        titleLabel.font = .rounded(ofSize: 24, weight: .semibold)
 
-        let titleItem = UINavigationItem(title: "Meta-Ryders")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: titleLabel)
 
+        self.navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(image: UIImage(named: "notificationsIcon"),
+                            style: .plain,
+                            target: self,
+                            action: #selector(notificationsButtonTapped(_:))),
 
-        navigationBar.setItems([titleItem], animated: false)
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationBar.shadowImage = UIImage()
-
-        navigationBar.snp.makeConstraints { make in
-            make.top.equalTo(60)
-            make.leading.trailing.equalToSuperview()
+            UIBarButtonItem(image: UIImage(named: "walletIcon"),
+                            style: .plain,
+                            target: self,
+                            action: #selector(walletButtonTapped(_:)))
+        ]
         }
+    //MARK: Navigation Bar Buttons Actions
+    @objc private func walletButtonTapped(_ sender: UIButton) {
+        print("Wallet - tapped")
     }
+    
+    @objc private func notificationsButtonTapped(_ sender: UIButton) {
+        print("Notifications - tapped")
+    }
+    
 }
+
 // MARK: TableView Extensions
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -125,15 +138,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    
-    //MARK: Adding space between sections in TableView. Not sure if done correctly. Might want to look at it and change further on
-    
+    //MARK: Header/Footer configurtion
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let dataSource = dataSources[section]
         if dataSource is CategoriesCollectionViewDataSource {
-            return 36
+            return 46
         } else if dataSource is ItemsCollectionViewDataSource {
-            return CGFloat.leastNormalMagnitude
+            return 0
         } else {
             return 0
         }
@@ -142,7 +153,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
            
         let dataSource = dataSources[section]
-        
         if dataSource is CategoriesCollectionViewDataSource {
            return CategoriesHeaderView()
         } else if dataSource is ItemsCollectionViewDataSource {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoriesHeaderView: UITableViewHeaderFooterView {
+class CategoriesHeaderView: UIView {
     
     private let headerLabel: UILabel = {
         let headerLabel = UILabel()
@@ -15,25 +15,21 @@ class CategoriesHeaderView: UITableViewHeaderFooterView {
         return headerLabel
     }()
     
-    private let shadowView: UIView = {
-        let shadowView = UIView()
-        
-        return shadowView
-    }()
-    
+    private let seeAllButton = UIButton(frame: .zero)
+
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         
         addLabel()
+        addSeeAllButton()
         backgroundColor = .mediumWeightGray
     }
     
     private func addLabel() {
-        
-        headerLabel.font = .standart(ofSize: 18, weight: .bold)
-        headerLabel.text = "Testing"
+        headerLabel.font = .rounded(ofSize: 18, weight: .semibold)
+        headerLabel.text = "NFTs by Categories"
         headerLabel.textAlignment = .left
-        contentView.backgroundColor = .mediumWeightGray
+        backgroundColor = .mediumWeightGray
         addSubview(headerLabel)
         
         headerLabel.snp.makeConstraints { make in
@@ -41,12 +37,20 @@ class CategoriesHeaderView: UITableViewHeaderFooterView {
         }
     }
     
-    private func addShadowView() {
-        backgroundColor = .mediumWeightGray
-        addSubview(shadowView)
+    @objc private func seeAllButtonTapped(_ sender: UIButton) {
+        print("See all - tapped")
+    }
+    
+    private func addSeeAllButton() {
+        addSubview(seeAllButton)
+        seeAllButton.addTarget(self, action: #selector(seeAllButtonTapped(_:)), for: .touchUpInside)
+        seeAllButton.setTitle("See all", for: .normal)
+        seeAllButton.titleLabel?.font = .rounded(ofSize: 18, weight: .semibold)
+        seeAllButton.setTitleColor(.purpleHeaderButton, for: .normal)
         
-        shadowView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        seeAllButton.snp.makeConstraints { make in
+            make.trailing.equalTo(-20)
+            make.centerY.equalTo(headerLabel.snp.centerY)
         }
     }
 }
