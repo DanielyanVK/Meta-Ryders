@@ -1,5 +1,5 @@
 //
-//  CategoriesHeaderVieww.swift
+//  CategoriesHeaderView.swift
 //  Meta Ryders
 //
 //  Created by Vladislav on 22.02.2022.
@@ -25,9 +25,19 @@ class CategoriesHeaderView: UIView {
         backgroundColor = .mediumWeightGray
     }
     
+    //Might be better to use one method with enum instead of 2 methods
+    func configureForItems() {
+        headerLabel.text = "NFTs by Categories"
+        seeAllButton.addTarget(self, action: #selector(seeAllTappedForCategory), for: .touchUpInside)
+    }
+    
+    func configureForNotFallable() {
+        headerLabel.text = "Not Fallable NFTs"
+        seeAllButton.addTarget(self, action: #selector(seeAllTappedForNotFallable), for: .touchUpInside)
+    }
+    
     private func addLabel() {
         headerLabel.font = .rounded(ofSize: 18, weight: .semibold)
-        headerLabel.text = "NFTs by Categories"
         headerLabel.textAlignment = .left
         backgroundColor = .mediumWeightGray
         addSubview(headerLabel)
@@ -37,13 +47,16 @@ class CategoriesHeaderView: UIView {
         }
     }
     
-    @objc private func seeAllButtonTapped(_ sender: UIButton) {
-        print("See all - tapped")
+    @objc private func seeAllTappedForCategory() {
+        print("See all - tapped in NFTs by Categories")
+    }
+    
+    @objc private func seeAllTappedForNotFallable() {
+        print("See all - tapped in Not Fallable NFTs")
     }
     
     private func addSeeAllButton() {
         addSubview(seeAllButton)
-        seeAllButton.addTarget(self, action: #selector(seeAllButtonTapped(_:)), for: .touchUpInside)
         seeAllButton.setTitle("See all", for: .normal)
         seeAllButton.titleLabel?.font = .rounded(ofSize: 18, weight: .semibold)
         seeAllButton.setTitleColor(.purpleHeaderButton, for: .normal)

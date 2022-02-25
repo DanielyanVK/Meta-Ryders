@@ -85,8 +85,17 @@ class ItemCollectionViewCell: UICollectionViewCell {
         descriptionLabel.text = item.description
         priceLabel.text = "\(item.price.description) ETH"
         backgroundImageView.hero.id = imageViewHeroId
-        // Later we will have to update this so we display + or - symbols and change color from green to red depending on if the value is negative or positive
-        growthLabel.text = "+\(item.growth.description)%"
+        
+        if item.growth > 0 {
+            growthLabel.text = "+\(item.growth.description)%"
+            growthLabel.textColor = .lightweightGreen
+        } else if item.growth == 0 {
+            growthLabel.text = "\(item.growth.description)%"
+            growthLabel.textColor = .black
+        } else {
+            growthLabel.text = "\(item.growth.description)%"
+            growthLabel.textColor = .red
+        }
     }
     
     //MARK: Cell's elements setup
@@ -168,7 +177,6 @@ class ItemCollectionViewCell: UICollectionViewCell {
     }
     
     private func addGrowthLabel() {
-        growthLabel.textColor = .lightweightGreen
         growthLabel.textAlignment = .right
         growthLabel.font = .standart(ofSize: 16, weight: .medium)
         addSubview(growthLabel)
