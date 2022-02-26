@@ -98,21 +98,21 @@ class HomeViewController: UIViewController {
         titleLabel.textColor = .black
         titleLabel.text = "Meta-Ryders"
         titleLabel.font = .rounded(ofSize: 24, weight: .semibold)
-
+        
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: titleLabel)
-
+        
         self.navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image: UIImage(named: "notificationsIcon"),
                             style: .plain,
                             target: self,
                             action: #selector(notificationsButtonTapped(_:))),
-
+            
             UIBarButtonItem(image: UIImage(named: "walletIcon"),
                             style: .plain,
                             target: self,
                             action: #selector(walletButtonTapped(_:)))
         ]
-        }
+    }
     //MARK: Navigation Bar Buttons Actions
     @objc private func walletButtonTapped(_ sender: UIButton) {
         print("Wallet - tapped")
@@ -168,7 +168,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-           
+        
         let dataSource = dataSources[section]
         let headerView = TableViewHeader()
         
