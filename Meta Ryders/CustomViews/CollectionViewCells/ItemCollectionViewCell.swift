@@ -118,7 +118,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
     
     private func addBackgroundImageView() {
         backgroundImageView.clipsToBounds = true
-        backgroundImageView.layer.cornerRadius = 13
+        backgroundImageView.layer.cornerRadius = 14
         shadowView.addSubview(backgroundImageView)
         
         backgroundImageView.snp.makeConstraints { make in

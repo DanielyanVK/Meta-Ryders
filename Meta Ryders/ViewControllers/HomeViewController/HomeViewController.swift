@@ -19,10 +19,15 @@ class HomeViewController: UIViewController {
     
     let fallableItem1 = Item(name: "Monkey", imageName: "AbstractPainting2", description: "The only thing is out for Harambe - is that T-pose", price: 1.314, growth: -5)
     let fallableItem2 = Item(name: "Wave", imageName: "BellaDoll2", description: "Cool abstract painting", price: 2.212, growth: 35)
+    let news1 = News(title: "Coinbase is Partnering with MasterCard to Allow Card Pay...", imageName: "news1", article: "test", timePosted: "1 hour ago", sourceName: "bloomberg.com")
+    let news2 = News(title: "Cardano (ADA) Sureges 31% After New Metaverse Launch", imageName: "news2", article: "test", timePosted: "20 min ago", sourceName: "newyorktimes.com")
+    let news3 = News(title: "Apple is Prepared to Dominate the Metaverse in 2024", imageName: "news3", article: "test", timePosted: "35 min ago", sourceName: "dailybugle.com")
     
     private let categoryCollectionViewDataSource = CategoriesCollectionViewDataSource()
     private let itemsCollectionViewDataSource = ItemsCollectionViewDataSource()
     private let notFallableCollectionViewDataSource = NotFallableCollectionViewDataSource()
+    private let newsCollectionViewDataSource = NewsCollectionViewDataSource()
+    
     private var categories: [Category] = ["Trending", "Art", "Collectibles", "Music"].map { Category(name: $0) }
     
     override func viewDidLoad() {
@@ -31,9 +36,11 @@ class HomeViewController: UIViewController {
         categoryCollectionViewDataSource.update(with: categories)
         itemsCollectionViewDataSource.items.append(item1)
         itemsCollectionViewDataSource.items.append(item2)
-        
         notFallableCollectionViewDataSource.fallableItems.append(fallableItem1)
         notFallableCollectionViewDataSource.fallableItems.append(fallableItem2)
+        newsCollectionViewDataSource.news.append(news1)
+        newsCollectionViewDataSource.news.append(news2)
+        newsCollectionViewDataSource.news.append(news3)
         
         // MARK: Hero animation setup
         hero.isEnabled = true
@@ -50,6 +57,7 @@ class HomeViewController: UIViewController {
         dataSources.append(categoryCollectionViewDataSource)
         dataSources.append(itemsCollectionViewDataSource)
         dataSources.append(notFallableCollectionViewDataSource)
+        dataSources.append(newsCollectionViewDataSource)
         
         addMainTableView()
         configureNavBar()
@@ -140,11 +148,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let dataSource = dataSources[indexPath.section]
         if dataSource is CategoriesCollectionViewDataSource {
             return 42
-        } else if dataSource is ItemsCollectionViewDataSource {
+        } else if dataSource is ItemsCollectionViewDataSource || dataSource is NotFallableCollectionViewDataSource {
             return 390
-        }  else if dataSource is NotFallableCollectionViewDataSource {
-            return 390
-        } else {
+        }  else if dataSource is NewsCollectionViewDataSource {
+            return 260
+        }  else {
             return 0
         }
     }
@@ -152,9 +160,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     //MARK: Header/Footer configurtion
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let dataSource = dataSources[section]
-        if dataSource is CategoriesCollectionViewDataSource {
-            return 46
-        } else if dataSource is NotFallableCollectionViewDataSource {
+        if dataSource is CategoriesCollectionViewDataSource || dataSource is NotFallableCollectionViewDataSource || dataSource is NewsCollectionViewDataSource  {
             return 46
         } else {
             return 0
@@ -164,13 +170,16 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
            
         let dataSource = dataSources[section]
-        let headerView = CategoriesHeaderView()
+        let headerView = TableViewHeader()
         
         if dataSource is CategoriesCollectionViewDataSource {
-            headerView.configureForItems()
+            headerView.configureHeader(for: .categories)
             return headerView
         } else if dataSource is NotFallableCollectionViewDataSource {
-            headerView.configureForNotFallable()
+            headerView.configureHeader(for: .notFallable)
+            return headerView
+        } else if dataSource is NewsCollectionViewDataSource {
+            headerView.configureHeader(for: .news)
             return headerView
         }
         return UIView()

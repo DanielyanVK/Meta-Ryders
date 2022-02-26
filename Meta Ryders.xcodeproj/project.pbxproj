@@ -25,7 +25,10 @@
 		E4B0F08F27BCFC3F00965A17 /* HorizontalCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B0F08E27BCFC3F00965A17 /* HorizontalCollectionViewDataSource.swift */; };
 		E4B0F09227BCFC8000965A17 /* CategoriesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B0F09127BCFC8000965A17 /* CategoriesCollectionViewDataSource.swift */; };
 		E4B1BE0F27C8C81D00521581 /* NotFallableCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B1BE0E27C8C81D00521581 /* NotFallableCollectionViewDataSource.swift */; };
-		E4B604D827C5068A004CB74B /* CategoriesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B604D727C5068A004CB74B /* CategoriesHeaderView.swift */; };
+		E4B1DB0927C9EA9900BF5ECF /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B1DB0827C9EA9900BF5ECF /* News.swift */; };
+		E4B1DB0B27C9ED5900BF5ECF /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B1DB0A27C9ED5900BF5ECF /* NewsCollectionViewCell.swift */; };
+		E4B1DB0C27C9F75D00BF5ECF /* NewsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B1DB0627C9EA8500BF5ECF /* NewsCollectionViewDataSource.swift */; };
+		E4B604D827C5068A004CB74B /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B604D727C5068A004CB74B /* TableViewHeader.swift */; };
 		E4C10DA927BCCED2002387DC /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C10DA827BCCED2002387DC /* CollectionTableViewCell.swift */; };
 		E4C10DAB27BCCFB7002387DC /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C10DAA27BCCFB6002387DC /* CategoryCollectionViewCell.swift */; };
 		E4C10DAD27BCD14F002387DC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C10DAC27BCD14F002387DC /* Category.swift */; };
@@ -51,7 +54,10 @@
 		E4B0F08E27BCFC3F00965A17 /* HorizontalCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		E4B0F09127BCFC8000965A17 /* CategoriesCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		E4B1BE0E27C8C81D00521581 /* NotFallableCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFallableCollectionViewDataSource.swift; sourceTree = "<group>"; };
-		E4B604D727C5068A004CB74B /* CategoriesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesHeaderView.swift; sourceTree = "<group>"; };
+		E4B1DB0627C9EA8500BF5ECF /* NewsCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		E4B1DB0827C9EA9900BF5ECF /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		E4B1DB0A27C9ED5900BF5ECF /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
+		E4B604D727C5068A004CB74B /* TableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
 		E4C10DA827BCCED2002387DC /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		E4C10DAA27BCCFB6002387DC /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		E4C10DAC27BCD14F002387DC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -170,6 +176,7 @@
 			children = (
 				E447CD1B27B78A2D0095CB91 /* ItemCollectionViewCell.swift */,
 				E4C10DAA27BCCFB6002387DC /* CategoryCollectionViewCell.swift */,
+				E4B1DB0A27C9ED5900BF5ECF /* NewsCollectionViewCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -179,6 +186,7 @@
 			children = (
 				E447CD2027B78F6E0095CB91 /* Item.swift */,
 				E4C10DAC27BCD14F002387DC /* Category.swift */,
+				E4B1DB0827C9EA9900BF5ECF /* News.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,6 +216,7 @@
 				E4ECCDB927BE3EDB0050A6CF /* ItemsCollectionViewDataSource.swift */,
 				E4B1BE0E27C8C81D00521581 /* NotFallableCollectionViewDataSource.swift */,
 				E4B0F09127BCFC8000965A17 /* CategoriesCollectionViewDataSource.swift */,
+				E4B1DB0627C9EA8500BF5ECF /* NewsCollectionViewDataSource.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -215,7 +224,7 @@
 		E4B604D427C50464004CB74B /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				E4B604D727C5068A004CB74B /* CategoriesHeaderView.swift */,
+				E4B604D727C5068A004CB74B /* TableViewHeader.swift */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -301,11 +310,14 @@
 				E4A0FDA027BB8F7D0099EEDB /* UIColor+Hex.swift in Sources */,
 				E4B0F09227BCFC8000965A17 /* CategoriesCollectionViewDataSource.swift in Sources */,
 				E4A0FDA227BB91470099EEDB /* UIColor+Additionals.swift in Sources */,
-				E4B604D827C5068A004CB74B /* CategoriesHeaderView.swift in Sources */,
+				E4B1DB0B27C9ED5900BF5ECF /* NewsCollectionViewCell.swift in Sources */,
+				E4B604D827C5068A004CB74B /* TableViewHeader.swift in Sources */,
 				E447CD1C27B78A2D0095CB91 /* ItemCollectionViewCell.swift in Sources */,
 				E447CCF927B786BC0095CB91 /* AppDelegate.swift in Sources */,
+				E4B1DB0927C9EA9900BF5ECF /* News.swift in Sources */,
 				E4C10DA927BCCED2002387DC /* CollectionTableViewCell.swift in Sources */,
 				E447CCFB27B786BC0095CB91 /* SceneDelegate.swift in Sources */,
+				E4B1DB0C27C9F75D00BF5ECF /* NewsCollectionViewDataSource.swift in Sources */,
 				E447CD2127B78F6E0095CB91 /* Item.swift in Sources */,
 				E4B1BE0F27C8C81D00521581 /* NotFallableCollectionViewDataSource.swift in Sources */,
 				E447CD1027B7875F0095CB91 /* HomeViewController.swift in Sources */,
