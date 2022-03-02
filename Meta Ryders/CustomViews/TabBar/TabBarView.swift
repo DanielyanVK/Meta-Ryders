@@ -14,12 +14,19 @@ class TabBarView: UIView {
     private let cameraButton = UIButton(frame: .zero)
     private let settingsButton = UIButton(frame: .zero)
     private let itemListButton = UIButton(frame: .zero)
+    
+    private let frameImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage()
+        return imageView
+    }()
   
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         
         backgroundColor = .tabBarColor
         setupTabBar()
+        addFrameImageView()
         addCameraButton()
         addHomeButton()
         addGraphsButton()
@@ -39,6 +46,16 @@ class TabBarView: UIView {
         }
     }
     
+    private func addFrameImageView() {
+        addSubview(frameImageView)
+        
+        frameImageView.image = UIImage(named: "cameraButtonFrame")
+        frameImageView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(-20)
+        }
+    }
+
     private func addHomeButton() {
         addSubview(homeButton)
 
@@ -58,7 +75,8 @@ class TabBarView: UIView {
         graphsButton.addTarget(self, action: #selector(graphsButtonTapped), for: .touchUpInside)
         
         graphsButton.snp.makeConstraints { make in
-            make.right.equalTo(cameraButton.snp.left).offset(-14)
+            make.right.equalTo(frameImageView.snp.left).offset(-14)
+
             make.centerY.equalToSuperview()
         }
     }
@@ -66,12 +84,12 @@ class TabBarView: UIView {
     private func addCameraButton() {
         addSubview(cameraButton)
         
-        cameraButton.setImage(UIImage(named: "cameraButton"), for: .normal)
+        cameraButton.setImage(UIImage(named: "noFrameCamera"), for: .normal)
         cameraButton.addTarget(self, action: #selector(cameraButtonTapped), for: .touchUpInside)
         
         cameraButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(-20)
+            make.centerY.equalTo(frameImageView.snp.centerY).offset(-4)
         }
     }
     
@@ -94,7 +112,7 @@ class TabBarView: UIView {
         itemListButton.addTarget(self, action: #selector(itemListButtonTapped), for: .touchUpInside)
         
         itemListButton.snp.makeConstraints { make in
-            make.left.equalTo(cameraButton.snp.right).offset(14)
+            make.left.equalTo(frameImageView.snp.right).offset(14)
             make.centerY.equalToSuperview()
         }
     }
