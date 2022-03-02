@@ -38,7 +38,6 @@ class CategoriesCollectionViewDataSource: NSObject, HorizontalCollectionViewData
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                        subitems: [item])
         
-        
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets.leading = 20
         section.interGroupSpacing = 6
@@ -46,7 +45,6 @@ class CategoriesCollectionViewDataSource: NSObject, HorizontalCollectionViewData
         config.scrollDirection = .horizontal
         let layout = UICollectionViewCompositionalLayout(section: section, configuration: config)
         return layout
-        
     }
 }
 

@@ -12,6 +12,10 @@ class HomeViewController: UIViewController {
     
     private var mainTableView: UITableView?
     private var dataSources: [HorizontalCollectionViewDataSource] = []
+    private var tabBarView: UIView {
+        let tabBarView = TabBarView()
+        return tabBarView
+    }
     
     //MARK: MOCKUP DATA - REMOVE LATER
     let item1 = Item(name: "Bella Doll", imageName: "BellaDoll", description: "These ancient beings have been around since the dawn of time...", price: 9861.37, growth: 10)
@@ -61,6 +65,7 @@ class HomeViewController: UIViewController {
         
         addMainTableView()
         configureNavBar()
+        view.addSubview(tabBarView)
         
         view.backgroundColor = .mediumWeightGray
     }

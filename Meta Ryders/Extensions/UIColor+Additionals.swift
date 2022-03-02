@@ -35,5 +35,13 @@ extension UIColor {
     static var purpleHeaderButton: UIColor {
         return UIColor(rgb: 0xa05be2)
     }
+    
+    static var tabBarColor: UIColor {
+        return UIColor(rgb: 0xebebeb)
+    }
+    
+    static var heavyWeightGray: UIColor {
+        return UIColor(rgb: 0x828281)
+    }
 }
 
