@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     }
     
     //MARK: MOCKUP DATA - REMOVE LATER
-    let item1 = Item(name: "Bella Doll", imageName: "BellaDoll", description: "These ancient beings have been around since the dawn of time...", price: 9861.37, growth: 10)
+    let item1 = Item(name: "Bella Doll", imageName: "BellaDoll", description: "These ancient beings have been around since the dawn of time...", price: 98.37, growth: 10)
     let item2 = Item(name: "Abstract Pink", imageName: "AbstractPainting", description: "A CNS or UNS blockhain domain.", price: 0.906, growth: 6.2)
     
     let fallableItem1 = Item(name: "Monkey", imageName: "AbstractPainting2", description: "The only thing is out for Harambe - is that T-pose", price: 1.314, growth: -5)
@@ -205,4 +205,3 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         nil
     }
 }
-

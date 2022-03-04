@@ -76,7 +76,6 @@ class TabBarView: UIView {
         
         graphsButton.snp.makeConstraints { make in
             make.right.equalTo(frameImageView.snp.left).offset(-14)
-
             make.centerY.equalToSuperview()
         }
     }
