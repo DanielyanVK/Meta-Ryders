@@ -9,26 +9,25 @@ import UIKit
 import Hero
 
 class ItemViewController: UIViewController {
-
-    private let heroImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage()
-        
-        return imageView
-    }()
+    
+    enum Sections: CaseIterable {
+        // добавляем секции через запятую
+        case PriceAndImage
+        static func numberOfSections() -> Int {
+            return self.allCases.count
+        }
+        static func getSection(_ section: Int) -> Sections {
+            return self.allCases[section]
+        }
+    }
+    
+    private var mainTableView: UITableView?
     
     private let descriptionFrameImageView: UIImageView = {
         let descriptionFrameImageView = UIImageView()
         descriptionFrameImageView.image = UIImage()
         
         return descriptionFrameImageView
-    }()
-    
-    private let currencyIconView: UIImageView = {
-        let currencyIconView = UIImageView()
-        currencyIconView.image = UIImage()
-        
-        return currencyIconView
     }()
     
     private let followersIconView: UIImageView = {
@@ -52,12 +51,6 @@ class ItemViewController: UIViewController {
         return favoritesIconView
     }()
     
-    private let priceLabel: UILabel = {
-        let priceLabel = UILabel()
-        
-        return priceLabel
-    }()
-    
     private let followersCountLabel: UILabel = {
         let followersCountLabel = UILabel()
         
@@ -79,9 +72,7 @@ class ItemViewController: UIViewController {
     private var item: Item?
     private var heroId: String?
     
-    
-    
-    convenience init(item: Item?, heroId: String? = nil) {
+    convenience init(item: Item, heroId: String? = nil) {
         self.init()
         
         self.item = item
@@ -94,16 +85,126 @@ class ItemViewController: UIViewController {
         view.backgroundColor = .black
         view.addGestureRecognizer(createSwipeGestureRecognizer(for: .right))
         
-        addHeroImageView()
-        addCurrencyIconView()
-        addPriceLabel()
-        addFollowersIconView()
-        addFollowersCountLabel()
-        addTotalItemsIconView()
-        addTotalItemsCountLabel()
-        addFavoritesIconView()
-        addFavoritesCountLabel()
-        addDescriptionFrameImageView()
+//        addFollowersIconView()
+//        addFollowersCountLabel()
+//        addTotalItemsIconView()
+//        addTotalItemsCountLabel()
+//        addFavoritesIconView()
+//        addFavoritesCountLabel()
+//        addDescriptionFrameImageView()
+          addMainTableView()
+    }
+
+// MARK: View Controller's elements configuration
+    private func addMainTableView() {
+        mainTableView = UITableView(frame: view.bounds, style: .plain)
+        guard let mainTableView = mainTableView else {
+            return
+        }
+        view.addSubview(mainTableView)
+        
+        mainTableView.delegate = self
+        mainTableView.dataSource = self
+        
+        mainTableView.register(PriceAndImageTableViewCell.self, forCellReuseIdentifier: PriceAndImageTableViewCell.identifier)
+        
+        mainTableView.backgroundColor = .cyan
+        mainTableView.separatorColor = .clear
+        
+        view.addSubview(mainTableView)
+        
+        mainTableView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+    }
+
+    
+    private func addFollowersIconView() {
+        view.addSubview(followersIconView)
+        
+        followersIconView.image = UIImage(named: "followersIcon")
+        followersIconView.clipsToBounds = true
+        
+        followersIconView.snp.makeConstraints { make in
+   //         make.top.equalTo(priceLabel.snp.bottom).offset(72)
+            make.leading.equalTo(44)
+        }
+    }
+
+    private func addFollowersCountLabel() {
+        view.addSubview(followersCountLabel)
+        
+        followersCountLabel.textColor = .white
+        followersCountLabel.textAlignment = .left
+        followersCountLabel.font = .standart(ofSize: 12, weight: .regular)
+        // temporal data till we get real one
+        followersCountLabel.text = "8.7K owners"
+        
+        followersCountLabel.snp.makeConstraints { make in
+            make.left.equalTo(followersIconView.snp.right).offset(6)
+ //           make.top.equalTo(priceLabel.snp.bottom).offset(70)
+        }
+    }
+    
+    private func addTotalItemsIconView() {
+        view.addSubview(totalItemsIconView)
+        
+        totalItemsIconView.image = UIImage(named: "totalItemsIcon")
+        totalItemsIconView.clipsToBounds = true
+        
+        totalItemsIconView.snp.makeConstraints { make in
+  //          make.top.equalTo(priceLabel.snp.bottom).offset(72)
+            make.left.equalTo(followersCountLabel.snp.right).offset(30)
+        }
+    }
+    
+    private func addTotalItemsCountLabel() {
+        view.addSubview(totalItemsCountLabel)
+        
+        totalItemsCountLabel.textColor = .white
+        totalItemsCountLabel.textAlignment = .left
+        totalItemsCountLabel.font = .standart(ofSize: 12, weight: .regular)
+        // temporal data till we get real one
+        totalItemsCountLabel.text = "20.0K total"
+        
+        totalItemsCountLabel.snp.makeConstraints { make in
+            make.left.equalTo(totalItemsIconView.snp.right).offset(6)
+//            make.top.equalTo(priceLabel.snp.bottom).offset(70)
+        }
+    }
+    
+    private func addFavoritesIconView() {
+        view.addSubview(favoritesIconView)
+        
+        favoritesIconView.image = UIImage(named: "heartIcon")
+        favoritesIconView.clipsToBounds = true
+        
+        favoritesIconView.snp.makeConstraints { make in
+  //          make.top.equalTo(priceLabel.snp.bottom).offset(72)
+            make.left.equalTo(totalItemsCountLabel.snp.right).offset(30)
+        }
+    }
+    
+    private func addFavoritesCountLabel() {
+        view.addSubview(favoritesCountLabel)
+        
+        favoritesCountLabel.textColor = .white
+        favoritesCountLabel.textAlignment = .left
+        favoritesCountLabel.font = .standart(ofSize: 12, weight: .regular)
+        // temporal data till we get real one
+        favoritesCountLabel.text = "2.3K favorites"
+        
+        favoritesCountLabel.snp.makeConstraints { make in
+            make.left.equalTo(favoritesIconView.snp.right).offset(6)
+ //           make.top.equalTo(priceLabel.snp.bottom).offset(70)
+        }
+    }
+    
+    private func addDescriptionFrameImageView() {
+        view.addSubview(descriptionFrameImageView)
+        
+        descriptionFrameImageView.image = UIImage(named: "")
     }
     
     //MARK: Gesture recognition
@@ -124,136 +225,33 @@ class ItemViewController: UIViewController {
             break
         }
     }
-// MARK: View Controller's elements configuration
-    private func addHeroImageView() {
-        view.addSubview(heroImageView)
+}
 
-        heroImageView.clipsToBounds = true
-        heroImageView.layer.cornerRadius = 13
-        heroImageView.hero.id = heroId
-        heroImageView.image = UIImage(named: item?.imageName ?? "")
-        
-        heroImageView.snp.makeConstraints { make in
-            make.top.equalTo(60)
-            make.height.equalTo(350)
-            make.leading.equalTo(20)
-            make.trailing.equalTo(-20)
-        }
+extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return Sections.numberOfSections()
     }
-
-    private func addCurrencyIconView() {
-        view.addSubview(currencyIconView)
-        
-        currencyIconView.image = UIImage(named: "ethBigIcon")
-        currencyIconView.clipsToBounds = true
-        // в макете эта иконка стоит не ниже heroImage, а справа в нижнем его углу, но иконка сливается на светлых изображениях
-        currencyIconView.snp.makeConstraints { make in
-            make.trailing.equalTo(-106)
-            make.top.equalTo(heroImageView.snp.bottom).offset(40)
-        }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
     }
-
-    private func addPriceLabel() {
-        view.addSubview(priceLabel)
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch Sections.getSection(indexPath.section) {
+        case .PriceAndImage:
+            
+        let cell = mainTableView?.dequeueReusableCell(withIdentifier: PriceAndImageTableViewCell.identifier, for: indexPath) as! PriceAndImageTableViewCell
         
-        priceLabel.text = "ETH \(item?.price.description ?? "")"
-        priceLabel.textColor = .white
-        priceLabel.numberOfLines = 2
-        priceLabel.textAlignment = .left
-        // setting font without extension because we are using this font once throughout all project
-        priceLabel.font = UIFont(name: "Orbitron-Bold", size: 18)
+            cell.configurePriceAndImageCell(by: item!, hero: heroId ?? "")
         
-        priceLabel.snp.makeConstraints { make in
-            make.left.equalTo(currencyIconView.snp.right).offset(6)
-            make.trailing.equalTo(-36)
-            make.top.equalTo(heroImageView.snp.bottom).offset(30)
+        return cell
         }
     }
     
-    private func addFollowersIconView() {
-        view.addSubview(followersIconView)
-        
-        followersIconView.image = UIImage(named: "followersIcon")
-        followersIconView.clipsToBounds = true
-        
-        followersIconView.snp.makeConstraints { make in
-            make.top.equalTo(priceLabel.snp.bottom).offset(72)
-            make.leading.equalTo(44)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch Sections.getSection(indexPath.section) {
+        case .PriceAndImage:
+            return 492
         }
-    }
-
-    private func addFollowersCountLabel() {
-        view.addSubview(followersCountLabel)
-        
-        followersCountLabel.textColor = .white
-        followersCountLabel.textAlignment = .left
-        followersCountLabel.font = .standart(ofSize: 12, weight: .regular)
-        // temporal data till we get real one
-        followersCountLabel.text = "8.7K owners"
-        
-        followersCountLabel.snp.makeConstraints { make in
-            make.left.equalTo(followersIconView.snp.right).offset(6)
-            make.top.equalTo(priceLabel.snp.bottom).offset(70)
-        }
-    }
-    
-    private func addTotalItemsIconView() {
-        view.addSubview(totalItemsIconView)
-        
-        totalItemsIconView.image = UIImage(named: "totalItemsIcon")
-        totalItemsIconView.clipsToBounds = true
-        
-        totalItemsIconView.snp.makeConstraints { make in
-            make.top.equalTo(priceLabel.snp.bottom).offset(72)
-            make.left.equalTo(followersCountLabel.snp.right).offset(30)
-        }
-    }
-    
-    private func addTotalItemsCountLabel() {
-        view.addSubview(totalItemsCountLabel)
-        
-        totalItemsCountLabel.textColor = .white
-        totalItemsCountLabel.textAlignment = .left
-        totalItemsCountLabel.font = .standart(ofSize: 12, weight: .regular)
-        // temporal data till we get real one
-        totalItemsCountLabel.text = "20.0K total"
-        
-        totalItemsCountLabel.snp.makeConstraints { make in
-            make.left.equalTo(totalItemsIconView.snp.right).offset(6)
-            make.top.equalTo(priceLabel.snp.bottom).offset(70)
-        }
-    }
-    
-    private func addFavoritesIconView() {
-        view.addSubview(favoritesIconView)
-        
-        favoritesIconView.image = UIImage(named: "heartIcon")
-        favoritesIconView.clipsToBounds = true
-        
-        favoritesIconView.snp.makeConstraints { make in
-            make.top.equalTo(priceLabel.snp.bottom).offset(72)
-            make.left.equalTo(totalItemsCountLabel.snp.right).offset(30)
-        }
-    }
-    
-    private func addFavoritesCountLabel() {
-        view.addSubview(favoritesCountLabel)
-        
-        favoritesCountLabel.textColor = .white
-        favoritesCountLabel.textAlignment = .left
-        favoritesCountLabel.font = .standart(ofSize: 12, weight: .regular)
-        // temporal data till we get real one
-        favoritesCountLabel.text = "2.3K favorites"
-        
-        favoritesCountLabel.snp.makeConstraints { make in
-            make.left.equalTo(favoritesIconView.snp.right).offset(6)
-            make.top.equalTo(priceLabel.snp.bottom).offset(70)
-        }
-    }
-    
-    private func addDescriptionFrameImageView() {
-        view.addSubview(descriptionFrameImageView)
-        
-        descriptionFrameImageView.image = UIImage(named: "")
     }
 }
