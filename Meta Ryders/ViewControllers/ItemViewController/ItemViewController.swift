@@ -10,7 +10,7 @@ import Hero
 
 class ItemViewController: UIViewController {
     
-    private enum Sections: Int {
+    private enum Sections: String, CaseIterable {
         case priceAndImage
         case ownersAndFavorites
     }
@@ -98,7 +98,7 @@ class ItemViewController: UIViewController {
 
 extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return Sections.allCases.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -127,11 +127,10 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let section = Sections(rawValue: indexPath.section) else {
-            print ("Can't adjust row's height")
-            return 0
-        }
+        let section = sections[indexPath.section]
+        
         switch section  {
+            
         case .priceAndImage:
             return 492
         
