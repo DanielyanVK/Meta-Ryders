@@ -3,4 +3,86 @@
    uuid = "FEA85E15-EA82-4007-9946-8C139DB16780"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "61F9285F-4A08-43C2-9135-2E827FCC4A69"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Meta Ryders/ViewControllers/ItemViewController/ItemViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "ItemViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "61F9285F-4A08-43C2-9135-2E827FCC4A69 - d417501208ad1635"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Meta_Ryders.ItemViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Meta_Ryders.ItemViewController"
+                  moduleName = "Meta Ryders"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielyanvk/Documents/GitHub/Meta%20Ryders/Meta%20Ryders/ViewControllers/ItemViewController/ItemViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "61F9285F-4A08-43C2-9135-2E827FCC4A69 - 9f01c8e0ed5bc832"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Meta_Ryders.ItemViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Meta_Ryders.ItemViewController&gt;"
+                  moduleName = "Meta Ryders"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielyanvk/Documents/GitHub/Meta%20Ryders/Meta%20Ryders/ViewControllers/ItemViewController/ItemViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "104">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D9E2FAAF-1667-4CF8-8DA7-F70893A34AA6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Meta Ryders/ViewControllers/ItemViewController/ItemViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "numberOfSections(in:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E41C0E30-5040-4F80-92A7-4047646D8C0C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Meta Ryders/ViewControllers/ItemViewController/ItemViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

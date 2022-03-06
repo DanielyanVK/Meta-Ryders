@@ -10,17 +10,12 @@ import Hero
 
 class ItemViewController: UIViewController {
     
-    enum Sections: CaseIterable {
-        // добавляем секции через запятую
-        case PriceAndImage
-        static func numberOfSections() -> Int {
-            return self.allCases.count
-        }
-        static func getSection(_ section: Int) -> Sections {
-            return self.allCases[section]
-        }
+    private enum Sections: Int {
+        case priceAndImage
+        case ownersAndFavorites
     }
-    
+    private let sections: [Sections] = [Sections.priceAndImage, .ownersAndFavorites]
+
     private var mainTableView: UITableView?
     
     private let descriptionFrameImageView: UIImageView = {
@@ -28,45 +23,6 @@ class ItemViewController: UIViewController {
         descriptionFrameImageView.image = UIImage()
         
         return descriptionFrameImageView
-    }()
-    
-    private let followersIconView: UIImageView = {
-        let followersIconView = UIImageView()
-        followersIconView.image = UIImage()
-        
-        return followersIconView
-    }()
-    
-    private let totalItemsIconView: UIImageView = {
-        let totalItemsIconView = UIImageView()
-        totalItemsIconView.image = UIImage()
-        
-        return totalItemsIconView
-    }()
-    
-    private let favoritesIconView: UIImageView = {
-        let favoritesIconView = UIImageView()
-        favoritesIconView.image = UIImage()
-        
-        return favoritesIconView
-    }()
-    
-    private let followersCountLabel: UILabel = {
-        let followersCountLabel = UILabel()
-        
-        return followersCountLabel
-    }()
-    
-    private let totalItemsCountLabel: UILabel = {
-        let totalItemsCountLabel = UILabel()
-        
-        return totalItemsCountLabel
-    }()
-    
-    private let favoritesCountLabel: UILabel = {
-        let favoritesCountLabel = UILabel()
-        
-        return favoritesCountLabel
     }()
     
     private var item: Item?
@@ -81,16 +37,9 @@ class ItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Temporary black because there are no assets in figma for designed background
         view.backgroundColor = .black
         view.addGestureRecognizer(createSwipeGestureRecognizer(for: .right))
         
-//        addFollowersIconView()
-//        addFollowersCountLabel()
-//        addTotalItemsIconView()
-//        addTotalItemsCountLabel()
-//        addFavoritesIconView()
-//        addFavoritesCountLabel()
 //        addDescriptionFrameImageView()
           addMainTableView()
     }
@@ -107,6 +56,7 @@ class ItemViewController: UIViewController {
         mainTableView.dataSource = self
         
         mainTableView.register(PriceAndImageTableViewCell.self, forCellReuseIdentifier: PriceAndImageTableViewCell.identifier)
+        mainTableView.register(OwnersAndFavoritesTableViewCell.self, forCellReuseIdentifier: OwnersAndFavoritesTableViewCell.identifier)
         
         mainTableView.backgroundColor = .cyan
         mainTableView.separatorColor = .clear
@@ -119,87 +69,6 @@ class ItemViewController: UIViewController {
         }
     }
 
-    
-    private func addFollowersIconView() {
-        view.addSubview(followersIconView)
-        
-        followersIconView.image = UIImage(named: "followersIcon")
-        followersIconView.clipsToBounds = true
-        
-        followersIconView.snp.makeConstraints { make in
-   //         make.top.equalTo(priceLabel.snp.bottom).offset(72)
-            make.leading.equalTo(44)
-        }
-    }
-
-    private func addFollowersCountLabel() {
-        view.addSubview(followersCountLabel)
-        
-        followersCountLabel.textColor = .white
-        followersCountLabel.textAlignment = .left
-        followersCountLabel.font = .standart(ofSize: 12, weight: .regular)
-        // temporal data till we get real one
-        followersCountLabel.text = "8.7K owners"
-        
-        followersCountLabel.snp.makeConstraints { make in
-            make.left.equalTo(followersIconView.snp.right).offset(6)
- //           make.top.equalTo(priceLabel.snp.bottom).offset(70)
-        }
-    }
-    
-    private func addTotalItemsIconView() {
-        view.addSubview(totalItemsIconView)
-        
-        totalItemsIconView.image = UIImage(named: "totalItemsIcon")
-        totalItemsIconView.clipsToBounds = true
-        
-        totalItemsIconView.snp.makeConstraints { make in
-  //          make.top.equalTo(priceLabel.snp.bottom).offset(72)
-            make.left.equalTo(followersCountLabel.snp.right).offset(30)
-        }
-    }
-    
-    private func addTotalItemsCountLabel() {
-        view.addSubview(totalItemsCountLabel)
-        
-        totalItemsCountLabel.textColor = .white
-        totalItemsCountLabel.textAlignment = .left
-        totalItemsCountLabel.font = .standart(ofSize: 12, weight: .regular)
-        // temporal data till we get real one
-        totalItemsCountLabel.text = "20.0K total"
-        
-        totalItemsCountLabel.snp.makeConstraints { make in
-            make.left.equalTo(totalItemsIconView.snp.right).offset(6)
-//            make.top.equalTo(priceLabel.snp.bottom).offset(70)
-        }
-    }
-    
-    private func addFavoritesIconView() {
-        view.addSubview(favoritesIconView)
-        
-        favoritesIconView.image = UIImage(named: "heartIcon")
-        favoritesIconView.clipsToBounds = true
-        
-        favoritesIconView.snp.makeConstraints { make in
-  //          make.top.equalTo(priceLabel.snp.bottom).offset(72)
-            make.left.equalTo(totalItemsCountLabel.snp.right).offset(30)
-        }
-    }
-    
-    private func addFavoritesCountLabel() {
-        view.addSubview(favoritesCountLabel)
-        
-        favoritesCountLabel.textColor = .white
-        favoritesCountLabel.textAlignment = .left
-        favoritesCountLabel.font = .standart(ofSize: 12, weight: .regular)
-        // temporal data till we get real one
-        favoritesCountLabel.text = "2.3K favorites"
-        
-        favoritesCountLabel.snp.makeConstraints { make in
-            make.left.equalTo(favoritesIconView.snp.right).offset(6)
- //           make.top.equalTo(priceLabel.snp.bottom).offset(70)
-        }
-    }
     
     private func addDescriptionFrameImageView() {
         view.addSubview(descriptionFrameImageView)
@@ -229,7 +98,7 @@ class ItemViewController: UIViewController {
 
 extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return Sections.numberOfSections()
+        return sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -237,21 +106,37 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch Sections.getSection(indexPath.section) {
-        case .PriceAndImage:
+        
+        let section = sections[indexPath.section]
+        
+        switch section {
             
-        let cell = mainTableView?.dequeueReusableCell(withIdentifier: PriceAndImageTableViewCell.identifier, for: indexPath) as! PriceAndImageTableViewCell
-        
+        case .priceAndImage:
+            let cell = mainTableView?.dequeueReusableCell(withIdentifier: PriceAndImageTableViewCell.identifier, for: indexPath) as! PriceAndImageTableViewCell
+            
             cell.configurePriceAndImageCell(by: item!, hero: heroId ?? "")
-        
-        return cell
+            return cell
+            
+        case .ownersAndFavorites:
+            let cell = mainTableView?.dequeueReusableCell(withIdentifier: OwnersAndFavoritesTableViewCell.identifier, for: indexPath) as! OwnersAndFavoritesTableViewCell
+            
+            cell.configureOwnersAndFavorites(by: item!)
+            return cell
         }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch Sections.getSection(indexPath.section) {
-        case .PriceAndImage:
+        guard let section = Sections(rawValue: indexPath.section) else {
+            print ("Can't adjust row's height")
+            return 0
+        }
+        switch section  {
+        case .priceAndImage:
             return 492
+        
+        case .ownersAndFavorites:
+            return 44
         }
     }
 }
