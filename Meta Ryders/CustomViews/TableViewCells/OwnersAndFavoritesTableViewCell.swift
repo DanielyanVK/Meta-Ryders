@@ -49,7 +49,7 @@ class OwnersAndFavoritesTableViewCell: UITableViewCell {
 
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        backgroundColor = .yellow
+        backgroundColor = .black
         
         addFollowersIconView()
         addFollowersCountLabel()

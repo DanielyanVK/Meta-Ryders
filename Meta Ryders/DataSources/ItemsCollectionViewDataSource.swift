@@ -8,6 +8,8 @@
 import UIKit
 
 class ItemsCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
+    var collectionView: UICollectionView?
+    
     
     var itemSelected: ItemClosure<Item>?
     

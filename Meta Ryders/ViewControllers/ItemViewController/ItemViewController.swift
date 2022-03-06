@@ -98,7 +98,7 @@ class ItemViewController: UIViewController {
 
 extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return Sections.allCases.count
+        return sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -124,18 +124,5 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
         
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let section = sections[indexPath.section]
-        
-        switch section  {
-            
-        case .priceAndImage:
-            return 492
-        
-        case .ownersAndFavorites:
-            return 44
-        }
     }
 }

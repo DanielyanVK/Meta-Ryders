@@ -27,6 +27,8 @@ class HomeViewController: UIViewController {
     let news2 = News(title: "Cardano (ADA) Sureges 31% After New Metaverse Launch", imageName: "news2", article: "test", timePosted: "20 min ago", sourceName: "newyorktimes.com")
     let news3 = News(title: "Apple is Prepared to Dominate the Metaverse in 2024", imageName: "news3", article: "test", timePosted: "35 min ago", sourceName: "dailybugle.com")
     
+    let news4 = News(title: "Apple is Prepared to Dominate the Metaverse in 2024", imageName: "news3", article: "test", timePosted: "35 min ago", sourceName: "dailybugle.com")
+    
     private let categoryCollectionViewDataSource = CategoriesCollectionViewDataSource()
     private let itemsCollectionViewDataSource = ItemsCollectionViewDataSource()
     private let notFallableCollectionViewDataSource = NotFallableCollectionViewDataSource()
@@ -45,6 +47,12 @@ class HomeViewController: UIViewController {
         newsCollectionViewDataSource.news.append(news1)
         newsCollectionViewDataSource.news.append(news2)
         newsCollectionViewDataSource.news.append(news3)
+        newsCollectionViewDataSource.news.append(news4)
+        mainTableView?.contentInset.bottom = 88
+        
+        
+        
+        
         
         // MARK: Hero animation setup
         hero.isEnabled = true
@@ -68,6 +76,19 @@ class HomeViewController: UIViewController {
         view.addSubview(tabBarView)
         
         view.backgroundColor = .mediumWeightGray
+    }
+    var isLayouted = false
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if !isLayouted {
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.mainTableView?.reloadRows(at: [.init(item: 0, section: 2)], with: .automatic)
+            }
+            isLayouted = true
+        }
     }
     
     // MARK: Main Table View Setup
@@ -144,22 +165,26 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = mainTableView?.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
-        cell.configureTableViewCell(with: dataSources[indexPath.section], layout: dataSources[indexPath.section].collectionViewLayout)
+        let dataSource = dataSources[indexPath.section]
+        cell.configureTableViewCell(with: dataSource, direction: dataSource.scrollDirection)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let dataSource = dataSources[indexPath.section]
+        
+        
         if dataSource is CategoriesCollectionViewDataSource {
-            return 42
-        } else if dataSource is ItemsCollectionViewDataSource || dataSource is NotFallableCollectionViewDataSource {
-            return 390
-        }  else if dataSource is NewsCollectionViewDataSource {
-            return 260
-        }  else {
-            return 0
+            return 44
+        } else if (dataSource is NotFallableCollectionViewDataSource) || (dataSource is ItemsCollectionViewDataSource) {
+            return 391
+        } else if dataSource is NewsCollectionViewDataSource {
+            return UITableView.automaticDimension
         }
+        
+        return 391
+        
     }
     
     //MARK: Header/Footer configurtion
@@ -188,17 +213,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return headerView
         }
         return UIView()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        let dataSource = dataSources[section]
-        if dataSource is CategoriesCollectionViewDataSource {
-            return 18
-        } else if dataSource is ItemsCollectionViewDataSource {
-            return 36
-        } else {
-            return 0
-        }
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

@@ -8,6 +8,8 @@
 import UIKit
 
 class NewsCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
+    var collectionView: UICollectionView?
+    
     
     var itemSelected: ItemClosure<News>?
     
@@ -23,28 +25,27 @@ class NewsCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource
     
     internal func setupLayout() -> UICollectionViewLayout {
            
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .absolute(100))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 32
-        section.contentInsets.leading = 20
-        
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
         return layout
     }
     
 }
 
-extension NewsCollectionViewDataSource: UICollectionViewDelegate, UICollectionViewDataSource {
+extension NewsCollectionViewDataSource: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return .init(width: collectionView.frame.width, height: 96)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 32
+    }
+    
     // Consider implementing hero animation with new ViewController("NewsViewController"). Ask Danil about it.
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        // let singularNews = news[indexPath.item]
@@ -57,7 +58,6 @@ extension NewsCollectionViewDataSource: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsCollectionViewCell.identifier, for: indexPath) as! NewsCollectionViewCell
         
         let item = news[indexPath.item]

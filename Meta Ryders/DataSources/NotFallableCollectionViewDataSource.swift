@@ -8,6 +8,8 @@
 import UIKit
 
 class NotFallableCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
+    var collectionView: UICollectionView?
+    
     
     var itemSelected: ItemClosure<Item>?
     

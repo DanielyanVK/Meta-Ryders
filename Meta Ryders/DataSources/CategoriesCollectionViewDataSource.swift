@@ -9,6 +9,8 @@ import UIKit
 
 class CategoriesCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
     
+    var collectionView: UICollectionView?
+    
     var collectionViewLayout: UICollectionViewLayout {
         return setupLayout()
     }

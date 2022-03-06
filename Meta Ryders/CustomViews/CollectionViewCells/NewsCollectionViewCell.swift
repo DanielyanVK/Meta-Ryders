@@ -60,9 +60,9 @@ class NewsCollectionViewCell: UICollectionViewCell {
         titleLabel.lineBreakMode = .byWordWrapping
     
         titleLabel.snp.makeConstraints { make in
-            make.left.equalTo(articleImageView.snp.right).offset(16)
+            make.leading.equalTo(articleImageView.snp.trailing).offset(16)
             make.top.equalTo(articleImageView.snp.top)
-            make.trailing.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-20)
             
         }
     }
@@ -74,7 +74,8 @@ class NewsCollectionViewCell: UICollectionViewCell {
         
         articleImageView.snp.makeConstraints { make in
             make.top.equalTo(2)
-            make.leading.equalTo(2)
+            make.leading.equalTo(22)
+            make.bottom.equalTo(-2)
         }
     }
     
@@ -86,20 +87,23 @@ class NewsCollectionViewCell: UICollectionViewCell {
         addSubview(sourceLabel)
         
         sourceLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(-18)
+            make.top.equalTo(titleLabel.snp.bottom)
+            make.bottom.equalTo(-24)
             make.left.equalTo(titleLabel.snp.left)
         }
     }
     
     private func addTimePostedLabel() {
         timePostedLabel.numberOfLines = 1
-        timePostedLabel.textAlignment = .left
+        timePostedLabel.textAlignment = .right
         timePostedLabel.textColor = .lightweightGray
+        
         timePostedLabel.font = .standart(ofSize: 14, weight: .regular)
         addSubview(timePostedLabel)
         
         timePostedLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(sourceLabel.snp.bottom)
+            make.centerY.equalTo(sourceLabel.snp.centerY)
+            make.leading.equalTo(sourceLabel.snp.trailing)
             make.trailing.equalTo(-20)
         }
     }
