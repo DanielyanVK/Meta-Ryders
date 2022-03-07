@@ -12,17 +12,17 @@ import SnapKit
 class ARCameraViewController: UIViewController {
     
     //MARK: MOCKUP DATA - REMOVE LATER
-    var array = [Item(name: "Bella Doll", imageName: "BellaDoll", description: "These ancient beings have been around since the dawn of time...", price: 9861.37, growth: 10), Item(name: "Abstract Pink", imageName: "AbstractPainting", description: "A CNS or UNS blockhain domain.", price: 0.906, growth: 6.2), Item(name: "Monkey", imageName: "AbstractPainting2", description: "The only thing is out for Harambe - is that T-pose", price: 1.314, growth: -5), Item(name: "Wave", imageName: "BellaDoll2", description: "Cool abstract painting", price: 2.212, growth: 35)]
+    private var array = [Item(name: "Bella Doll", imageName: "BellaDoll", description: "These ancient beings have been around since the dawn of time...", price: 9861.37, growth: 10), Item(name: "Abstract Pink", imageName: "AbstractPainting", description: "A CNS or UNS blockhain domain.", price: 0.906, growth: 6.2), Item(name: "Monkey", imageName: "AbstractPainting2", description: "The only thing is out for Harambe - is that T-pose", price: 1.314, growth: -5), Item(name: "Wave", imageName: "BellaDoll2", description: "Cool abstract painting", price: 2.212, growth: 35)]
     
-    var cameraCollectionView: UICollectionView!
-    var sceneView = ARSCNView()
-    let config = ARWorldTrackingConfiguration()
-    var backButton = UIButton()
-    var discoverButton = UIButton()
-    var headerLabel = UILabel()
-    var collectionViewHeight = UIScreen.main.bounds.height*0.3
+   private var cameraCollectionView: UICollectionView!
+   private var sceneView = ARSCNView()
+   private let config = ARWorldTrackingConfiguration()
+   private var backButton = UIButton()
+   private var discoverButton = UIButton()
+   private var headerLabel = UILabel()
+   private var collectionViewHeight = UIScreen.main.bounds.height*0.3
     
-    lazy var screenSize: CGRect = {
+    private var screenSize: CGRect = {
         return UIScreen.main.bounds
     }()
     

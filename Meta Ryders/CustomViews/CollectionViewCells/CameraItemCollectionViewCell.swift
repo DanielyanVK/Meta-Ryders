@@ -10,29 +10,30 @@ import SnapKit
 
 class CameraItemCollectionViewCell: UICollectionViewCell {
     
-    var mainImageView = UIImageView()
-    var nameLabel = UILabel()
-    var descriptionLabel = UILabel()
-    var currencyImageView = UIImageView()
-    var priceLabel = UILabel()
-    var orderLabel = UILabel()
-    var backgroundViewCell = UIView()
-    var actionButton = UIButton()
-    var buttonClosure = {}
+    private var mainImageView = UIImageView()
+    private var nameLabel = UILabel()
+    private var descriptionLabel = UILabel()
+    private var currencyImageView = UIImageView()
+    private var priceLabel = UILabel()
+    private var orderLabel = UILabel()
+    private var backgroundViewCell = UIView()
+    private var actionButton = UIButton()
+    private var buttonClosure = {}
     
-    lazy var cellSize: CGSize = {
+    private var cellSize: CGSize {
         return self.frame.size
-    }()
+    }
     
-    lazy var cellBorders: CGFloat = {
-        return cellSize.width*0.06
-    }()
+    private var cellBorders: CGFloat {
+        return cellSize.width * 0.06
+    }
     
-    lazy var labelHeight: CGFloat = {
-        return cellSize.height*0.08
-    }()
+    private var labelHeight: CGFloat {
+        return cellSize.height * 0.08
+    }
     
     override func didMoveToSuperview() {
+        super.didMoveToSuperview()
         designConfigure()
         bringSubviewToFront(actionButton)
     }
