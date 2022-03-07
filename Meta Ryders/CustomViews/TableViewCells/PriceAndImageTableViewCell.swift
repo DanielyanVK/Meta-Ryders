@@ -31,6 +31,8 @@ class PriceAndImageTableViewCell: UITableViewCell {
 
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
+        backgroundColor = .black
+        selectionStyle = .none
         
         addHeroImageView()
         addPriceLabel()
@@ -45,8 +47,6 @@ class PriceAndImageTableViewCell: UITableViewCell {
 
     private func addHeroImageView() {
         addSubview(heroImageView)
-        backgroundColor = .black
-
         heroImageView.clipsToBounds = true
         heroImageView.layer.cornerRadius = 13
         

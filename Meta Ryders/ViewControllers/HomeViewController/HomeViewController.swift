@@ -85,6 +85,8 @@ class HomeViewController: UIViewController {
         
         mainTableView.backgroundColor = .mediumWeightGray
         mainTableView.separatorColor = .clear
+        mainTableView.showsHorizontalScrollIndicator = false
+        mainTableView.showsVerticalScrollIndicator = false
         
         view.addSubview(mainTableView)
         

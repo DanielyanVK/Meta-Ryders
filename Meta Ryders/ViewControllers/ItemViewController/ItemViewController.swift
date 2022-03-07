@@ -10,37 +10,34 @@ import Hero
 
 class ItemViewController: UIViewController {
     
-    private enum Sections: String, CaseIterable {
+    private enum Sections: CaseIterable {
         case priceAndImage
         case ownersAndFavorites
+        case description
+        case purchaseAndOffer
+        case sale
+        case firstHeader
+        
     }
-    private let sections: [Sections] = [Sections.priceAndImage, .ownersAndFavorites]
+    private let sections: [Sections] = [.priceAndImage, .ownersAndFavorites, .description, .purchaseAndOffer, .sale, .firstHeader]
 
     private var mainTableView: UITableView?
-    
-    private let descriptionFrameImageView: UIImageView = {
-        let descriptionFrameImageView = UIImageView()
-        descriptionFrameImageView.image = UIImage()
-        
-        return descriptionFrameImageView
-    }()
-    
+
     private var item: Item?
     private var heroId: String?
     
     convenience init(item: Item, heroId: String? = nil) {
         self.init()
-        
         self.item = item
         self.heroId = heroId
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .black
         view.addGestureRecognizer(createSwipeGestureRecognizer(for: .right))
         
-//        addDescriptionFrameImageView()
           addMainTableView()
     }
 
@@ -57,23 +54,20 @@ class ItemViewController: UIViewController {
         
         mainTableView.register(PriceAndImageTableViewCell.self, forCellReuseIdentifier: PriceAndImageTableViewCell.identifier)
         mainTableView.register(OwnersAndFavoritesTableViewCell.self, forCellReuseIdentifier: OwnersAndFavoritesTableViewCell.identifier)
+        mainTableView.register(DescriptionTableViewCell.self, forCellReuseIdentifier: DescriptionTableViewCell.identifier)
+        mainTableView.register(PurchaseAndOfferTableViewCell.self, forCellReuseIdentifier: PurchaseAndOfferTableViewCell.identifier)
+        mainTableView.register(SaleTableViewCell.self, forCellReuseIdentifier: SaleTableViewCell.identifier)
+        mainTableView.register(HeaderTableViewCell.self, forCellReuseIdentifier: HeaderTableViewCell.identifier)
         
-        mainTableView.backgroundColor = .cyan
+        mainTableView.backgroundColor = .black
         mainTableView.separatorColor = .clear
-        
-        view.addSubview(mainTableView)
+        mainTableView.showsHorizontalScrollIndicator = false
+        mainTableView.showsVerticalScrollIndicator = false
         
         mainTableView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.trailing.bottom.equalToSuperview()
         }
-    }
-
-    
-    private func addDescriptionFrameImageView() {
-        view.addSubview(descriptionFrameImageView)
-        
-        descriptionFrameImageView.image = UIImage(named: "")
     }
     
     //MARK: Gesture recognition
@@ -122,6 +116,27 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.configureOwnersAndFavorites(by: item!)
             return cell
+            
+        case .description:
+            let cell = mainTableView?.dequeueReusableCell(withIdentifier: DescriptionTableViewCell.identifier, for: indexPath) as! DescriptionTableViewCell
+            
+            cell.configureDescriptionTableViewCell(by: item!)
+            return cell
+            
+        case .purchaseAndOffer:
+            let cell = mainTableView?.dequeueReusableCell(withIdentifier: PurchaseAndOfferTableViewCell.identifier, for: indexPath) as! PurchaseAndOfferTableViewCell
+
+            return cell
+            
+        case .sale:
+            let cell = mainTableView?.dequeueReusableCell(withIdentifier: SaleTableViewCell.identifier, for: indexPath) as! SaleTableViewCell
+            
+            return cell
+            
+        case .firstHeader:
+            let cell = mainTableView?.dequeueReusableCell(withIdentifier: HeaderTableViewCell.identifier, for: indexPath) as! HeaderTableViewCell
+            
+            return cell
         }
         
     }
@@ -130,12 +145,18 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
         let section = sections[indexPath.section]
         
         switch section  {
-            
         case .priceAndImage:
             return 492
-        
         case .ownersAndFavorites:
-            return 44
+            return 30
+        case .description:
+            return 196
+        case .purchaseAndOffer:
+            return 76
+        case .sale:
+            return 216
+        case .firstHeader:
+            return 32
         }
     }
 }

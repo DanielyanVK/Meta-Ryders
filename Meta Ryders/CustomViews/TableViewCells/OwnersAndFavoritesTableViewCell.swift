@@ -49,7 +49,8 @@ class OwnersAndFavoritesTableViewCell: UITableViewCell {
 
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        backgroundColor = .yellow
+        backgroundColor = .black
+        selectionStyle = .none
         
         addFollowersIconView()
         addFollowersCountLabel()
@@ -97,7 +98,7 @@ class OwnersAndFavoritesTableViewCell: UITableViewCell {
         
         followersIconView.snp.makeConstraints { make in
             make.top.equalTo(2)
-            make.leading.equalTo(44)
+            make.leading.equalTo(32)
         }
     }
 
@@ -123,7 +124,7 @@ class OwnersAndFavoritesTableViewCell: UITableViewCell {
         
         favoritesIconView.snp.makeConstraints { make in
             make.top.equalTo(2)
-            make.left.equalTo(totalItemsCountLabel.snp.right).offset(30)
+            make.left.equalTo(totalItemsCountLabel.snp.right).offset(32)
         }
     }
     
