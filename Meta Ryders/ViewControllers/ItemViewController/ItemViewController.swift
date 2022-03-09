@@ -7,6 +7,7 @@
 
 import UIKit
 import Hero
+import Charts
 
 class ItemViewController: UIViewController {
     
@@ -17,9 +18,22 @@ class ItemViewController: UIViewController {
         case purchaseAndOffer
         case sale
         case firstHeader
-        
+        case timeForChart
+        case chart
     }
-    private let sections: [Sections] = [.priceAndImage, .ownersAndFavorites, .description, .purchaseAndOffer, .sale, .firstHeader]
+    private let sections: [Sections] = [.priceAndImage, .ownersAndFavorites, .description, .purchaseAndOffer, .sale, .firstHeader, .timeForChart, .chart]
+    private let timeForChartDataSource = CategoriesCollectionViewDataSource()
+    private var categories: [Category] = ["Day", "Week", "Month", "Year"].map { Category(name: $0) }
+    private var chartValues: [ChartDataEntry] = [
+        ChartDataEntry(x: 0.0, y: 10.0),
+        ChartDataEntry(x: 1.0, y: 8.0),
+        ChartDataEntry(x: 2.0, y: 5.0),
+        ChartDataEntry(x: 3.0, y: 4.0),
+        ChartDataEntry(x: 4.0, y: 7.0),
+        ChartDataEntry(x: 5.0, y: 9.0),
+        ChartDataEntry(x: 6.0, y: 12.0),
+        ChartDataEntry(x: 7.0, y: 14.0)
+    ]
 
     private var mainTableView: UITableView?
 
@@ -37,6 +51,7 @@ class ItemViewController: UIViewController {
         
         view.backgroundColor = .black
         view.addGestureRecognizer(createSwipeGestureRecognizer(for: .right))
+        timeForChartDataSource.update(with: categories)
         
           addMainTableView()
     }
@@ -58,6 +73,8 @@ class ItemViewController: UIViewController {
         mainTableView.register(PurchaseAndOfferTableViewCell.self, forCellReuseIdentifier: PurchaseAndOfferTableViewCell.identifier)
         mainTableView.register(SaleTableViewCell.self, forCellReuseIdentifier: SaleTableViewCell.identifier)
         mainTableView.register(HeaderTableViewCell.self, forCellReuseIdentifier: HeaderTableViewCell.identifier)
+        mainTableView.register(CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.identifier)
+        mainTableView.register(ChartTableViewCell.self, forCellReuseIdentifier: ChartTableViewCell.identifier)
         
         mainTableView.backgroundColor = .black
         mainTableView.separatorColor = .clear
@@ -137,6 +154,17 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = mainTableView?.dequeueReusableCell(withIdentifier: HeaderTableViewCell.identifier, for: indexPath) as! HeaderTableViewCell
             
             return cell
+            
+        case .timeForChart:
+            let cell = mainTableView?.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
+            cell.configureTableViewCell(with: timeForChartDataSource, layout: timeForChartDataSource.collectionViewLayout)
+            return cell
+            
+        case .chart:
+            let cell = mainTableView?.dequeueReusableCell(withIdentifier: ChartTableViewCell.identifier, for: indexPath) as! ChartTableViewCell
+            cell.updateChart(with: chartValues)
+            
+            return cell
         }
         
     }
@@ -157,6 +185,10 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
             return 216
         case .firstHeader:
             return 32
+        case .timeForChart:
+            return 42
+        case .chart:
+            return 298
         }
     }
 }

@@ -13,11 +13,13 @@ class CollectionTableViewCell: UITableViewCell {
 
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
+        selectionStyle = .none
         setupCollectionView()
         sendSubviewToBack(contentView)
     }
     
     func configureTableViewCell(with dataSource: HorizontalCollectionViewDataSource, layout: UICollectionViewLayout) {
+        collectionView.backgroundColor = .mediumWeightGray
         collectionView.register(dataSource.cellType, forCellWithReuseIdentifier: dataSource.cellType.identifier)
         collectionView.collectionViewLayout = dataSource.collectionViewLayout
         collectionView.delegate = dataSource
@@ -29,7 +31,6 @@ class CollectionTableViewCell: UITableViewCell {
     
     private func setupCollectionView() {
         addSubview(collectionView)
-        collectionView.backgroundColor = .mediumWeightGray
         collectionView.snp.makeConstraints { (make) in
            make.edges.equalToSuperview()
         }

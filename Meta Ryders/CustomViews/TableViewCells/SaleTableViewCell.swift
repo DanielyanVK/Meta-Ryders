@@ -34,6 +34,7 @@ class SaleTableViewCell: UITableViewCell {
         super.didMoveToSuperview()
         sendSubviewToBack(contentView)
         backgroundColor = .black
+        selectionStyle = .none
         
         addSaleFrameImageView()
         addSaleLabel()

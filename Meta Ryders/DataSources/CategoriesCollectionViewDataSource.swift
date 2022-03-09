@@ -8,7 +8,7 @@
 import UIKit
 
 class CategoriesCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
-    
+ 
     var collectionViewLayout: UICollectionViewLayout {
         return setupLayout()
     }
@@ -71,9 +71,8 @@ extension CategoriesCollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
         
         let category = categories[indexPath.item]
-        
+
         cell.configureCategoryCollectionViewCell(by: category, selectedCategory: selectedCategory)
-        
         return cell
     }
 }

@@ -40,6 +40,8 @@
 		E4C10DAB27BCCFB7002387DC /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C10DAA27BCCFB6002387DC /* CategoryCollectionViewCell.swift */; };
 		E4C10DAD27BCD14F002387DC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C10DAC27BCD14F002387DC /* Category.swift */; };
 		E4CB75D627D1E992008294C0 /* Orbitron-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4CB75D527D1E992008294C0 /* Orbitron-Bold.ttf */; };
+		E4D5F34927D88EFB00AEBDD1 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5F34827D88EFB00AEBDD1 /* ChartTableViewCell.swift */; };
+		E4D5F34C27D890F300AEBDD1 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = E4D5F34B27D890F300AEBDD1 /* Charts */; };
 		E4ECCDBA27BE3EDB0050A6CF /* ItemsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ECCDB927BE3EDB0050A6CF /* ItemsCollectionViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +79,7 @@
 		E4C10DAA27BCCFB6002387DC /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		E4C10DAC27BCD14F002387DC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		E4CB75D527D1E992008294C0 /* Orbitron-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron-Bold.ttf"; sourceTree = "<group>"; };
+		E4D5F34827D88EFB00AEBDD1 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
 		E4ECCDB927BE3EDB0050A6CF /* ItemsCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsCollectionViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +89,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CB7826E27C271A000872546 /* Hero in Frameworks */,
+				E4D5F34C27D890F300AEBDD1 /* Charts in Frameworks */,
 				E447CD1327B788200095CB91 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,6 +195,7 @@
 				E4186DDA27D5DF3B004E3FA3 /* PurchaseAndOfferTableViewCell.swift */,
 				E4186DDC27D5F7A9004E3FA3 /* SaleTableViewCell.swift */,
 				E4186DDE27D601DA004E3FA3 /* HeaderTableViewCell.swift */,
+				E4D5F34827D88EFB00AEBDD1 /* ChartTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 			packageProductDependencies = (
 				E447CD1227B788200095CB91 /* SnapKit */,
 				7CB7826D27C271A000872546 /* Hero */,
+				E4D5F34B27D890F300AEBDD1 /* Charts */,
 			);
 			productName = "Meta Ryders";
 			productReference = E447CCF527B786BC0095CB91 /* Meta Ryders.app */;
@@ -320,6 +326,7 @@
 			packageReferences = (
 				E447CD1127B788200095CB91 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				7CB7826C27C271A000872546 /* XCRemoteSwiftPackageReference "Hero" */,
+				E4D5F34A27D890F300AEBDD1 /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = E447CCF627B786BC0095CB91 /* Products */;
 			projectDirPath = "";
@@ -354,6 +361,7 @@
 				E411BB9527D3498200C1BA60 /* ItemViewController.swift in Sources */,
 				E4B1DB0B27C9ED5900BF5ECF /* NewsCollectionViewCell.swift in Sources */,
 				E4B604D827C5068A004CB74B /* TableViewHeader.swift in Sources */,
+				E4D5F34927D88EFB00AEBDD1 /* ChartTableViewCell.swift in Sources */,
 				E411BB9727D34BEE00C1BA60 /* PriceAndImageTableViewCell.swift in Sources */,
 				E447CD1C27B78A2D0095CB91 /* ItemCollectionViewCell.swift in Sources */,
 				E447CCF927B786BC0095CB91 /* AppDelegate.swift in Sources */,
@@ -604,6 +612,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		E4D5F34A27D890F300AEBDD1 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -616,6 +632,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E447CD1127B788200095CB91 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		E4D5F34B27D890F300AEBDD1 /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E4D5F34A27D890F300AEBDD1 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

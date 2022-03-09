@@ -43,5 +43,8 @@ extension UIColor {
     static var heavyWeightGray: UIColor {
         return UIColor(rgb: 0x828281)
     }
+    static var graphLineColor: UIColor {
+        return UIColor(rgb: 0x8287fe)
+    }
 }
 
