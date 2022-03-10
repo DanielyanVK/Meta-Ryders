@@ -11,7 +11,7 @@ import SnapKit
 class ItemCollectionViewCell: UICollectionViewCell {
         
     //MARK: Initializing cell's elements
-    private let backgroundImageView: UIImageView = {
+    let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage()
         return imageView
@@ -47,7 +47,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        addRotationParallaxEffect(amount: 25)
+        
         layer.cornerRadius = 14
         backgroundColor = .white
         clipsToBounds = true

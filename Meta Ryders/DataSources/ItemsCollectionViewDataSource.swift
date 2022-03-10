@@ -49,7 +49,7 @@ extension ItemsCollectionViewDataSource: UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.identifier, for: indexPath) as! ItemCollectionViewCell
-        
+        cell.backgroundImageView.addRotationParallaxEffect(amount: CGFloat(40 * (1 + indexPath.item / 10)))
         let item = items[indexPath.item]
         cell.configureHorizontalCollectionViewCell(by: item, imageViewHeroId: item.imageName)
         return cell

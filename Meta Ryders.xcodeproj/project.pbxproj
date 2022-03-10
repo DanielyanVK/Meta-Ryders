@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C00166F27DA4DD80020F8FC /* Hero in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 7CB7826D27C271A000872546 /* Hero */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		7CB7826E27C271A000872546 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 7CB7826D27C271A000872546 /* Hero */; };
 		7CB7827127C2724300872546 /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7827027C2724300872546 /* Closures.swift */; };
 		E411BB9527D3498200C1BA60 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7826827C2711400872546 /* ItemViewController.swift */; };
@@ -47,6 +48,20 @@
 		E4E2366427DA4906001FAED1 /* Parallax.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E2366327DA4906001FAED1 /* Parallax.swift */; };
 		E4ECCDBA27BE3EDB0050A6CF /* ItemsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ECCDB927BE3EDB0050A6CF /* ItemsCollectionViewDataSource.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7C00167027DA4DD80020F8FC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7C00166F27DA4DD80020F8FC /* Hero in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7CB7826827C2711400872546 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
@@ -293,6 +308,7 @@
 				E447CCF127B786BC0095CB91 /* Sources */,
 				E447CCF227B786BC0095CB91 /* Frameworks */,
 				E447CCF327B786BC0095CB91 /* Resources */,
+				7C00167027DA4DD80020F8FC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -537,7 +553,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2D43MDQ38V;
+				DEVELOPMENT_TEAM = F4DVA2UNP8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Meta Ryders/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -564,7 +580,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2D43MDQ38V;
+				DEVELOPMENT_TEAM = F4DVA2UNP8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Meta Ryders/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
