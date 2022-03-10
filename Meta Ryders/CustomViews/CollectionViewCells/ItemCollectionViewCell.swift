@@ -46,6 +46,8 @@ class ItemCollectionViewCell: UICollectionViewCell {
     }()
     
     override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        addRotationParallaxEffect(amount: 25)
         layer.cornerRadius = 14
         backgroundColor = .white
         clipsToBounds = true

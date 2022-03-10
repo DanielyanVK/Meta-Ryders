@@ -44,6 +44,7 @@
 		E4CB75D627D1E992008294C0 /* Orbitron-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4CB75D527D1E992008294C0 /* Orbitron-Bold.ttf */; };
 		E4D5F34927D88EFB00AEBDD1 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5F34827D88EFB00AEBDD1 /* ChartTableViewCell.swift */; };
 		E4D5F34C27D890F300AEBDD1 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = E4D5F34B27D890F300AEBDD1 /* Charts */; };
+		E4E2366427DA4906001FAED1 /* Parallax.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E2366327DA4906001FAED1 /* Parallax.swift */; };
 		E4ECCDBA27BE3EDB0050A6CF /* ItemsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ECCDB927BE3EDB0050A6CF /* ItemsCollectionViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		E4C10DAC27BCD14F002387DC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		E4CB75D527D1E992008294C0 /* Orbitron-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron-Bold.ttf"; sourceTree = "<group>"; };
 		E4D5F34827D88EFB00AEBDD1 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
+		E4E2366327DA4906001FAED1 /* Parallax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parallax.swift; sourceTree = "<group>"; };
 		E4ECCDB927BE3EDB0050A6CF /* ItemsCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsCollectionViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,6 +150,7 @@
 				E4CB75D427D1E96A008294C0 /* Fonts */,
 				E447CD0327B786BD0095CB91 /* LaunchScreen.storyboard */,
 				E447CD0627B786BD0095CB91 /* Info.plist */,
+				E4E2366327DA4906001FAED1 /* Parallax.swift */,
 			);
 			path = "Meta Ryders";
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				7CB7827127C2724300872546 /* Closures.swift in Sources */,
 				E4B0F08F27BCFC3F00965A17 /* HorizontalCollectionViewDataSource.swift in Sources */,
 				E447CD2427B7A7A60095CB91 /* UIFont+Default+Rounded.swift in Sources */,
+				E4E2366427DA4906001FAED1 /* Parallax.swift in Sources */,
 				E4B5189F27D5D41600577909 /* DescriptionTableViewCell.swift in Sources */,
 				E4C10DAB27BCCFB7002387DC /* CategoryCollectionViewCell.swift in Sources */,
 				E4186DDF27D601DA004E3FA3 /* HeaderTableViewCell.swift in Sources */,
