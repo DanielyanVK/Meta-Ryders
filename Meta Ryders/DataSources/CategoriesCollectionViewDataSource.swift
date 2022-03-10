@@ -8,7 +8,13 @@
 import UIKit
 
 class CategoriesCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
- 
+    
+    var displayMode: DisplayMode?
+    convenience init(displayMode: DisplayMode) {
+        self.init()
+        self.displayMode = displayMode
+    }
+    
     var collectionViewLayout: UICollectionViewLayout {
         return setupLayout()
     }
@@ -72,7 +78,7 @@ extension CategoriesCollectionViewDataSource {
         
         let category = categories[indexPath.item]
 
-        cell.configureCategoryCollectionViewCell(by: category, selectedCategory: selectedCategory)
+        cell.configure(by: category, selectedCategory: selectedCategory, displayMode: displayMode!)
         return cell
     }
 }

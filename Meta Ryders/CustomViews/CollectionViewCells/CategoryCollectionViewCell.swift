@@ -17,7 +17,6 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         
-        backgroundColor = .white
         clipsToBounds = true
          
         addNameLabel()
@@ -30,12 +29,18 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     }
     
     //MARK: Cell configuration
-    public func configureCategoryCollectionViewCell(by category: Category, selectedCategory: Category?) {
-        nameLabel.text = category.name
-        
+    public func configure(by category: Category, selectedCategory: Category?, displayMode: DisplayMode) {
         let isSelected = selectedCategory == category
-        backgroundColor = isSelected ? UIColor.highlithenedColor : UIColor.white
-        nameLabel.textColor = isSelected ? UIColor.highlightenedTextColor : UIColor.lightweightGray
+        
+        switch displayMode {
+        case .light:
+            backgroundColor = isSelected ? UIColor.highlithenedColor : UIColor.white
+            nameLabel.textColor = isSelected ? UIColor.highlightenedTextColor : UIColor.lightweightGray
+        case .dark:
+            backgroundColor = isSelected ? UIColor.darkBlue : UIColor.fillGray
+            nameLabel.textColor = isSelected ? UIColor.white : UIColor.lightweightGray
+        }
+        nameLabel.text = category.name
     }
     
     private func addNameLabel() {
@@ -52,4 +57,9 @@ class CategoryCollectionViewCell: UICollectionViewCell {
             make.bottom.equalTo(-12)
         }
     }
+}
+
+enum DisplayMode {
+    case light
+    case dark
 }

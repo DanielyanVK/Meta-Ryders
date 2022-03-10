@@ -24,7 +24,7 @@ class ItemViewController: UIViewController {
         case similarItemsCollection
     }
     private let sections: [Sections] = [.priceAndImage, .ownersAndFavorites, .description, .purchaseAndOffer, .sale, .firstHeader, .timeForChart, .chart, .secondHeader, .similarItemsCollection]
-    private let timeForChartDataSource = CategoriesCollectionViewDataSource()
+    private let timeForChartDataSource = CategoriesCollectionViewDataSource(displayMode: .dark)
     private let compactCollectionDataSource = CompactItemCollectionViewDataSource()
     private var categories: [Category] = ["Day", "Week", "Month", "Year"].map { Category(name: $0) }
     private var chartValues: [ChartDataEntry] = [

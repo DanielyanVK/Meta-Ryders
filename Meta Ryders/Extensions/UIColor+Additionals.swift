@@ -48,6 +48,11 @@ extension UIColor {
     static var graphLineColor: UIColor {
         return UIColor(rgb: 0x8287fe)
     }
-    
+    static var darkBlue: UIColor {
+        return UIColor(rgb: 0x5353a2)
+    }
+    static var fillGray: UIColor {
+        return UIColor(rgb: 0x2b2b2b)
+    }
 }
 

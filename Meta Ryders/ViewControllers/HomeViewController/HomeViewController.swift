@@ -25,8 +25,8 @@ class HomeViewController: UIViewController {
     let news1 = News(title: "Coinbase is Partnering with MasterCard to Allow Card Pay...", imageName: "news1", article: "test", timePosted: "1 hour ago", sourceName: "bloomberg.com")
     let news2 = News(title: "Cardano (ADA) Sureges 31% After New Metaverse Launch", imageName: "news2", article: "test", timePosted: "20 min ago", sourceName: "newyorktimes.com")
     let news3 = News(title: "Apple is Prepared to Dominate the Metaverse in 2024", imageName: "news3", article: "test", timePosted: "35 min ago", sourceName: "dailybugle.com")
-    
-    private let categoryCollectionViewDataSource = CategoriesCollectionViewDataSource()
+
+    private let categoryCollectionViewDataSource = CategoriesCollectionViewDataSource(displayMode: .light)
     private let itemsCollectionViewDataSource = ItemsCollectionViewDataSource()
     private let notFallableCollectionViewDataSource = NotFallableCollectionViewDataSource()
     private let newsCollectionViewDataSource = NewsCollectionViewDataSource()
