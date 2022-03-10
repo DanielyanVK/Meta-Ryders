@@ -9,11 +9,9 @@ import UIKit
 import SnapKit
 
 class CompactItemCollectionViewCell: UICollectionViewCell {
-    
     private let itemImageView: UIImageView = {
         let itemImageView = UIImageView()
         itemImageView.image = UIImage()
-        
         return itemImageView
     }()
     
@@ -34,6 +32,7 @@ class CompactItemCollectionViewCell: UICollectionViewCell {
         itemImageView.layer.cornerRadius = 16
         itemImageView.layer.borderColor =  borderColor.cgColor
         itemImageView.layer.borderWidth = 2
+        
         itemImageView.snp.makeConstraints { make in
             make.top.equalTo(6)
             make.bottom.equalTo(-6)

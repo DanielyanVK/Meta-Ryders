@@ -8,13 +8,11 @@
 import UIKit
 
 class TabBarView: UIView {
-    
     private let homeButton = UIButton(frame: .zero)
     private let graphsButton = UIButton(frame: .zero)
     private let cameraButton = UIButton(frame: .zero)
     private let settingsButton = UIButton(frame: .zero)
     private let itemListButton = UIButton(frame: .zero)
-    
     private let frameImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage()
@@ -23,7 +21,7 @@ class TabBarView: UIView {
   
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        
+    
         backgroundColor = .tabBarColor
         setupTabBar()
         addFrameImageView()
@@ -35,7 +33,6 @@ class TabBarView: UIView {
     }
     
     private func setupTabBar() {
-        
         layer.cornerRadius = 26
         
         snp.makeConstraints { make in
@@ -48,7 +45,6 @@ class TabBarView: UIView {
     
     private func addFrameImageView() {
         addSubview(frameImageView)
-        
         frameImageView.image = UIImage(named: "cameraButtonFrame")
         frameImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -58,7 +54,6 @@ class TabBarView: UIView {
 
     private func addHomeButton() {
         addSubview(homeButton)
-
         homeButton.setImage(UIImage(named: "homeButton")?.tint(with: .heavyWeightGray), for: .normal)
         homeButton.addTarget(self, action: #selector(homeButtonTapped), for: .touchUpInside)
         
@@ -70,7 +65,6 @@ class TabBarView: UIView {
     
     private func addGraphsButton() {
         addSubview(graphsButton)
-        
         graphsButton.setImage(UIImage(named: "graphsButton"), for: .normal)
         graphsButton.addTarget(self, action: #selector(graphsButtonTapped), for: .touchUpInside)
         
@@ -82,7 +76,6 @@ class TabBarView: UIView {
     
     private func addCameraButton() {
         addSubview(cameraButton)
-        
         cameraButton.setImage(UIImage(named: "noFrameCamera"), for: .normal)
         cameraButton.addTarget(self, action: #selector(cameraButtonTapped), for: .touchUpInside)
         
@@ -94,7 +87,6 @@ class TabBarView: UIView {
     
     private func addSettingsButton() {
         addSubview(settingsButton)
-        
         settingsButton.setImage(UIImage(named: "settingsButton"), for: .normal)
         settingsButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
         
@@ -106,7 +98,6 @@ class TabBarView: UIView {
     
     private func addItemListButton() {
         addSubview(itemListButton)
-        
         itemListButton.setImage(UIImage(named: "itemListButton"), for: .normal)
         itemListButton.addTarget(self, action: #selector(itemListButtonTapped), for: .touchUpInside)
         
@@ -135,7 +126,6 @@ class TabBarView: UIView {
     @objc private func itemListButtonTapped() {
         print("Item List Button - Tapped")
     }
-    
 }
 
 extension UIImage {
@@ -143,7 +133,6 @@ extension UIImage {
         var image = withRenderingMode(.alwaysTemplate)
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         color.set()
-
         image.draw(in: CGRect(origin: .zero, size: size))
         image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()

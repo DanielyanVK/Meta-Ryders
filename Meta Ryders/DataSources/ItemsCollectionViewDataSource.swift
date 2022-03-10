@@ -8,21 +8,16 @@
 import UIKit
 
 class ItemsCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
-    
     var itemSelected: ItemClosure<Item>?
-    
     var cellType: UICollectionViewCell.Type {
         return ItemCollectionViewCell.self
     }
-    
     var collectionViewLayout: UICollectionViewLayout {
         return setupLayout()
     }
-    
     var items: [Item] = []
     
     internal func setupLayout() -> UICollectionViewLayout {
-        // section -> groups -> items -> size
         let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(260),
                                               heightDimension: .estimated(390))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -35,7 +30,6 @@ class ItemsCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSourc
         section.interGroupSpacing = spacing
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: spacing, bottom: 0, trailing: spacing)
         section.orthogonalScrollingBehavior = .continuous
-        
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
@@ -58,7 +52,6 @@ extension ItemsCollectionViewDataSource: UICollectionViewDelegate, UICollectionV
         
         let item = items[indexPath.item]
         cell.configureHorizontalCollectionViewCell(by: item, imageViewHeroId: item.imageName)
-        
         return cell
     }
 }

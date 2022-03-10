@@ -14,13 +14,10 @@ class ChartTableViewCell: UITableViewCell {
         let lineChartView = LineChartView()
         return lineChartView
     }()
-    
     private let activeOffersLabel: UILabel = {
         let activeOffersLabel = UILabel()
-        
         return activeOffersLabel
     }()
-    
     private var chartValues: [ChartDataEntry] = []
     private var xAxisValues: [String] = ["9:00", "12:00", "13:00", "15:00", "18:00", "20:00", "22:00"]
     private let browseListingsButton = UIButton(frame: .zero)
@@ -30,7 +27,6 @@ class ChartTableViewCell: UITableViewCell {
         sendSubviewToBack(contentView)
         selectionStyle = .none
         backgroundColor = .black
-
         addLineChartView()
         addBrowseListingsButton()
         addActiveOffersLabel()
@@ -41,7 +37,6 @@ class ChartTableViewCell: UITableViewCell {
         let valuesSet = LineChartDataSet(entries: chartValues)
         let lineChartData = LineChartData(dataSet: valuesSet)
         lineChartView.data = lineChartData
-        
         valuesSet.drawCirclesEnabled = false
         valuesSet.mode = .cubicBezier
         valuesSet.setColor(.graphLineColor)
@@ -52,10 +47,8 @@ class ChartTableViewCell: UITableViewCell {
     
     private func addLineChartView() {
         addSubview(lineChartView)
-        
         lineChartView.rightAxis.enabled = false
         lineChartView.leftAxis.enabled = false
-        
         lineChartView.xAxis.drawGridLinesEnabled = false
         lineChartView.xAxis.labelFont = .standart(ofSize: 12, weight: .regular)
         lineChartView.xAxis.labelTextColor = .lightGray
@@ -73,7 +66,6 @@ class ChartTableViewCell: UITableViewCell {
     
     private func addBrowseListingsButton() {
         addSubview(browseListingsButton)
-
         browseListingsButton.setImage(UIImage(named: "browseListingsButton"), for: .normal)
         browseListingsButton.addTarget(self, action: #selector(browseListingsButtonTapped), for: .touchUpInside)
         browseListingsButton.snp.makeConstraints { make in
@@ -87,7 +79,6 @@ class ChartTableViewCell: UITableViewCell {
     
     private func addActiveOffersLabel() {
         addSubview(activeOffersLabel)
-        
         activeOffersLabel.font = .standart(ofSize: 10, weight: .regular)
         activeOffersLabel.textColor = .lightGray
         activeOffersLabel.text = "45 active offers"

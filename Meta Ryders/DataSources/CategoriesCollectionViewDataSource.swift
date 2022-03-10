@@ -9,33 +9,28 @@ import UIKit
 
 class CategoriesCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
     
-    var displayMode: DisplayMode?
-    convenience init(displayMode: DisplayMode) {
+    var displayMode: CategoryCollectionViewCell.DisplayMode?
+    
+    convenience init(displayMode: CategoryCollectionViewCell.DisplayMode) {
         self.init()
         self.displayMode = displayMode
     }
-    
     var collectionViewLayout: UICollectionViewLayout {
         return setupLayout()
     }
-    
     var cellType: UICollectionViewCell.Type {
         return CategoryCollectionViewCell.self
     }
-    
     private var categories: [Category] = []
     
     func update(with categories:  [Category]) {
         self.categories = categories
     }
-    
     private var selectedCategory: Category?
     
     internal func setupLayout() -> UICollectionViewLayout {
-        
         let estimatedHeight: CGFloat = 42
         let estimatedWidth: CGFloat = 100
-        
         let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(estimatedWidth),
                                               heightDimension: .absolute(estimatedHeight))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -53,18 +48,15 @@ class CategoriesCollectionViewDataSource: NSObject, HorizontalCollectionViewData
         return layout
     }
 }
-
 extension CategoriesCollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let category = categories[indexPath.item]
-        
         if category == selectedCategory {
             self.selectedCategory = nil
         } else {
             self.selectedCategory = category
         }
-        
         collectionView.reloadData()
     }
     
@@ -75,9 +67,7 @@ extension CategoriesCollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
-        
         let category = categories[indexPath.item]
-
         cell.configure(by: category, selectedCategory: selectedCategory, displayMode: displayMode!)
         return cell
     }

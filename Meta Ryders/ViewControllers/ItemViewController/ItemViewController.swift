@@ -101,8 +101,8 @@ class ItemViewController: UIViewController {
         // Configure Swipe Gesture Recognizer
         swipeGestureRecognizer.direction = direction
         return swipeGestureRecognizer
-        
     }
+    
     @objc private func didSwipe(_ sender: UISwipeGestureRecognizer) {
         switch sender.direction {
         case .right:
@@ -123,74 +123,61 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let section = sections[indexPath.section]
         
         switch section {
-            
         case .priceAndImage:
             let cell = mainTableView?.dequeueReusableCell(withIdentifier: PriceAndImageTableViewCell.identifier, for: indexPath) as! PriceAndImageTableViewCell
-            
             cell.configurePriceAndImageCell(by: item!, hero: heroId ?? "")
             return cell
             
         case .ownersAndFavorites:
             let cell = mainTableView?.dequeueReusableCell(withIdentifier: OwnersAndFavoritesTableViewCell.identifier, for: indexPath) as! OwnersAndFavoritesTableViewCell
-            
             cell.configureOwnersAndFavorites(by: item!)
             return cell
             
         case .description:
             let cell = mainTableView?.dequeueReusableCell(withIdentifier: DescriptionTableViewCell.identifier, for: indexPath) as! DescriptionTableViewCell
-            
             cell.configureDescriptionTableViewCell(by: item!)
             return cell
             
         case .purchaseAndOffer:
             let cell = mainTableView?.dequeueReusableCell(withIdentifier: PurchaseAndOfferTableViewCell.identifier, for: indexPath) as! PurchaseAndOfferTableViewCell
-            
             return cell
             
         case .sale:
             let cell = mainTableView?.dequeueReusableCell(withIdentifier: SaleTableViewCell.identifier, for: indexPath) as! SaleTableViewCell
-            
             return cell
             
         case .firstHeader:
             let cell = mainTableView?.dequeueReusableCell(withIdentifier: HeaderTableViewCell.identifier, for: indexPath) as! HeaderTableViewCell
-            
             cell.configureHeaderTableViewCell(with: .priceHistory)
-            
             return cell
             
         case .timeForChart:
             let cell = mainTableView?.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
-            cell.configureTableViewCell(with: timeForChartDataSource, layout: timeForChartDataSource.collectionViewLayout, for: .itemVC)
+            cell.configureTableViewCell(with: timeForChartDataSource, layout: timeForChartDataSource.collectionViewLayout, for: .darkBackground)
             return cell
             
         case .chart:
             let cell = mainTableView?.dequeueReusableCell(withIdentifier: ChartTableViewCell.identifier, for: indexPath) as! ChartTableViewCell
             cell.updateChart(with: chartValues)
-            
             return cell
             
         case .secondHeader:
             let cell = mainTableView?.dequeueReusableCell(withIdentifier: HeaderTableViewCell.identifier, for: indexPath) as! HeaderTableViewCell
-            
             cell.configureHeaderTableViewCell(with: .similarItems)
-            
             return cell
+            
         case .similarItemsCollection:
             let cell = mainTableView?.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
-            
-            cell.configureTableViewCell(with: compactCollectionDataSource, layout: compactCollectionDataSource.collectionViewLayout, for: .itemVC)
+            cell.configureTableViewCell(with: compactCollectionDataSource, layout: compactCollectionDataSource.collectionViewLayout, for: .darkBackground)
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let section = sections[indexPath.section]
-        
         switch section  {
         case .priceAndImage:
             return 492

@@ -16,14 +16,12 @@ class PurchaseAndOfferTableViewCell: UITableViewCell {
         backgroundColor = .black
         selectionStyle = .none
         sendSubviewToBack(contentView)
-        
         addPurchaseButton()
         addMakeOfferButton()
     }
 
     private func addMakeOfferButton() {
         addSubview(makeOfferButton)
-
         makeOfferButton.setImage(UIImage(named: "makeOfferButton-cropped"), for: .normal)
         makeOfferButton.addTarget(self, action: #selector(makeOfferButtonTapped), for: .touchUpInside)
         makeOfferButton.snp.makeConstraints { make in
@@ -36,7 +34,6 @@ class PurchaseAndOfferTableViewCell: UITableViewCell {
     
     private func addPurchaseButton() {
         addSubview(purchaseButton)
-
         purchaseButton.setImage(UIImage(named: "purchaseButton-cropped"), for: .normal)
         purchaseButton.addTarget(self, action: #selector(purchaseButtonTapped), for: .touchUpInside)
         purchaseButton.snp.makeConstraints { make in
@@ -47,7 +44,6 @@ class PurchaseAndOfferTableViewCell: UITableViewCell {
             make.bottom.equalTo(-20)
         }
     }
-    
     
     @objc private func makeOfferButtonTapped() {
         print("Make Offer Button - Tapped")

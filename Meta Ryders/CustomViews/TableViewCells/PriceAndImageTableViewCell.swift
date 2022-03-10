@@ -8,24 +8,19 @@
 import UIKit
 
 class PriceAndImageTableViewCell: UITableViewCell {
-        
         let heroImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage()
-        
         return imageView
     }()
     
     private let currencyIconView: UIImageView = {
         let currencyIconView = UIImageView()
         currencyIconView.image = UIImage()
-        
         return currencyIconView
     }()
-    
     private let priceLabel: UILabel = {
         let priceLabel = UILabel()
-        
         return priceLabel
     }()
 
@@ -33,7 +28,6 @@ class PriceAndImageTableViewCell: UITableViewCell {
         super.didMoveToSuperview()
         backgroundColor = .black
         selectionStyle = .none
-        
         addHeroImageView()
         addPriceLabel()
         addCurrencyIconView()
@@ -60,7 +54,6 @@ class PriceAndImageTableViewCell: UITableViewCell {
     
     private func addCurrencyIconView() {
         addSubview(currencyIconView)
-        
         currencyIconView.image = UIImage(named: "ethBigIcon")
         currencyIconView.clipsToBounds = true
         currencyIconView.snp.makeConstraints { make in
@@ -71,7 +64,6 @@ class PriceAndImageTableViewCell: UITableViewCell {
 
     private func addPriceLabel() {
         addSubview(priceLabel)
-        
         priceLabel.textColor = .white
         priceLabel.numberOfLines = 2
         priceLabel.textAlignment = .left

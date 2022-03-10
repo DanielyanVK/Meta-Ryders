@@ -8,35 +8,29 @@
 import UIKit
 
 class DescriptionTableViewCell: UITableViewCell {
-
     private let descriptionFrameImageView: UIImageView = {
         let descriptionFrameImageView = UIImageView()
         descriptionFrameImageView.image = UIImage()
-        
         return descriptionFrameImageView
     }()
-    
     private let nameLabel: UILabel = {
         let label = UILabel()
-        
         return label
     }()
-    
     private let descriptionLabel: UILabel = {
         let descriptionLabel = UILabel()
-        
         return descriptionLabel
     }()
-    
+
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         backgroundColor = .black
         selectionStyle = .none
-        
         addDescriptionFrameImageView()
         addNameLabel()
         addDescriptionLabel()
     }
+    
     public func configureDescriptionTableViewCell(by item: Item) {
         nameLabel.text = item.name
         descriptionLabel.text = item.description
@@ -44,7 +38,6 @@ class DescriptionTableViewCell: UITableViewCell {
     
     private func addDescriptionFrameImageView() {
         addSubview(descriptionFrameImageView)
-        
         descriptionFrameImageView.image = UIImage(named: "descriptionFrame1")
         descriptionFrameImageView.clipsToBounds = true
         
@@ -58,7 +51,6 @@ class DescriptionTableViewCell: UITableViewCell {
     
     private func addNameLabel() {
         addSubview(nameLabel)
-
         nameLabel.numberOfLines = 1
         nameLabel.textAlignment = .left
         nameLabel.textColor = .white
@@ -73,7 +65,6 @@ class DescriptionTableViewCell: UITableViewCell {
     
     private func addDescriptionLabel() {
         addSubview(descriptionLabel)
-
         descriptionLabel.numberOfLines = 5
         descriptionLabel.textAlignment = .left
         descriptionLabel.textColor = .white

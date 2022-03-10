@@ -8,36 +8,27 @@
 import UIKit
 
 class NewsCollectionViewCell: UICollectionViewCell {
-    
     private let articleImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage()
-        
         return imageView
     }()
-    
     private let titleLabel: UILabel = {
         let label = UILabel()
-        
         return label
     }()
-    
     private let sourceLabel: UILabel = {
         let sourceLabel = UILabel()
-        
         return sourceLabel
     }()
-    
     private let timePostedLabel: UILabel = {
         let timePostedLabel = UILabel()
-        
         return timePostedLabel
     }()
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         clipsToBounds = true
-                
         addArticleImageView()
         addTitleLabel()
         addSourceLabel()
@@ -63,7 +54,6 @@ class NewsCollectionViewCell: UICollectionViewCell {
             make.left.equalTo(articleImageView.snp.right).offset(16)
             make.top.equalTo(articleImageView.snp.top)
             make.trailing.equalToSuperview()
-            
         }
     }
     

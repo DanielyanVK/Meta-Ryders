@@ -8,22 +8,14 @@
 import UIKit
 
 class HeaderTableViewCell: UITableViewCell {
-    
-    enum HeaderVariations {
-        case priceHistory
-        case similarItems
-    }
-    
     private let iconView: UIImageView = {
         let iconView = UIImageView()
         iconView.image = UIImage()
-        
         return iconView
     }()
     
     private let headerLabel: UILabel = {
         let headerLabel = UILabel()
-        
         return headerLabel
     }()
     
@@ -31,12 +23,10 @@ class HeaderTableViewCell: UITableViewCell {
         super.didMoveToSuperview()
         backgroundColor = .black
         selectionStyle = .none
-        
         addIconView()
         addHeaderLabel()
     }
     
-    // Later will create enum to assign label text and image in each case for reusability
     public func configureHeaderTableViewCell(with variation: HeaderVariations) {
         switch variation {
         case .priceHistory:
@@ -60,7 +50,6 @@ class HeaderTableViewCell: UITableViewCell {
     
     private func addHeaderLabel() {
         addSubview(headerLabel)
-        
         headerLabel.numberOfLines = 1
         headerLabel.textAlignment = .left
         headerLabel.textColor = .white
@@ -69,7 +58,11 @@ class HeaderTableViewCell: UITableViewCell {
         headerLabel.snp.makeConstraints { make in
             make.left.equalTo(iconView.snp.right).offset(10)
             make.top.equalTo(iconView.snp.top).offset(-4)
-            
         }
+    }
+    
+    enum HeaderVariations {
+        case priceHistory
+        case similarItems
     }
 }

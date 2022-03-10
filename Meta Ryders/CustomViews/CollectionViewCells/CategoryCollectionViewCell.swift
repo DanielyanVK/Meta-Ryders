@@ -8,30 +8,27 @@
 import UIKit
 
 class CategoryCollectionViewCell: UICollectionViewCell {
-    
+    enum DisplayMode {
+        case light
+        case dark
+    }
     private let nameLabel: UILabel = {
         let label = UILabel()
         return label
     }()
-    
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        
         clipsToBounds = true
-         
         addNameLabel()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         layer.cornerRadius = bounds.height / 2
     }
-    
     //MARK: Cell configuration
     public func configure(by category: Category, selectedCategory: Category?, displayMode: DisplayMode) {
         let isSelected = selectedCategory == category
-        
         switch displayMode {
         case .light:
             backgroundColor = isSelected ? UIColor.highlithenedColor : UIColor.white
@@ -59,7 +56,3 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     }
 }
 
-enum DisplayMode {
-    case light
-    case dark
-}

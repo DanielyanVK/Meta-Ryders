@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 class HomeViewController: UIViewController {
-    
     private var mainTableView: UITableView?
     private var dataSources: [HorizontalCollectionViewDataSource] = []
     private var tabBarView: UIView {
@@ -59,7 +58,6 @@ class HomeViewController: UIViewController {
         }
         // I think that this could be implemented in a more apppealing way
         notFallableCollectionViewDataSource.itemSelected = itemsCollectionViewDataSource.itemSelected
-        
         // MARK: Datasources
         dataSources.append(categoryCollectionViewDataSource)
         dataSources.append(itemsCollectionViewDataSource)
@@ -69,29 +67,23 @@ class HomeViewController: UIViewController {
         addMainTableView()
         configureNavBar()
         view.addSubview(tabBarView)
-        
         view.backgroundColor = .mediumWeightGray
     }
     
     // MARK: Main Table View Setup
     private func addMainTableView() {
         mainTableView = UITableView(frame: view.bounds, style: .plain)
-        
         guard let mainTableView = mainTableView else {
             return
         }
-        
+        view.addSubview(mainTableView)
         mainTableView.delegate = self
         mainTableView.dataSource = self
-        
         mainTableView.register(CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.identifier)
-        
         mainTableView.backgroundColor = .mediumWeightGray
         mainTableView.separatorColor = .clear
         mainTableView.showsHorizontalScrollIndicator = false
         mainTableView.showsVerticalScrollIndicator = false
-        
-        view.addSubview(mainTableView)
         
         mainTableView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(100)
@@ -136,8 +128,6 @@ class HomeViewController: UIViewController {
 
 // MARK: TableView Extensions
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return dataSources.count
     }
@@ -149,7 +139,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = mainTableView?.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
-        cell.configureTableViewCell(with: dataSources[indexPath.section], layout: dataSources[indexPath.section].collectionViewLayout, for: .homeVC)
+        cell.configureTableViewCell(with: dataSources[indexPath.section], layout: dataSources[indexPath.section].collectionViewLayout, for: .lightBackground)
         
         return cell
     }
@@ -178,7 +168,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-           
         let dataSource = dataSources[section]
         let headerView = TableViewHeader()
         

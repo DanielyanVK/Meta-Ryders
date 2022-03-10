@@ -130,7 +130,6 @@ class OwnersAndFavoritesTableViewCell: UITableViewCell {
     
     private func addFavoritesCountLabel() {
         addSubview(favoritesCountLabel)
-        
         favoritesCountLabel.textColor = .white
         favoritesCountLabel.textAlignment = .left
         favoritesCountLabel.font = .standart(ofSize: 12, weight: .regular)

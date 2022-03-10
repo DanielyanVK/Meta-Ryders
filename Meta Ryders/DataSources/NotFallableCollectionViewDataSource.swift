@@ -8,19 +8,14 @@
 import UIKit
 
 class NotFallableCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
-    
     var itemSelected: ItemClosure<Item>?
-    
     var cellType: UICollectionViewCell.Type {
         return ItemCollectionViewCell.self
     }
-    
     var collectionViewLayout: UICollectionViewLayout {
         return setupLayout()
     }
-    
     var fallableItems: [Item] = []
-    
     internal func setupLayout() -> UICollectionViewLayout {
         // section -> groups -> items -> size
         let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(260),
@@ -35,7 +30,6 @@ class NotFallableCollectionViewDataSource: NSObject, HorizontalCollectionViewDat
         section.interGroupSpacing = spacing
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: spacing, bottom: 0, trailing: spacing)
         section.orthogonalScrollingBehavior = .continuous
-        
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
@@ -52,9 +46,7 @@ extension NotFallableCollectionViewDataSource: UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.identifier, for: indexPath) as! ItemCollectionViewCell
-        
         let item = fallableItems[indexPath.item]
         cell.configureHorizontalCollectionViewCell(by: item, imageViewHeroId: item.imageName)
         return cell

@@ -8,26 +8,19 @@
 import UIKit
 
 class SaleTableViewCell: UITableViewCell {
-    
     private let saleFrameImageView: UIImageView = {
         let saleFrameImageView = UIImageView()
         saleFrameImageView.image = UIImage()
-        
         return saleFrameImageView
     }()
-    
     private let saleLabel: UILabel = {
         let saleLabel = UILabel()
-        
         return saleLabel
     }()
-    
     private let timerLabel: UILabel = {
         let timerLabel = UILabel()
-        
         return timerLabel
     }()
-    
     private let reminderButton = UIButton(frame: .zero)
     
     override func didMoveToSuperview() {
@@ -35,7 +28,6 @@ class SaleTableViewCell: UITableViewCell {
         sendSubviewToBack(contentView)
         backgroundColor = .black
         selectionStyle = .none
-        
         addSaleFrameImageView()
         addSaleLabel()
         addTimerLabel()
@@ -57,7 +49,6 @@ class SaleTableViewCell: UITableViewCell {
     
     private func addSaleLabel() {
         addSubview(saleLabel)
-        
         saleLabel.numberOfLines = 1
         saleLabel.textAlignment = .left
         saleLabel.textColor = .white
@@ -73,11 +64,9 @@ class SaleTableViewCell: UITableViewCell {
     
     private func addTimerLabel() {
         addSubview(timerLabel)
-        
         timerLabel.textAlignment = .left
         timerLabel.textColor = .white
         timerLabel.font = .rounded(ofSize: 14, weight: .regular)
-        
         timerLabel.text = "We will implement countdown here"
         
         timerLabel.snp.makeConstraints { make in
@@ -89,7 +78,6 @@ class SaleTableViewCell: UITableViewCell {
     
     private func addReminderButton() {
         addSubview(reminderButton)
-
         reminderButton.setImage(UIImage(named: "reminderButton"), for: .normal)
         reminderButton.addTarget(self, action: #selector(reminderButtonTapped), for: .touchUpInside)
         reminderButton.snp.makeConstraints { make in

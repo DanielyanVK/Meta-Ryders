@@ -8,11 +8,6 @@
 import UIKit
 
 class CollectionTableViewCell: UITableViewCell {
-    enum ViewControllers {
-        case homeVC
-        case itemVC
-    }
-    
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
     override func didMoveToSuperview() {
@@ -22,12 +17,12 @@ class CollectionTableViewCell: UITableViewCell {
         sendSubviewToBack(contentView)
     }
     
-    func configureTableViewCell(with dataSource: HorizontalCollectionViewDataSource, layout: UICollectionViewLayout, for viewController: ViewControllers) {
+    func configureTableViewCell(with dataSource: HorizontalCollectionViewDataSource, layout: UICollectionViewLayout, for viewController: BackgroundMode) {
         
         switch viewController {
-        case .homeVC:
+        case .lightBackground:
             collectionView.backgroundColor = .mediumWeightGray
-        case .itemVC:
+        case .darkBackground:
             collectionView.backgroundColor = .black
         }
         collectionView.register(dataSource.cellType, forCellWithReuseIdentifier: dataSource.cellType.identifier)
@@ -44,5 +39,9 @@ class CollectionTableViewCell: UITableViewCell {
         collectionView.snp.makeConstraints { (make) in
            make.edges.equalToSuperview()
         }
+    }
+    enum BackgroundMode {
+        case lightBackground
+        case darkBackground
     }
 }

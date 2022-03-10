@@ -7,15 +7,12 @@
 import UIKit
 
 class CompactItemCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
-    
     var cellType: UICollectionViewCell.Type {
         return CompactItemCollectionViewCell.self
     }
-    
     var collectionViewLayout: UICollectionViewLayout{
         return setupLayout()
     }
-    
     var items: [Item] = []
     
     func update(with items: [Item]) {
@@ -52,13 +49,9 @@ extension CompactItemCollectionViewDataSource: UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CompactItemCollectionViewCell.identifier, for: indexPath) as! CompactItemCollectionViewCell
-        
         let item = items[indexPath.item]
-        
         cell.configureCompactCollectionViewCell(by: item)
-        
         return cell
     }
 }
