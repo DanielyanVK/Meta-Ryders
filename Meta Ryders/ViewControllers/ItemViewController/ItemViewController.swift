@@ -20,9 +20,12 @@ class ItemViewController: UIViewController {
         case firstHeader
         case timeForChart
         case chart
+        case secondHeader
+        case similarItemsCollection
     }
-    private let sections: [Sections] = [.priceAndImage, .ownersAndFavorites, .description, .purchaseAndOffer, .sale, .firstHeader, .timeForChart, .chart]
+    private let sections: [Sections] = [.priceAndImage, .ownersAndFavorites, .description, .purchaseAndOffer, .sale, .firstHeader, .timeForChart, .chart, .secondHeader, .similarItemsCollection]
     private let timeForChartDataSource = CategoriesCollectionViewDataSource()
+    private let compactCollectionDataSource = CompactItemCollectionViewDataSource()
     private var categories: [Category] = ["Day", "Week", "Month", "Year"].map { Category(name: $0) }
     private var chartValues: [ChartDataEntry] = [
         ChartDataEntry(x: 0.0, y: 10.0),
@@ -34,16 +37,18 @@ class ItemViewController: UIViewController {
         ChartDataEntry(x: 6.0, y: 12.0),
         ChartDataEntry(x: 7.0, y: 14.0)
     ]
-
+    
     private var mainTableView: UITableView?
-
+    
     private var item: Item?
+    private var items: [Item]?
     private var heroId: String?
     
-    convenience init(item: Item, heroId: String? = nil) {
+    convenience init(item: Item, heroId: String? = nil, items: [Item]) {
         self.init()
         self.item = item
         self.heroId = heroId
+        self.items = items
     }
     
     override func viewDidLoad() {
@@ -52,11 +57,12 @@ class ItemViewController: UIViewController {
         view.backgroundColor = .black
         view.addGestureRecognizer(createSwipeGestureRecognizer(for: .right))
         timeForChartDataSource.update(with: categories)
+        compactCollectionDataSource.update(with: items!)
         
-          addMainTableView()
+        addMainTableView()
     }
-
-// MARK: View Controller's elements configuration
+    
+    // MARK: View Controller's elements configuration
     private func addMainTableView() {
         mainTableView = UITableView(frame: view.bounds, style: .plain)
         guard let mainTableView = mainTableView else {
@@ -100,7 +106,7 @@ class ItemViewController: UIViewController {
     @objc private func didSwipe(_ sender: UISwipeGestureRecognizer) {
         switch sender.direction {
         case .right:
-              dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
         default:
             break
         }
@@ -142,7 +148,7 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
             
         case .purchaseAndOffer:
             let cell = mainTableView?.dequeueReusableCell(withIdentifier: PurchaseAndOfferTableViewCell.identifier, for: indexPath) as! PurchaseAndOfferTableViewCell
-
+            
             return cell
             
         case .sale:
@@ -153,11 +159,13 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
         case .firstHeader:
             let cell = mainTableView?.dequeueReusableCell(withIdentifier: HeaderTableViewCell.identifier, for: indexPath) as! HeaderTableViewCell
             
+            cell.configureHeaderTableViewCell(with: .priceHistory)
+            
             return cell
             
         case .timeForChart:
             let cell = mainTableView?.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
-            cell.configureTableViewCell(with: timeForChartDataSource, layout: timeForChartDataSource.collectionViewLayout)
+            cell.configureTableViewCell(with: timeForChartDataSource, layout: timeForChartDataSource.collectionViewLayout, for: .itemVC)
             return cell
             
         case .chart:
@@ -165,8 +173,19 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
             cell.updateChart(with: chartValues)
             
             return cell
+            
+        case .secondHeader:
+            let cell = mainTableView?.dequeueReusableCell(withIdentifier: HeaderTableViewCell.identifier, for: indexPath) as! HeaderTableViewCell
+            
+            cell.configureHeaderTableViewCell(with: .similarItems)
+            
+            return cell
+        case .similarItemsCollection:
+            let cell = mainTableView?.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
+            
+            cell.configureTableViewCell(with: compactCollectionDataSource, layout: compactCollectionDataSource.collectionViewLayout, for: .itemVC)
+            return cell
         }
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -189,6 +208,10 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
             return 42
         case .chart:
             return 298
+        case .secondHeader:
+            return 32
+        case .similarItemsCollection:
+            return 118
         }
     }
 }

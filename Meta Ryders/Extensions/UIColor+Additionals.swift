@@ -15,7 +15,9 @@ extension UIColor {
     static var mediumWeightGray: UIColor {
         return UIColor(rgb: 0xe5e5e5)
     }
-    
+    static var borderGray: UIColor {
+        return UIColor(rgb: 0x686767)
+    }
     static var general: UIColor {
         return UIColor.systemBackground
     }
@@ -46,5 +48,6 @@ extension UIColor {
     static var graphLineColor: UIColor {
         return UIColor(rgb: 0x8287fe)
     }
+    
 }
 

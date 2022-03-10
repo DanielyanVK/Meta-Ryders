@@ -1,33 +1,33 @@
 //
-//  ItemsCollectionDataSource.swift
+//  CompactItemCollectionViewDataSource.swift
 //  Meta Ryders
 //
-//  Created by Vladislav on 17.02.2022.
+//  Created by Vladislav on 10.03.2022.
 //
-
 import UIKit
 
-class ItemsCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
-    
-    var itemSelected: ItemClosure<Item>?
+class CompactItemCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
     
     var cellType: UICollectionViewCell.Type {
-        return ItemCollectionViewCell.self
+        return CompactItemCollectionViewCell.self
     }
     
-    var collectionViewLayout: UICollectionViewLayout {
+    var collectionViewLayout: UICollectionViewLayout{
         return setupLayout()
     }
     
     var items: [Item] = []
     
+    func update(with items: [Item]) {
+        self.items = items
+    }
+    
     internal func setupLayout() -> UICollectionViewLayout {
-        // section -> groups -> items -> size
-        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(260),
-                                              heightDimension: .estimated(390))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(100),
+                                              heightDimension: .absolute(106))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(260),
-                                               heightDimension: .estimated(390))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(100),
+                                               heightDimension: .absolute(106))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
         let spacing = CGFloat(20)
         group.interItemSpacing = .fixed(spacing)
@@ -40,12 +40,11 @@ class ItemsCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSourc
         return layout
     }
 }
-
-extension ItemsCollectionViewDataSource: UICollectionViewDelegate, UICollectionViewDataSource {
+extension CompactItemCollectionViewDataSource: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = items[indexPath.item]
-        itemSelected?(item)
+        print(item)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -54,10 +53,11 @@ extension ItemsCollectionViewDataSource: UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.identifier, for: indexPath) as! ItemCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CompactItemCollectionViewCell.identifier, for: indexPath) as! CompactItemCollectionViewCell
         
         let item = items[indexPath.item]
-        cell.configureHorizontalCollectionViewCell(by: item, imageViewHeroId: item.imageName)
+        
+        cell.configureCompactCollectionViewCell(by: item)
         
         return cell
     }

@@ -63,10 +63,8 @@ class ChartTableViewCell: UITableViewCell {
         lineChartView.xAxis.avoidFirstLastClippingEnabled = true
         // here we can set any value for xAxis
         lineChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: xAxisValues)
-        
         lineChartView.legend.enabled = false
         lineChartView.animate(xAxisDuration: 1.0)
-        
         lineChartView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(160)
@@ -104,4 +102,3 @@ class ChartTableViewCell: UITableViewCell {
         print("Browse Listings Button - Tapped")
     }
 }
-

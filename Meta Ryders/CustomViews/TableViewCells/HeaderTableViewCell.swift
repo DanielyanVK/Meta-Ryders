@@ -9,6 +9,11 @@ import UIKit
 
 class HeaderTableViewCell: UITableViewCell {
     
+    enum HeaderVariations {
+        case priceHistory
+        case similarItems
+    }
+    
     private let iconView: UIImageView = {
         let iconView = UIImageView()
         iconView.image = UIImage()
@@ -25,20 +30,26 @@ class HeaderTableViewCell: UITableViewCell {
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         backgroundColor = .black
+        selectionStyle = .none
         
         addIconView()
         addHeaderLabel()
     }
     
     // Later will create enum to assign label text and image in each case for reusability
-    public func configureHeaderTableViewCell() {
-        
+    public func configureHeaderTableViewCell(with variation: HeaderVariations) {
+        switch variation {
+        case .priceHistory:
+            headerLabel.text = "Price history"
+            iconView.image = UIImage(named: "priceHistoryIcon")
+        case .similarItems:
+            headerLabel.text = "Similar items"
+            iconView.image = UIImage(named: "similarItemsIcon")
+        }
     }
-
+    
     private func addIconView() {
         addSubview(iconView)
-        
-        iconView.image = UIImage(named: "priceHistoryIcon")
         
         iconView.snp.makeConstraints { make in
             make.leading.equalTo(36)
@@ -54,11 +65,10 @@ class HeaderTableViewCell: UITableViewCell {
         headerLabel.textAlignment = .left
         headerLabel.textColor = .white
         headerLabel.font = .rounded(ofSize: 18, weight: .bold)
-        headerLabel.text = "Price history"
         
         headerLabel.snp.makeConstraints { make in
             make.left.equalTo(iconView.snp.right).offset(10)
-            make.top.equalTo(iconView.snp.top)
+            make.top.equalTo(iconView.snp.top).offset(-4)
             
         }
     }

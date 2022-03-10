@@ -20,7 +20,6 @@ class HomeViewController: UIViewController {
     //MARK: MOCKUP DATA - REMOVE LATER
     let item1 = Item(name: "Bella Doll", imageName: "BellaDoll", description: "These ancient beings have been around since the dawn of time...", price: 98.37, growth: 10)
     let item2 = Item(name: "Abstract Pink", imageName: "AbstractPainting", description: "A CNS or UNS blockhain domain.", price: 0.906, growth: 6.2)
-    
     let fallableItem1 = Item(name: "Monkey", imageName: "AbstractPainting2", description: "The only thing is out for Harambe - is that T-pose", price: 1.314, growth: -5)
     let fallableItem2 = Item(name: "Wave", imageName: "BellaDoll2", description: "Cool abstract painting", price: 2.212, growth: 35)
     let news1 = News(title: "Coinbase is Partnering with MasterCard to Allow Card Pay...", imageName: "news1", article: "test", timePosted: "1 hour ago", sourceName: "bloomberg.com")
@@ -32,6 +31,7 @@ class HomeViewController: UIViewController {
     private let notFallableCollectionViewDataSource = NotFallableCollectionViewDataSource()
     private let newsCollectionViewDataSource = NewsCollectionViewDataSource()
     
+    private var items: [Item] = []
     private var categories: [Category] = ["Trending", "Art", "Collectibles", "Music"].map { Category(name: $0) }
     
     override func viewDidLoad() {
@@ -40,6 +40,9 @@ class HomeViewController: UIViewController {
         categoryCollectionViewDataSource.update(with: categories)
         itemsCollectionViewDataSource.items.append(item1)
         itemsCollectionViewDataSource.items.append(item2)
+        items.append(item1)
+        items.append(item2)
+
         notFallableCollectionViewDataSource.fallableItems.append(fallableItem1)
         notFallableCollectionViewDataSource.fallableItems.append(fallableItem2)
         newsCollectionViewDataSource.news.append(news1)
@@ -49,7 +52,7 @@ class HomeViewController: UIViewController {
         // MARK: Hero animation setup
         hero.isEnabled = true
         itemsCollectionViewDataSource.itemSelected = { item in
-            let vc = ItemViewController(item: item, heroId: item.imageName)
+            let vc = ItemViewController(item: item, heroId: item.imageName, items: self.items)
             vc.hero.isEnabled = true
             vc.modalPresentationStyle = .custom
             self.present(vc, animated: true, completion: nil)
@@ -146,7 +149,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = mainTableView?.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
-        cell.configureTableViewCell(with: dataSources[indexPath.section], layout: dataSources[indexPath.section].collectionViewLayout)
+        cell.configureTableViewCell(with: dataSources[indexPath.section], layout: dataSources[indexPath.section].collectionViewLayout, for: .homeVC)
         
         return cell
     }
