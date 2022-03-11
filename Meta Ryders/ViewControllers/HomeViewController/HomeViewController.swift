@@ -16,12 +16,12 @@ class HomeViewController: UIViewController {
         return tabBarView
     }
     private enum Sections {
-        case items
         case categories
+        case items
         case notFallable
         case news
     }
-    private let sections: [Sections] = [.items, .categories, .notFallable, .news]
+    private let sections: [Sections] = [.categories, .items, .notFallable, .news]
     
     //MARK: MOCKUP DATA - REMOVE LATER
     let item1 = Item(name: "Bella Doll", imageName: "BellaDoll", description: "These ancient beings have been around since the dawn of time...", price: 98.37, growth: 10)
@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
 
     private let categoryCollectionViewDataSource = CategoriesCollectionViewDataSource(displayMode: .light)
     private let itemsCollectionViewDataSource = ItemsCollectionViewDataSource()
-    private let notFallableCollectionViewDataSource = NotFallableCollectionViewDataSource()
+    private let notFallableCollectionViewDataSource = ItemsCollectionViewDataSource()
     private let newsCollectionViewDataSource = NewsCollectionViewDataSource()
     
     private var items: [Item] = []
@@ -48,9 +48,8 @@ class HomeViewController: UIViewController {
         itemsCollectionViewDataSource.items.append(item2)
         items.append(item1)
         items.append(item2)
-
-        notFallableCollectionViewDataSource.fallableItems.append(fallableItem1)
-        notFallableCollectionViewDataSource.fallableItems.append(fallableItem2)
+        notFallableCollectionViewDataSource.items.append(fallableItem1)
+        notFallableCollectionViewDataSource.items.append(fallableItem2)
         newsCollectionViewDataSource.news.append(news1)
         newsCollectionViewDataSource.news.append(news2)
         newsCollectionViewDataSource.news.append(news3)
@@ -136,7 +135,7 @@ class HomeViewController: UIViewController {
 // MARK: TableView Extensions
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return dataSources.count
+        return sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -144,51 +143,57 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        // this one looks too clean to refactor atm. If you want I can bind it to enum as well
         let cell = mainTableView?.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
         cell.configureTableViewCell(with: dataSources[indexPath.section], layout: dataSources[indexPath.section].collectionViewLayout, for: .lightBackground)
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let dataSource = dataSources[indexPath.section]
-        if dataSource is CategoriesCollectionViewDataSource {
+        let section = sections[indexPath.section]
+        switch section {
+        case .categories:
             return 42
-        } else if dataSource is ItemsCollectionViewDataSource || dataSource is NotFallableCollectionViewDataSource {
+        case .items:
             return 390
-        }  else if dataSource is NewsCollectionViewDataSource {
+        case .notFallable:
+            return 390
+        case .news:
             return 260
-        }  else {
-            return 0
         }
     }
     
     //MARK: Header/Footer configurtion
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let dataSource = dataSources[section]
-        if dataSource is CategoriesCollectionViewDataSource || dataSource is NotFallableCollectionViewDataSource || dataSource is NewsCollectionViewDataSource  {
+        let section = sections[section]
+        switch section {
+        case .categories:
             return 46
-        } else {
+        case .items:
             return 0
+        case .notFallable:
+            return 46
+        case .news:
+            return 46
         }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let dataSource = dataSources[section]
+        let section = sections[section]
         let headerView = TableViewHeader()
-        
-        if dataSource is CategoriesCollectionViewDataSource {
+        switch section {
+        case .categories:
             headerView.configureHeader(for: .categories)
             return headerView
-        } else if dataSource is NotFallableCollectionViewDataSource {
+        case .items:
+            return nil
+        case .notFallable:
             headerView.configureHeader(for: .notFallable)
             return headerView
-        } else if dataSource is NewsCollectionViewDataSource {
+        case .news:
             headerView.configureHeader(for: .news)
             return headerView
         }
-        return UIView()
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
