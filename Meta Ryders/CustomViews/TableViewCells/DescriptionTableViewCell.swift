@@ -43,7 +43,7 @@ class DescriptionTableViewCell: UITableViewCell {
         
         descriptionFrameImageView.snp.makeConstraints { make in
             make.top.equalTo(6)
-            make.bottom.equalTo(-34)
+            make.bottom.equalTo(-24)
             make.leading.equalTo(32)
             make.trailing.equalTo(-32)
         }

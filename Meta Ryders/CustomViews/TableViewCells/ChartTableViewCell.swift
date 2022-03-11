@@ -68,8 +68,12 @@ class ChartTableViewCell: UITableViewCell {
         addSubview(browseListingsButton)
         browseListingsButton.setImage(UIImage(named: "browseListingsButton"), for: .normal)
         browseListingsButton.addTarget(self, action: #selector(browseListingsButtonTapped), for: .touchUpInside)
+        browseListingsButton.layer.shadowColor = UIColor(rgb:0x524fff).cgColor
+        browseListingsButton.layer.shadowOpacity = 0.6
+        browseListingsButton.layer.shadowRadius = 22
+        browseListingsButton.layer.shadowOffset = CGSize(width: 0, height: 4)
+        
         browseListingsButton.snp.makeConstraints { make in
-            
             make.leading.equalTo(52)
             make.trailing.equalTo(-52)
             make.top.equalTo(lineChartView.snp.bottom).offset(36)

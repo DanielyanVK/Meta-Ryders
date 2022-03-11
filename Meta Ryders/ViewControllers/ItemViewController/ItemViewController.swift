@@ -184,7 +184,7 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
         case .ownersAndFavorites:
             return 30
         case .description:
-            return 196
+            return 170
         case .purchaseAndOffer:
             return 76
         case .sale:

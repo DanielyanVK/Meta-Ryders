@@ -15,6 +15,13 @@ class HomeViewController: UIViewController {
         let tabBarView = TabBarView()
         return tabBarView
     }
+    private enum Sections {
+        case items
+        case categories
+        case notFallable
+        case news
+    }
+    private let sections: [Sections] = [.items, .categories, .notFallable, .news]
     
     //MARK: MOCKUP DATA - REMOVE LATER
     let item1 = Item(name: "Bella Doll", imageName: "BellaDoll", description: "These ancient beings have been around since the dawn of time...", price: 98.37, growth: 10)

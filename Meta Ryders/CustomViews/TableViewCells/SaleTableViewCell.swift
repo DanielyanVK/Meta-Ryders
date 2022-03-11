@@ -80,6 +80,10 @@ class SaleTableViewCell: UITableViewCell {
         addSubview(reminderButton)
         reminderButton.setImage(UIImage(named: "reminderButton"), for: .normal)
         reminderButton.addTarget(self, action: #selector(reminderButtonTapped), for: .touchUpInside)
+        reminderButton.layer.shadowColor = UIColor(rgb:0x524fff).cgColor
+        reminderButton.layer.shadowOpacity = 0.5
+        reminderButton.layer.shadowRadius = 18
+        reminderButton.layer.shadowOffset = CGSize(width: 0, height: 4)
         reminderButton.snp.makeConstraints { make in
             
             make.leading.equalTo(52)
