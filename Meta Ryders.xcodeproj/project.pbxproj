@@ -14,6 +14,13 @@
 		E4186DDB27D5DF3B004E3FA3 /* PurchaseAndOfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4186DDA27D5DF3B004E3FA3 /* PurchaseAndOfferTableViewCell.swift */; };
 		E4186DDD27D5F7A9004E3FA3 /* SaleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4186DDC27D5F7A9004E3FA3 /* SaleTableViewCell.swift */; };
 		E4186DDF27D601DA004E3FA3 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4186DDE27D601DA004E3FA3 /* HeaderTableViewCell.swift */; };
+		E447CC0E27DDB3D7005065F9 /* converse_obj.obj in Resources */ = {isa = PBXBuildFile; fileRef = E447CC0927DDB3D6005065F9 /* converse_obj.obj */; };
+		E447CC0F27DDB3D7005065F9 /* converse_bump.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E447CC0A27DDB3D6005065F9 /* converse_bump.jpg */; };
+		E447CC1027DDB3D7005065F9 /* converse_obj.mtl in Resources */ = {isa = PBXBuildFile; fileRef = E447CC0B27DDB3D6005065F9 /* converse_obj.mtl */; };
+		E447CC1127DDB3D7005065F9 /* laces.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E447CC0C27DDB3D6005065F9 /* laces.jpg */; };
+		E447CC1227DDB3D7005065F9 /* converse.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E447CC0D27DDB3D7005065F9 /* converse.jpg */; };
+		E447CC1527DDB3DF005065F9 /* Squid_Games_Leader_mask.obj in Resources */ = {isa = PBXBuildFile; fileRef = E447CC1327DDB3DF005065F9 /* Squid_Games_Leader_mask.obj */; };
+		E447CC1627DDB3DF005065F9 /* Squid_Games_Leader_mask.mtl in Resources */ = {isa = PBXBuildFile; fileRef = E447CC1427DDB3DF005065F9 /* Squid_Games_Leader_mask.mtl */; };
 		E447CCF927B786BC0095CB91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447CCF827B786BC0095CB91 /* AppDelegate.swift */; };
 		E447CCFB27B786BC0095CB91 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447CCFA27B786BC0095CB91 /* SceneDelegate.swift */; };
 		E447CD0227B786BD0095CB91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E447CD0127B786BD0095CB91 /* Assets.xcassets */; };
@@ -54,6 +61,13 @@
 		E4186DDA27D5DF3B004E3FA3 /* PurchaseAndOfferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseAndOfferTableViewCell.swift; sourceTree = "<group>"; };
 		E4186DDC27D5F7A9004E3FA3 /* SaleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleTableViewCell.swift; sourceTree = "<group>"; };
 		E4186DDE27D601DA004E3FA3 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		E447CC0927DDB3D6005065F9 /* converse_obj.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = converse_obj.obj; sourceTree = "<group>"; };
+		E447CC0A27DDB3D6005065F9 /* converse_bump.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = converse_bump.jpg; sourceTree = "<group>"; };
+		E447CC0B27DDB3D6005065F9 /* converse_obj.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = converse_obj.mtl; sourceTree = "<group>"; };
+		E447CC0C27DDB3D6005065F9 /* laces.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = laces.jpg; sourceTree = "<group>"; };
+		E447CC0D27DDB3D7005065F9 /* converse.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = converse.jpg; sourceTree = "<group>"; };
+		E447CC1327DDB3DF005065F9 /* Squid_Games_Leader_mask.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Squid_Games_Leader_mask.obj; sourceTree = "<group>"; };
+		E447CC1427DDB3DF005065F9 /* Squid_Games_Leader_mask.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Squid_Games_Leader_mask.mtl; sourceTree = "<group>"; };
 		E447CCF527B786BC0095CB91 /* Meta Ryders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meta Ryders.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E447CCF827B786BC0095CB91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E447CCFA27B786BC0095CB91 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +131,36 @@
 			path = Typealiases;
 			sourceTree = "<group>";
 		};
+		E447CBFB27DDB382005065F9 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				E447CBFE27DDB39E005065F9 /* Leader_Mask */,
+				E447CBFC27DDB38B005065F9 /* Converse_obj */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		E447CBFC27DDB38B005065F9 /* Converse_obj */ = {
+			isa = PBXGroup;
+			children = (
+				E447CC0A27DDB3D6005065F9 /* converse_bump.jpg */,
+				E447CC0B27DDB3D6005065F9 /* converse_obj.mtl */,
+				E447CC0927DDB3D6005065F9 /* converse_obj.obj */,
+				E447CC0D27DDB3D7005065F9 /* converse.jpg */,
+				E447CC0C27DDB3D6005065F9 /* laces.jpg */,
+			);
+			path = Converse_obj;
+			sourceTree = "<group>";
+		};
+		E447CBFE27DDB39E005065F9 /* Leader_Mask */ = {
+			isa = PBXGroup;
+			children = (
+				E447CC1427DDB3DF005065F9 /* Squid_Games_Leader_mask.mtl */,
+				E447CC1327DDB3DF005065F9 /* Squid_Games_Leader_mask.obj */,
+			);
+			path = Leader_Mask;
+			sourceTree = "<group>";
+		};
 		E447CCEC27B786BC0095CB91 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +180,7 @@
 		E447CCF727B786BC0095CB91 /* Meta Ryders */ = {
 			isa = PBXGroup;
 			children = (
+				E447CBFB27DDB382005065F9 /* Objects */,
 				E4B0F09027BCFC6400965A17 /* DataSources */,
 				E4B0F08D27BCFC2600965A17 /* Protocols */,
 				E447CD0D27B7873B0095CB91 /* ViewControllers */,
@@ -348,8 +393,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E447CC1227DDB3D7005065F9 /* converse.jpg in Resources */,
+				E447CC1627DDB3DF005065F9 /* Squid_Games_Leader_mask.mtl in Resources */,
+				E447CC0E27DDB3D7005065F9 /* converse_obj.obj in Resources */,
 				E447CD0527B786BD0095CB91 /* LaunchScreen.storyboard in Resources */,
+				E447CC0F27DDB3D7005065F9 /* converse_bump.jpg in Resources */,
 				E447CD0227B786BD0095CB91 /* Assets.xcassets in Resources */,
+				E447CC1527DDB3DF005065F9 /* Squid_Games_Leader_mask.obj in Resources */,
+				E447CC1127DDB3D7005065F9 /* laces.jpg in Resources */,
+				E447CC1027DDB3D7005065F9 /* converse_obj.mtl in Resources */,
 				E4CB75D627D1E992008294C0 /* Orbitron-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

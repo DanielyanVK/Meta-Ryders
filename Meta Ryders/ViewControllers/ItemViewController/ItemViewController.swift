@@ -39,7 +39,7 @@ class ItemViewController: UIViewController {
     ]
     
     private var mainTableView: UITableView?
-    
+    private let returnButton = UIButton(frame: .zero)
     private var item: Item?
     private var items: [Item]?
     private var heroId: String?
@@ -53,13 +53,14 @@ class ItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+     //   view.sendSubviewToBack
         view.backgroundColor = .black
         view.addGestureRecognizer(createSwipeGestureRecognizer(for: .right))
         timeForChartDataSource.update(with: categories)
         compactCollectionDataSource.update(with: items!)
-        
         addMainTableView()
+        addReturnButton()
+
     }
     
     // MARK: View Controller's elements configuration
@@ -92,7 +93,24 @@ class ItemViewController: UIViewController {
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
-    
+   
+    private func addReturnButton() {
+        view.addSubview(returnButton)
+        view.insertSubview(returnButton, aboveSubview: mainTableView!)
+        returnButton.setImage(UIImage(named: "backButton"), for: .normal)
+        returnButton.addTarget(self, action: #selector(returnButtonTapped), for: .touchUpInside)
+        returnButton.layer.shadowColor = UIColor(rgb:0x524fff).cgColor
+        returnButton.layer.shadowOpacity = 0.6
+        returnButton.layer.shadowRadius = 14
+        returnButton.layer.shadowOffset = CGSize(width: 0, height: 4)
+        returnButton.snp.makeConstraints { make in
+            make.leading.equalTo(20)
+            make.top.equalTo(40)
+        }
+    }
+    @objc private func returnButtonTapped() {
+       dismiss(animated: true, completion: nil)
+    }
     //MARK: Gesture recognition
     //Added customizable swipe recognition. It was impossible to scroll on this view controller with "touches began" function dismissing it. Added dismiss function to right swipe for now. later on we can fully customize it
     private func createSwipeGestureRecognizer(for direction: UISwipeGestureRecognizer.Direction) -> UISwipeGestureRecognizer {
