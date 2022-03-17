@@ -8,10 +8,7 @@
 import UIKit
 
 class TableViewHeader: UIView {
-    private let headerLabel: UILabel = {
-        let headerLabel = UILabel()
-        return headerLabel
-    }()
+    private let headerLabel = UILabel()
     private let seeAllButton = UIButton(frame: .zero)
     
     override func didMoveToSuperview() {

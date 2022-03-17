@@ -8,19 +8,9 @@
 import UIKit
 
 class DescriptionTableViewCell: UITableViewCell {
-    private let descriptionFrameImageView: UIImageView = {
-        let descriptionFrameImageView = UIImageView()
-        descriptionFrameImageView.image = UIImage()
-        return descriptionFrameImageView
-    }()
-    private let nameLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
-    private let descriptionLabel: UILabel = {
-        let descriptionLabel = UILabel()
-        return descriptionLabel
-    }()
+    private let descriptionFrameImageView = UIImageView()
+    private let nameLabel = UILabel()
+    private let descriptionLabel = UILabel()
 
     override func didMoveToSuperview() {
         super.didMoveToSuperview()

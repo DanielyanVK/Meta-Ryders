@@ -11,40 +11,15 @@ import SnapKit
 class ItemCollectionViewCell: UICollectionViewCell {
         
     //MARK: Initializing cell's elements
-    private let backgroundImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage()
-        return imageView
-    }()
-    private let currencyIconView: UIImageView = {
-        let ethImageView = UIImageView()
-        return ethImageView
-    }()
-    private let nameLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
-    private let descriptionLabel: UILabel = {
-        let descriptionLabel = UILabel()
-        return descriptionLabel
-    }()
-    private let priceLabel: UILabel = {
-        let ethLabel = UILabel()
-        return ethLabel
-    }()
-    private let growthLabel: UILabel = {
-        let growthLabel = UILabel()
-        return growthLabel
-    }()
-    private let verificationIconView: UIImageView = {
-        let verificationIconView = UIImageView()
-        return verificationIconView
-    }()
-    private let shadowView: UIView = {
-        let shadowView = UIView()
-        return shadowView
-    }()
-    
+    private let backgroundImageView = UIImageView()
+    private let currencyIconView = UIImageView()
+    private let nameLabel = UILabel()
+    private let descriptionLabel = UILabel()
+    private let priceLabel = UILabel()
+    private let growthLabel = UILabel()
+    private let verificationIconView = UIImageView()
+    private let shadowView = UIView()
+ 
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         addRotationParallaxEffect(amount: 25)

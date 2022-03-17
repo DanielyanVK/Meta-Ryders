@@ -8,16 +8,8 @@
 import UIKit
 
 class HeaderTableViewCell: UITableViewCell {
-    private let iconView: UIImageView = {
-        let iconView = UIImageView()
-        iconView.image = UIImage()
-        return iconView
-    }()
-    
-    private let headerLabel: UILabel = {
-        let headerLabel = UILabel()
-        return headerLabel
-    }()
+    private let iconView = UIImageView()
+    private let headerLabel = UILabel()
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -40,7 +32,6 @@ class HeaderTableViewCell: UITableViewCell {
     
     private func addIconView() {
         addSubview(iconView)
-        
         iconView.snp.makeConstraints { make in
             make.leading.equalTo(36)
             make.top.equalTo(2)

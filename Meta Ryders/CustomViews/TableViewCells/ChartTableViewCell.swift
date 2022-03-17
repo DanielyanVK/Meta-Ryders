@@ -10,14 +10,8 @@ import Charts
 
 class ChartTableViewCell: UITableViewCell {
 
-    private lazy var lineChartView: LineChartView = {
-        let lineChartView = LineChartView()
-        return lineChartView
-    }()
-    private let activeOffersLabel: UILabel = {
-        let activeOffersLabel = UILabel()
-        return activeOffersLabel
-    }()
+    private lazy var lineChartView = LineChartView()
+    private let activeOffersLabel = UILabel()
     private var chartValues: [ChartDataEntry] = []
     private var xAxisValues: [String] = ["9:00", "12:00", "13:00", "15:00", "18:00", "20:00", "22:00"]
     private let browseListingsButton = UIButton(frame: .zero)

@@ -11,33 +11,11 @@ import SceneKit
 class PriceAndImageTableViewCell: UITableViewCell {
     
     private let sceneView = SCNView(frame: .zero)
-    let heroImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage()
-        return imageView
-    }()
-    
-    private let currencyIconView: UIImageView = {
-        let currencyIconView = UIImageView()
-        currencyIconView.image = UIImage()
-        return currencyIconView
-    }()
-    
-    private let priceLabel: UILabel = {
-        let priceLabel = UILabel()
-        return priceLabel
-    }()
-    
-    private let degreesLabel: UILabel = {
-        let degreesLabel = UILabel()
-        return degreesLabel
-    }()
-
-    private let roundedArrowImageView: UIImageView = {
-        let roundedArrowImageView = UIImageView()
-        roundedArrowImageView.image = UIImage()
-        return roundedArrowImageView
-    }()
+    let heroImageView = UIImageView()
+    private let currencyIconView = UIImageView()
+    private let priceLabel = UILabel()
+    private let degreesLabel = UILabel()
+    private let roundedArrowImageView = UIImageView()
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()

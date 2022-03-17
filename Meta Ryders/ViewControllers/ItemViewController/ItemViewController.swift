@@ -8,9 +8,9 @@
 import UIKit
 import Hero
 import Charts
+import Combine
 
-class ItemViewController: UIViewController {
-    
+class ItemViewController: UIViewController {    
     private enum Sections: CaseIterable {
         case priceAndImage
         case ownersAndFavorites
@@ -43,6 +43,7 @@ class ItemViewController: UIViewController {
     private var item: Item?
     private var items: [Item]?
     private var heroId: String?
+    var datasHome: [String] = []
     
     convenience init(item: Item, heroId: String? = nil, items: [Item]) {
         self.init()
@@ -56,11 +57,11 @@ class ItemViewController: UIViewController {
      //   view.sendSubviewToBack
         view.backgroundColor = .black
         view.addGestureRecognizer(createSwipeGestureRecognizer(for: .right))
+        
         timeForChartDataSource.update(with: categories)
         compactCollectionDataSource.update(with: items!)
         addMainTableView()
         addReturnButton()
-
     }
     
     // MARK: View Controller's elements configuration

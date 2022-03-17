@@ -12,10 +12,8 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         case light
         case dark
     }
-    private let nameLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
+    private let nameLabel = UILabel()
+    
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         clipsToBounds = true

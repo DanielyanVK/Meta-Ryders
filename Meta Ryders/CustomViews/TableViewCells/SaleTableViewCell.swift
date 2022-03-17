@@ -8,19 +8,9 @@
 import UIKit
 
 class SaleTableViewCell: UITableViewCell {
-    private let saleFrameImageView: UIImageView = {
-        let saleFrameImageView = UIImageView()
-        saleFrameImageView.image = UIImage()
-        return saleFrameImageView
-    }()
-    private let saleLabel: UILabel = {
-        let saleLabel = UILabel()
-        return saleLabel
-    }()
-    private let timerLabel: UILabel = {
-        let timerLabel = UILabel()
-        return timerLabel
-    }()
+    private let saleFrameImageView = UIImageView()
+    private let saleLabel = UILabel()
+    private let timerLabel = UILabel()
     private let reminderButton = UIButton(frame: .zero)
     
     override func didMoveToSuperview() {

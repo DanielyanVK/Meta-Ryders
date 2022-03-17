@@ -8,44 +8,13 @@
 import UIKit
 
 class OwnersAndFavoritesTableViewCell: UITableViewCell {
-    private let followersIconView: UIImageView = {
-        let followersIconView = UIImageView()
-        followersIconView.image = UIImage()
-        
-        return followersIconView
-    }()
-    
-    private let totalItemsIconView: UIImageView = {
-        let totalItemsIconView = UIImageView()
-        totalItemsIconView.image = UIImage()
-        
-        return totalItemsIconView
-    }()
-    
-    private let favoritesIconView: UIImageView = {
-        let favoritesIconView = UIImageView()
-        favoritesIconView.image = UIImage()
-        
-        return favoritesIconView
-    }()
-    
-    private let followersCountLabel: UILabel = {
-        let followersCountLabel = UILabel()
-        
-        return followersCountLabel
-    }()
-    
-    private let totalItemsCountLabel: UILabel = {
-        let totalItemsCountLabel = UILabel()
-        
-        return totalItemsCountLabel
-    }()
-    
-    private let favoritesCountLabel: UILabel = {
-        let favoritesCountLabel = UILabel()
-        
-        return favoritesCountLabel
-    }()
+    private let followersIconView = UIImageView()
+    private let totalItemsIconView = UIImageView()
+    private let favoritesIconView = UIImageView()
+    private let followersCountLabel = UILabel()
+    private let totalItemsCountLabel = UILabel()
+    private let favoritesCountLabel = UILabel()
+   
 
     override func didMoveToSuperview() {
         super.didMoveToSuperview()

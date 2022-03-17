@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Combine
 
 class HomeViewController: UIViewController {
     private var mainTableView: UITableView?
@@ -22,38 +23,34 @@ class HomeViewController: UIViewController {
         case news
     }
     private let sections: [Sections] = [.categories, .items, .notFallable, .news]
-    
     //MARK: MOCKUP DATA - REMOVE LATER
-    let item1 = Item(name: "Bella Doll", imageName: "BellaDoll", description: "These ancient beings have been around since the dawn of time...", price: 98.37, growth: 10, modelName: "converse_obj.obj")
-    let item2 = Item(name: "Abstract Pink", imageName: "AbstractPainting", description: "A CNS or UNS blockhain domain.", price: 0.906, growth: 6.2, modelName: "Squid_Games_Leader_mask.obj")
-    let fallableItem1 = Item(name: "Monkey", imageName: "AbstractPainting2", description: "The only thing is out for Harambe - is that T-pose", price: 1.314, growth: -5, modelName: "converse_obj.obj")
-    let fallableItem2 = Item(name: "Wave", imageName: "BellaDoll2", description: "Cool abstract painting", price: 2.212, growth: 35, modelName: "Squid_Games_Leader_mask.obj")
-    let news1 = News(title: "Coinbase is Partnering with MasterCard to Allow Card Pay...", imageName: "news1", article: "test", timePosted: "1 hour ago", sourceName: "bloomberg.com")
-    let news2 = News(title: "Cardano (ADA) Sureges 31% After New Metaverse Launch", imageName: "news2", article: "test", timePosted: "20 min ago", sourceName: "newyorktimes.com")
-    let news3 = News(title: "Apple is Prepared to Dominate the Metaverse in 2024", imageName: "news3", article: "test", timePosted: "35 min ago", sourceName: "dailybugle.com")
-
+    private var items: [Item] = [
+        Item(name: "Bella Doll", imageName: "BellaDoll", description: "These ancient beings have been around since the dawn of time...", price: 98.37, growth: 10, modelName: "converse_obj.obj"),
+        Item(name: "Abstract Pink", imageName: "AbstractPainting", description: "A CNS or UNS blockhain domain.", price: 0.906, growth: 6.2, modelName: "Squid_Games_Leader_mask.obj")
+    ]
+    private var fallableItems: [Item] = [
+        Item(name: "Monkey", imageName: "AbstractPainting2", description: "The only thing is out for Harambe - is that T-pose", price: 1.314, growth: -5, modelName: "converse_obj.obj"),
+        Item(name: "Wave", imageName: "BellaDoll2", description: "Cool abstract painting", price: 2.212, growth: 35, modelName: "Squid_Games_Leader_mask.obj")
+    ]
+    private var news: [News] = [
+        News(title: "Coinbase is Partnering with MasterCard to Allow Card Pay...", imageName: "news1", article: "test", timePosted: "1 hour ago", sourceName: "bloomberg.com"),
+        News(title: "Cardano (ADA) Sureges 31% After New Metaverse Launch", imageName: "news2", article: "test", timePosted: "20 min ago", sourceName: "newyorktimes.com"),
+        News(title: "Apple is Prepared to Dominate the Metaverse in 2024", imageName: "news3", article: "test", timePosted: "35 min ago", sourceName: "dailybugle.com")
+    ]
     private let categoryCollectionViewDataSource = CategoriesCollectionViewDataSource(displayMode: .light)
     private let itemsCollectionViewDataSource = ItemsCollectionViewDataSource()
     private let notFallableCollectionViewDataSource = ItemsCollectionViewDataSource()
     private let newsCollectionViewDataSource = NewsCollectionViewDataSource()
-    
-    private var items: [Item] = []
     private var categories: [Category] = ["Trending", "Art", "Collectibles", "Music"].map { Category(name: $0) }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // MARK: MOCKUP DATA - REMOVE LATER
         categoryCollectionViewDataSource.update(with: categories)
-        itemsCollectionViewDataSource.items.append(item1)
-        itemsCollectionViewDataSource.items.append(item2)
-        items.append(item1)
-        items.append(item2)
-        notFallableCollectionViewDataSource.items.append(fallableItem1)
-        notFallableCollectionViewDataSource.items.append(fallableItem2)
-        newsCollectionViewDataSource.news.append(news1)
-        newsCollectionViewDataSource.news.append(news2)
-        newsCollectionViewDataSource.news.append(news3)
-        
+        itemsCollectionViewDataSource.items = items
+        notFallableCollectionViewDataSource.items = fallableItems
+        newsCollectionViewDataSource.news = news
+  
         // MARK: Hero animation setup
         hero.isEnabled = true
         itemsCollectionViewDataSource.itemSelected = { item in
@@ -97,7 +94,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    //MARK: Navigation Ban Configuration
+    //MARK: Navigation Bar Configuration
     private func configureNavBar() {
         navigationController?.navigationBar.barTintColor = .mediumWeightGray
         navigationController?.navigationBar.tintColor = .lightweightGray

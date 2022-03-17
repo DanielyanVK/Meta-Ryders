@@ -9,11 +9,7 @@ import UIKit
 import SnapKit
 
 class CompactItemCollectionViewCell: UICollectionViewCell {
-    private let itemImageView: UIImageView = {
-        let itemImageView = UIImageView()
-        itemImageView.image = UIImage()
-        return itemImageView
-    }()
+    private let itemImageView = UIImageView()
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()

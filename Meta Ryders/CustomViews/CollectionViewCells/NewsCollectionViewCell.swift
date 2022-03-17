@@ -8,23 +8,10 @@
 import UIKit
 
 class NewsCollectionViewCell: UICollectionViewCell {
-    private let articleImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage()
-        return imageView
-    }()
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
-    private let sourceLabel: UILabel = {
-        let sourceLabel = UILabel()
-        return sourceLabel
-    }()
-    private let timePostedLabel: UILabel = {
-        let timePostedLabel = UILabel()
-        return timePostedLabel
-    }()
+    private let articleImageView = UIImageView()
+    private let titleLabel = UILabel()
+    private let sourceLabel = UILabel()
+    private let timePostedLabel = UILabel()
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()

@@ -13,11 +13,7 @@ class TabBarView: UIView {
     private let cameraButton = UIButton(frame: .zero)
     private let settingsButton = UIButton(frame: .zero)
     private let itemListButton = UIButton(frame: .zero)
-    private let frameImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage()
-        return imageView
-    }()
+    private let frameImageView = UIImageView()
   
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
