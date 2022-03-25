@@ -8,7 +8,6 @@
 import UIKit
 
 class NewsCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
-    var itemSelected: ItemClosure<News>?
     var collectionViewLayout: UICollectionViewLayout {
         return setupLayout()
     }
@@ -41,8 +40,6 @@ class NewsCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource
 extension NewsCollectionViewDataSource: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       // let singularNews = news[indexPath.item]
-      //  itemSelected?(singularNews)
         print("Row number \(indexPath.row) is tapped")
     }
     

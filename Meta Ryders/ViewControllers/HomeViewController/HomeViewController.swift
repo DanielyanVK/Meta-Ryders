@@ -22,6 +22,10 @@ class HomeViewController: UIViewController {
         case notFallable
         case news
     }
+    // For subscription in order to live they need to be stored somewhere. In our case it is set of subscriptions
+    // Мы сохраняем не информацию, которую отдает publisher а сам факт подписки на него
+    private var subscriptions: Set<AnyCancellable> = []
+    
     private let sections: [Sections] = [.categories, .items, .notFallable, .news]
     //MARK: MOCKUP DATA - REMOVE LATER
     private var items: [Item] = [
@@ -50,17 +54,18 @@ class HomeViewController: UIViewController {
         itemsCollectionViewDataSource.items = items
         notFallableCollectionViewDataSource.items = fallableItems
         newsCollectionViewDataSource.news = news
-  
         // MARK: Hero animation setup
         hero.isEnabled = true
-        itemsCollectionViewDataSource.itemSelected = { item in
+        // MARK: Combine
+        // Here we subscribe to itemSubject publisher and recieve item that it sends to us
+        // After that we save the fact of subscription with .store
+        itemsCollectionViewDataSource.itemSubject.sink { item in
             let vc = ItemViewController(item: item, heroId: item.imageName, items: self.items)
             vc.hero.isEnabled = true
             vc.modalPresentationStyle = .custom
             self.present(vc, animated: true, completion: nil)
-        }
-        // I think that this could be implemented in a more apppealing way
-        notFallableCollectionViewDataSource.itemSelected = itemsCollectionViewDataSource.itemSelected
+        }.store(in: &subscriptions)
+        notFallableCollectionViewDataSource.itemSubject = itemsCollectionViewDataSource.itemSubject
         // MARK: Datasources
         dataSources.append(categoryCollectionViewDataSource)
         dataSources.append(itemsCollectionViewDataSource)
@@ -105,7 +110,6 @@ class HomeViewController: UIViewController {
         titleLabel.font = .rounded(ofSize: 24, weight: .semibold)
 
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: titleLabel)
-
         self.navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image: UIImage(named: "notificationsIcon"),
                             style: .plain,

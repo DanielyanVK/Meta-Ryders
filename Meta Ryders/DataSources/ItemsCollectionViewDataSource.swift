@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import Combine
 
 class ItemsCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
-    var itemSelected: ItemClosure<Item>?
+    // creating Subject. That's one way to create publisher in combine
+    var itemSubject: PassthroughSubject<Item,Never> = .init()
+    
     var cellType: UICollectionViewCell.Type {
         return ItemCollectionViewCell.self
     }
@@ -39,7 +42,8 @@ extension ItemsCollectionViewDataSource: UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = items[indexPath.item]
-        itemSelected?(item)
+        // we command our publisher to send specifict value type. We will subscribe to this publisher wherever we need it to be
+        itemSubject.send(item)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
