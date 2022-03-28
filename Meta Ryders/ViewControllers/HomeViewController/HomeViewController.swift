@@ -10,7 +10,10 @@ import SnapKit
 
 class HomeViewController: UIViewController {
     private var mainTableView: UITableView?
-    private var dataSources: [HorizontalCollectionViewDataSource] = []
+    private lazy var dataSources: [HorizontalCollectionViewDataSource] = {
+        return sectionsModels.map { $0.dataSource }
+    }()
+    private var sectionsModels: [TableViewSections] = TableViewSections.allCases
     private var tabBarView: UIView {
         let tabBarView = TabBarView()
         return tabBarView
@@ -27,7 +30,7 @@ class HomeViewController: UIViewController {
 
     private let categoryCollectionViewDataSource = CategoriesCollectionViewDataSource(displayMode: .light)
     private let itemsCollectionViewDataSource = ItemsCollectionViewDataSource()
-    private let notFallableCollectionViewDataSource = NotFallableCollectionViewDataSource()
+    private let notFallableCollectionViewDataSource = ItemsCollectionViewDataSource()
     private let newsCollectionViewDataSource = NewsCollectionViewDataSource()
     
     private var items: [Item] = []
@@ -52,8 +55,8 @@ class HomeViewController: UIViewController {
         items.append(item1)
         items.append(item2)
 
-        notFallableCollectionViewDataSource.fallableItems.append(fallableItem1)
-        notFallableCollectionViewDataSource.fallableItems.append(fallableItem2)
+        notFallableCollectionViewDataSource.items.append(fallableItem1)
+        notFallableCollectionViewDataSource.items.append(fallableItem2)
         newsCollectionViewDataSource.news.append(news1)
         newsCollectionViewDataSource.news.append(news2)
         newsCollectionViewDataSource.news.append(news3)
@@ -139,7 +142,7 @@ class HomeViewController: UIViewController {
 // MARK: TableView Extensions
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return dataSources.count
+        return sectionsModels.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -158,7 +161,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let dataSource = dataSources[indexPath.section]
         if dataSource is CategoriesCollectionViewDataSource {
             return 42
-        } else if dataSource is ItemsCollectionViewDataSource || dataSource is NotFallableCollectionViewDataSource {
+        } else if dataSource is ItemsCollectionViewDataSource {
             return 390
         }  else if dataSource is NewsCollectionViewDataSource {
             return 260
@@ -170,7 +173,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     //MARK: Header/Footer configurtion
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let dataSource = dataSources[section]
-        if dataSource is CategoriesCollectionViewDataSource || dataSource is NotFallableCollectionViewDataSource || dataSource is NewsCollectionViewDataSource  {
+        if dataSource is CategoriesCollectionViewDataSource || dataSource is NewsCollectionViewDataSource  {
             return 46
         } else {
             return 0
@@ -178,19 +181,21 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let model = sectionsModels[section]
         let dataSource = dataSources[section]
         let headerView = TableViewHeader()
-        
-        if dataSource is CategoriesCollectionViewDataSource {
-            headerView.configureHeader(for: .categories)
-            return headerView
-        } else if dataSource is NotFallableCollectionViewDataSource {
+        switch model {
+        case .notFallable:
             headerView.configureHeader(for: .notFallable)
             return headerView
-        } else if dataSource is NewsCollectionViewDataSource {
+        case .news:
             headerView.configureHeader(for: .news)
             return headerView
+        case .categories:
+            headerView.configureHeader(for: .categories)
+            return headerView
         }
+        
         return UIView()
     }
     
@@ -207,5 +212,20 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         nil
+    }
+    
+    
+    enum TableViewSections: CaseIterable {
+        case categories
+        case notFallable
+        case news
+        
+        var dataSource: HorizontalCollectionViewDataSource {
+            switch self {
+            case .categories: return CategoriesCollectionViewDataSource(displayMode: .light)
+            case .news: return NewsCollectionViewDataSource()
+            case .notFallable: return ItemsCollectionViewDataSource()
+            }
+        }
     }
 }

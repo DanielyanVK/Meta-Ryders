@@ -42,6 +42,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
     }()
     private let shadowView: UIView = {
         let shadowView = UIView()
+        shadowView.addShadowParallaxEffect(amount: 35)
         return shadowView
     }()
     
@@ -87,8 +88,8 @@ class ItemCollectionViewCell: UICollectionViewCell {
         shadowView.layer.shadowOpacity = 0.22
         shadowView.layer.shadowRadius = 12
         shadowView.layer.shadowOffset = CGSize(width: 0, height: 28)
-        shadowView.layer.shouldRasterize = true
-        shadowView.layer.rasterizationScale = UIScreen.main.scale
+        
+        shadowView.addShadowParallaxEffect(amount: 35)
         addSubview(shadowView)
         
         shadowView.snp.makeConstraints { make in

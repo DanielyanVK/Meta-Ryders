@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class TableViewHeader: UIView {
     private let headerLabel: UILabel = {
@@ -21,7 +22,7 @@ class TableViewHeader: UIView {
         backgroundColor = .mediumWeightGray
     }
     
-    func configureHeader(for section: TableViewSections) {
+    func configureHeader(for section: HomeViewController.TableViewSections) {
         switch section {
         case .categories:
             headerLabel.text = "NFTs by Categories"
@@ -69,9 +70,5 @@ class TableViewHeader: UIView {
             make.centerY.equalTo(headerLabel.snp.centerY)
         }
     }
-    enum TableViewSections {
-        case categories
-        case notFallable
-        case news
-    }
+    
 }
