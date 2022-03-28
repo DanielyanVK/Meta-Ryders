@@ -40,7 +40,7 @@ class NewsTableViewCell: UITableViewCell {
         articleLabel.textColor = .black
         articleLabel.font = .rounded(ofSize: 18, weight: .regular)
         articleLabel.snp.makeConstraints { make in
-            make.top.equalTo(articleImageView.snp.bottom).offset(8)
+            make.top.equalTo(articleImageView.snp.bottom).offset(30)
             make.bottom.equalToSuperview()
             make.leading.equalTo(12)
             make.trailing.equalTo(-12)
@@ -52,7 +52,7 @@ class NewsTableViewCell: UITableViewCell {
         articleImageView.clipsToBounds = true
         articleImageView.contentMode = .scaleAspectFill
         articleImageView.snp.makeConstraints { make in
-            make.top.equalTo(sourceLabel.snp.bottom).offset(6)
+            make.top.equalTo(sourceLabel.snp.bottom).offset(30)
             make.leading.equalTo(12)
             make.trailing.equalTo(-12)
         }
