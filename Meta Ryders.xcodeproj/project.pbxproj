@@ -44,6 +44,8 @@
 		E4B1DB0C27C9F75D00BF5ECF /* NewsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B1DB0627C9EA8500BF5ECF /* NewsCollectionViewDataSource.swift */; };
 		E4B5189F27D5D41600577909 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B5189E27D5D41600577909 /* DescriptionTableViewCell.swift */; };
 		E4B604D827C5068A004CB74B /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B604D727C5068A004CB74B /* TableViewHeader.swift */; };
+		E4BA813827F1757E0075BD09 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA813727F1757E0075BD09 /* NewsViewController.swift */; };
+		E4BA813A27F182070075BD09 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA813927F182070075BD09 /* NewsTableViewCell.swift */; };
 		E4C10DA927BCCED2002387DC /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C10DA827BCCED2002387DC /* CollectionTableViewCell.swift */; };
 		E4C10DAB27BCCFB7002387DC /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C10DAA27BCCFB6002387DC /* CategoryCollectionViewCell.swift */; };
 		E4C10DAD27BCD14F002387DC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C10DAC27BCD14F002387DC /* Category.swift */; };
@@ -92,6 +94,8 @@
 		E4B1DB0A27C9ED5900BF5ECF /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		E4B5189E27D5D41600577909 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		E4B604D727C5068A004CB74B /* TableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
+		E4BA813727F1757E0075BD09 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		E4BA813927F182070075BD09 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		E4C10DA827BCCED2002387DC /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		E4C10DAA27BCCFB6002387DC /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		E4C10DAC27BCD14F002387DC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 			children = (
 				E447CD0E27B787450095CB91 /* HomeViewController */,
 				7CB7826727C270BF00872546 /* ItemViewController */,
+				E4BA813627F175500075BD09 /* NewsViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 				E4186DDC27D5F7A9004E3FA3 /* SaleTableViewCell.swift */,
 				E4186DDE27D601DA004E3FA3 /* HeaderTableViewCell.swift */,
 				E4D5F34827D88EFB00AEBDD1 /* ChartTableViewCell.swift */,
+				E4BA813927F182070075BD09 /* NewsTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -315,6 +321,14 @@
 				E4B604D727C5068A004CB74B /* TableViewHeader.swift */,
 			);
 			path = Headers;
+			sourceTree = "<group>";
+		};
+		E4BA813627F175500075BD09 /* NewsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E4BA813727F1757E0075BD09 /* NewsViewController.swift */,
+			);
+			path = NewsViewController;
 			sourceTree = "<group>";
 		};
 		E4CB75D427D1E96A008294C0 /* Fonts */ = {
@@ -427,7 +441,9 @@
 				E4B1DB0927C9EA9900BF5ECF /* News.swift in Sources */,
 				E4C10DA927BCCED2002387DC /* CollectionTableViewCell.swift in Sources */,
 				E447CCFB27B786BC0095CB91 /* SceneDelegate.swift in Sources */,
+				E4BA813A27F182070075BD09 /* NewsTableViewCell.swift in Sources */,
 				E4B1DB0C27C9F75D00BF5ECF /* NewsCollectionViewDataSource.swift in Sources */,
+				E4BA813827F1757E0075BD09 /* NewsViewController.swift in Sources */,
 				E447CD2127B78F6E0095CB91 /* Item.swift in Sources */,
 				E447CD1027B7875F0095CB91 /* HomeViewController.swift in Sources */,
 				E483804E27BFBF09008C686B /* Identifiers.swift in Sources */,

@@ -90,8 +90,7 @@ class ItemViewController: UIViewController {
         mainTableView.showsVerticalScrollIndicator = false
         
         mainTableView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.trailing.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
    

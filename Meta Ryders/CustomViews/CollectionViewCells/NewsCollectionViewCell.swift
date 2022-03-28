@@ -47,11 +47,14 @@ class NewsCollectionViewCell: UICollectionViewCell {
     private func addArticleImageView() {
         articleImageView.clipsToBounds = true
         articleImageView.layer.cornerRadius = 12
+        articleImageView.contentMode = .scaleAspectFill
         addSubview(articleImageView)
         
         articleImageView.snp.makeConstraints { make in
             make.top.equalTo(2)
             make.leading.equalTo(2)
+            make.width.equalTo(96)
+            make.height.equalTo(96)
         }
     }
     

@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Combine
 
 class NewsCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
     var collectionViewLayout: UICollectionViewLayout {
         return setupLayout()
     }
+    var newsSubject: PassthroughSubject<News,Never> = .init()
     var cellType: UICollectionViewCell.Type {
         return NewsCollectionViewCell.self
     }
@@ -40,7 +42,8 @@ class NewsCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource
 extension NewsCollectionViewDataSource: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Row number \(indexPath.row) is tapped")
+        let selectedNews = news[indexPath.item]
+        newsSubject.send(selectedNews)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
