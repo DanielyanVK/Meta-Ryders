@@ -18,8 +18,9 @@ class ItemsCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSourc
     var collectionViewLayout: UICollectionViewLayout {
         return setupLayout()
     }
-    var items: [Item] = []
     
+    var items: [Item] = []
+        
     internal func setupLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(260),
                                               heightDimension: .estimated(390))

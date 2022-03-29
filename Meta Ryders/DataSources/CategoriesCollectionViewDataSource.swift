@@ -21,7 +21,7 @@ class CategoriesCollectionViewDataSource: NSObject, HorizontalCollectionViewData
     var cellType: UICollectionViewCell.Type {
         return CategoryCollectionViewCell.self
     }
-    private var categories: [Category] = []
+    var categories: [Category] = []
     
     func update(with categories:  [Category]) {
         self.categories = categories

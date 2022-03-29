@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
     // For subscription in order to live they need to be stored somewhere. In our case it is set of subscriptions
     // Мы сохраняем не информацию, которую отдает publisher а сам факт подписки на него
     private var subscriptions: Set<AnyCancellable> = []
-    
+        
     private let sections: [Sections] = [.categories, .items, .notFallable, .news]
     //MARK: MOCKUP DATA - REMOVE LATER
     private var items: [Item] = [
@@ -45,12 +45,15 @@ class HomeViewController: UIViewController {
     private let itemsCollectionViewDataSource = ItemsCollectionViewDataSource()
     private let notFallableCollectionViewDataSource = ItemsCollectionViewDataSource()
     private let newsCollectionViewDataSource = NewsCollectionViewDataSource()
-    private var categories: [Category] = ["Trending", "Art", "Collectibles", "Music"].map { Category(name: $0) }
+   
+    // didn't let me use update method in .sink when it was like that
+   // private var categories: [Category] = ["Trending", "Art", "Collectibles", "Music"].map { Category(name: $0) }
+    @Published var categories: [Category] = [Category(name: "Trending"), Category(name: "Art"), Category(name: "Collectibles"), Category(name: "Music")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // MARK: MOCKUP DATA - REMOVE LATER
-        categoryCollectionViewDataSource.update(with: categories)
+       // categoryCollectionViewDataSource.update(with: categories)
         itemsCollectionViewDataSource.items = items
         notFallableCollectionViewDataSource.items = fallableItems
         newsCollectionViewDataSource.news = news
@@ -72,6 +75,13 @@ class HomeViewController: UIViewController {
             vc.modalPresentationStyle = .pageSheet
             self.present(vc, animated: true, completion: nil)
         }.store(in: &subscriptions)
+        
+        $categories.receive(on: RunLoop.main)
+            .sink { output in
+                self.categoryCollectionViewDataSource.update(with: output)
+                // can't come up with a way to reload just collection view instead of whole table view
+                self.mainTableView?.reloadData()
+            }.store(in: &subscriptions)
         
         // MARK: Datasources
         dataSources.append(categoryCollectionViewDataSource)
