@@ -79,8 +79,8 @@ class HomeViewController: UIViewController {
         $categories.receive(on: RunLoop.main)
             .sink { output in
                 self.categoryCollectionViewDataSource.update(with: output)
-                // can't come up with a way to reload just collection view instead of whole table view
-                self.mainTableView?.reloadData()
+                let index = IndexPath(row: 0, section: 0)
+                self.mainTableView?.reloadRows(at: [index], with: .none)
             }.store(in: &subscriptions)
         
         // MARK: Datasources
@@ -145,6 +145,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func notificationsButtonTapped(_ sender: UIButton) {
+        categories.insert(Category(name: "Combine, Baby!"), at: 0)
         print("Notifications - tapped")
     }
     
