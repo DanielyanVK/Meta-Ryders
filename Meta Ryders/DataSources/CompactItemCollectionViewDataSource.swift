@@ -5,8 +5,10 @@
 //  Created by Vladislav on 10.03.2022.
 //
 import UIKit
+import Combine
 
 class CompactItemCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
+    var itemSubject: PassthroughSubject<Item,Never> = .init()
     var cellType: UICollectionViewCell.Type {
         return CompactItemCollectionViewCell.self
     }
@@ -41,7 +43,7 @@ extension CompactItemCollectionViewDataSource: UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = items[indexPath.item]
-        print(item)
+        itemSubject.send(item)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

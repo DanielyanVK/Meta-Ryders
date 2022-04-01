@@ -23,6 +23,7 @@ class ItemViewController: UIViewController {
         case secondHeader
         case similarItemsCollection
     }
+    private var subscriptions: Set<AnyCancellable> = []
     private let sections: [Sections] = [.priceAndImage, .ownersAndFavorites, .description, .purchaseAndOffer, .sale, .firstHeader, .timeForChart, .chart, .secondHeader, .similarItemsCollection]
     private let timeForChartDataSource = CategoriesCollectionViewDataSource(displayMode: .dark)
     private let compactCollectionDataSource = CompactItemCollectionViewDataSource()
@@ -57,9 +58,15 @@ class ItemViewController: UIViewController {
      //   view.sendSubviewToBack
         view.backgroundColor = .black
         view.addGestureRecognizer(createSwipeGestureRecognizer(for: .right))
-        
         timeForChartDataSource.update(with: categories)
         compactCollectionDataSource.update(with: items!)
+        //MARK: Combine
+        compactCollectionDataSource.itemSubject.sink { item in
+            let vc = ItemViewController(item: item, items: self.items!)
+            vc.modalPresentationStyle = .custom
+            self.present(vc, animated: true, completion: nil)
+        }.store(in: &subscriptions)
+        
         addMainTableView()
         addReturnButton()
     }
@@ -109,7 +116,9 @@ class ItemViewController: UIViewController {
         }
     }
     @objc private func returnButtonTapped() {
-       dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
+        // option if we want to return to homeVC immediatly after browsing similar items on itemVC. Not sure how u want it. We can maybe to regular dismiss with swipe and do full dismiss to homeVC with return button. Up to you, commenting this out for now
+      //  self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
     }
     //MARK: Gesture recognition
     //Added customizable swipe recognition. It was impossible to scroll on this view controller with "touches began" function dismissing it. Added dismiss function to right swipe for now. later on we can fully customize it
