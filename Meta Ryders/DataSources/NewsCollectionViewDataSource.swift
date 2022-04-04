@@ -12,7 +12,7 @@ class NewsCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource
     var collectionViewLayout: UICollectionViewLayout {
         return setupLayout()
     }
-    var newsSubject: PassthroughSubject<News,Never> = .init()
+    var newsSubject: CombineSubject<News> = .init()
     var cellType: UICollectionViewCell.Type {
         return NewsCollectionViewCell.self
     }

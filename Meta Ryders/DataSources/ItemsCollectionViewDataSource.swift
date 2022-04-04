@@ -10,7 +10,7 @@ import Combine
 
 class ItemsCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
     // creating Subject. That's one way to create publisher in combine
-    var itemSubject: PassthroughSubject<Item,Never> = .init()
+    var itemSubject: CombineSubject<Item> = .init()
     
     var cellType: UICollectionViewCell.Type {
         return ItemCollectionViewCell.self

@@ -55,18 +55,11 @@ class ItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     //   view.sendSubviewToBack
         view.backgroundColor = .black
         view.addGestureRecognizer(createSwipeGestureRecognizer(for: .right))
         timeForChartDataSource.update(with: categories)
         compactCollectionDataSource.update(with: items!)
-        //MARK: Combine
-        compactCollectionDataSource.itemSubject.sink { item in
-            let vc = ItemViewController(item: item, items: self.items!)
-            vc.modalPresentationStyle = .custom
-            self.present(vc, animated: true, completion: nil)
-        }.store(in: &subscriptions)
-        
+        collectionViewItemSelected()
         addMainTableView()
         addReturnButton()
     }
@@ -78,10 +71,8 @@ class ItemViewController: UIViewController {
             return
         }
         view.addSubview(mainTableView)
-        
         mainTableView.delegate = self
         mainTableView.dataSource = self
-        
         mainTableView.register(PriceAndImageTableViewCell.self, forCellReuseIdentifier: PriceAndImageTableViewCell.identifier)
         mainTableView.register(OwnersAndFavoritesTableViewCell.self, forCellReuseIdentifier: OwnersAndFavoritesTableViewCell.identifier)
         mainTableView.register(DescriptionTableViewCell.self, forCellReuseIdentifier: DescriptionTableViewCell.identifier)
@@ -90,15 +81,22 @@ class ItemViewController: UIViewController {
         mainTableView.register(HeaderTableViewCell.self, forCellReuseIdentifier: HeaderTableViewCell.identifier)
         mainTableView.register(CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.identifier)
         mainTableView.register(ChartTableViewCell.self, forCellReuseIdentifier: ChartTableViewCell.identifier)
-        
         mainTableView.backgroundColor = .black
         mainTableView.separatorColor = .clear
         mainTableView.showsHorizontalScrollIndicator = false
         mainTableView.showsVerticalScrollIndicator = false
-        
         mainTableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    //MARK: Combine
+    private func collectionViewItemSelected() {
+        compactCollectionDataSource.itemSubject.sink { item in
+            let vc = ItemViewController(item: item, items: self.items!)
+            vc.modalPresentationStyle = .custom
+            self.present(vc, animated: true, completion: nil)
+        }.store(in: &subscriptions)
     }
    
     private func addReturnButton() {

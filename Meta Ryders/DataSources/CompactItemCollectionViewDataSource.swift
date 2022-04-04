@@ -8,7 +8,7 @@ import UIKit
 import Combine
 
 class CompactItemCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
-    var itemSubject: PassthroughSubject<Item,Never> = .init()
+    var itemSubject: CombineSubject<Item> = .init()
     var cellType: UICollectionViewCell.Type {
         return CompactItemCollectionViewCell.self
     }
