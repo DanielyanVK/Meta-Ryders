@@ -13,4 +13,5 @@ struct Item: Codable {
     let description: String
     let price: Double
     let growth: Double
+    let modelName: String
 }

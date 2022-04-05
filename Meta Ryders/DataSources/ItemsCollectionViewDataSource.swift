@@ -6,23 +6,22 @@
 //
 
 import UIKit
+import Combine
 
 class ItemsCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSource {
-    
-    var itemSelected: ItemClosure<Item>?
-    
-    var collectionViewLayout: UICollectionViewLayout {
-        return setupLayout()
-    }
+    // creating Subject. That's one way to create publisher in combine
+    var itemSubject: CombineSubject<Item> = .init()
     
     var cellType: UICollectionViewCell.Type {
         return ItemCollectionViewCell.self
     }
+    var collectionViewLayout: UICollectionViewLayout {
+        return setupLayout()
+    }
     
     var items: [Item] = []
-    
+        
     internal func setupLayout() -> UICollectionViewLayout {
-        // section -> groups -> items -> size
         let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(260),
                                               heightDimension: .estimated(390))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -35,7 +34,6 @@ class ItemsCollectionViewDataSource: NSObject, HorizontalCollectionViewDataSourc
         section.interGroupSpacing = spacing
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: spacing, bottom: 0, trailing: spacing)
         section.orthogonalScrollingBehavior = .continuous
-        
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
@@ -45,7 +43,8 @@ extension ItemsCollectionViewDataSource: UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = items[indexPath.item]
-        itemSelected?(item)
+        // we command our publisher to send specifict value type. We will subscribe to this publisher wherever we need it to be
+        itemSubject.send(item)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -58,8 +57,6 @@ extension ItemsCollectionViewDataSource: UICollectionViewDelegate, UICollectionV
         
         let item = items[indexPath.item]
         cell.configureHorizontalCollectionViewCell(by: item, imageViewHeroId: item.imageName)
-        
         return cell
-        
     }
 }

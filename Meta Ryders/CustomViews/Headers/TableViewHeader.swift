@@ -8,24 +8,11 @@
 import UIKit
 
 class TableViewHeader: UIView {
-    
-    enum TableViewSections {
-        case categories
-        case notFallable
-        case news
-    }
-    
-    private let headerLabel: UILabel = {
-        let headerLabel = UILabel()
-    
-        return headerLabel
-    }()
-    
+    private let headerLabel = UILabel()
     private let seeAllButton = UIButton(frame: .zero)
-
+    
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        
         addLabel()
         addSeeAllButton()
         backgroundColor = .mediumWeightGray
@@ -36,11 +23,9 @@ class TableViewHeader: UIView {
         case .categories:
             headerLabel.text = "NFTs by Categories"
             seeAllButton.addTarget(self, action: #selector(seeAllTappedForCategory), for: .touchUpInside)
-            
         case .notFallable:
             headerLabel.text = "Not Fallable NFTs"
             seeAllButton.addTarget(self, action: #selector(seeAllTappedForNotFallable), for: .touchUpInside)
-            
         case .news:
             headerLabel.text = "Trending News"
             seeAllButton.addTarget(self, action: #selector(seeAllTappedForNews), for: .touchUpInside)
@@ -80,5 +65,10 @@ class TableViewHeader: UIView {
             make.trailing.equalTo(-20)
             make.centerY.equalTo(headerLabel.snp.centerY)
         }
+    }
+    enum TableViewSections {
+        case categories
+        case notFallable
+        case news
     }
 }

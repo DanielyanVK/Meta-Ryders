@@ -7,9 +7,7 @@
 import UIKit
 
 protocol HorizontalCollectionViewDataSource: UICollectionViewDelegate, UICollectionViewDataSource {
-    
     var cellType: UICollectionViewCell.Type { get }
     var collectionViewLayout: UICollectionViewLayout { get }
-    
     func setupLayout() -> UICollectionViewLayout
 }

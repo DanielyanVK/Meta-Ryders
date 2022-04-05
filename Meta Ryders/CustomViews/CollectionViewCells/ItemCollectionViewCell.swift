@@ -11,61 +11,21 @@ import SnapKit
 class ItemCollectionViewCell: UICollectionViewCell {
         
     //MARK: Initializing cell's elements
-    private let backgroundImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage()
-        
-        return imageView
-    }()
-    
-    private let currencyIconView: UIImageView = {
-        let ethImageView = UIImageView()
-        
-        return ethImageView
-    }()
-    
-    private let nameLabel: UILabel = {
-        let label = UILabel()
-        
-        return label
-    }()
-    
-    private let descriptionLabel: UILabel = {
-        let descriptionLabel = UILabel()
-        
-        return descriptionLabel
-    }()
-    
-    private let priceLabel: UILabel = {
-        let ethLabel = UILabel()
-        
-        return ethLabel
-    }()
-    
-    
-    private let growthLabel: UILabel = {
-        let growthLabel = UILabel()
-        
-        return growthLabel
-    }()
-    
-    private let verificationIconView: UIImageView = {
-        let verificationIconView = UIImageView()
-        
-        return verificationIconView
-    }()
-    
-    private let shadowView: UIView = {
-        let shadowView = UIView()
-        return shadowView
-    }()
-    
+    private let backgroundImageView = UIImageView()
+    private let currencyIconView = UIImageView()
+    private let nameLabel = UILabel()
+    private let descriptionLabel = UILabel()
+    private let priceLabel = UILabel()
+    private let growthLabel = UILabel()
+    private let verificationIconView = UIImageView()
+    private let shadowView = UIView()
+ 
     override func didMoveToSuperview() {
-        
+        super.didMoveToSuperview()
+        addRotationParallaxEffect(amount: 25)
         layer.cornerRadius = 14
         backgroundColor = .white
         clipsToBounds = true
-        
         addShadowView()
         addBackgroundImageView()
         addNameLabel()
@@ -74,18 +34,15 @@ class ItemCollectionViewCell: UICollectionViewCell {
         addPriceLabel()
         addGrowthLabel()
         addVerificationIconView()
-        
     }
     
     //MARK: Cell configuration
     public func configureHorizontalCollectionViewCell(by item: Item, imageViewHeroId: String?) {
-        
         nameLabel.text = item.name
         backgroundImageView.image = UIImage(named: item.imageName)
         descriptionLabel.text = item.description
         priceLabel.text = "\(item.price.description) ETH"
         backgroundImageView.hero.id = imageViewHeroId
-        
         if item.growth > 0 {
             growthLabel.text = "+\(item.growth.description)%"
             growthLabel.textColor = .lightweightGreen
