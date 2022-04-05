@@ -14,6 +14,7 @@ class TabBarView: UIView {
     private let settingsButton = UIButton(frame: .zero)
     private let itemListButton = UIButton(frame: .zero)
     private let frameImageView = UIImageView()
+    var presentationClosure = {}
   
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -112,7 +113,7 @@ class TabBarView: UIView {
     }
     
     @objc private func cameraButtonTapped() {
-        print("Camera Button - Tapped")
+       presentationClosure()
     }
     
     @objc private func settingsButtonTapped() {

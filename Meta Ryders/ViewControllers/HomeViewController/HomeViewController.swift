@@ -14,6 +14,11 @@ class HomeViewController: UIViewController {
     private var dataSources: [HorizontalCollectionViewDataSource] = []
     private var tabBarView: UIView {
         let tabBarView = TabBarView()
+        tabBarView.presentationClosure = {
+            let vc = ARCameraViewController(items: self.items)
+            vc.modalPresentationStyle = .custom
+            self.present(vc, animated: true, completion: nil)
+        }
         return tabBarView
     }
     private enum Sections {

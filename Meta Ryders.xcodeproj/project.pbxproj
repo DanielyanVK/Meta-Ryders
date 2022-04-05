@@ -32,6 +32,8 @@
 		E447CD2427B7A7A60095CB91 /* UIFont+Default+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = E447CD2327B7A7A60095CB91 /* UIFont+Default+Rounded.swift */; };
 		E448AB8527D9CC48000DAB15 /* CompactItemCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E448AB8427D9CC48000DAB15 /* CompactItemCollectionViewDataSource.swift */; };
 		E448AB8727D9CC84000DAB15 /* CompactItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E448AB8627D9CC84000DAB15 /* CompactItemCollectionViewCell.swift */; };
+		E45DF79F27FC1F4B0083D460 /* ARCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45DF79E27FC1F4B0083D460 /* ARCameraViewController.swift */; };
+		E45DF7A127FC1FFA0083D460 /* CameraItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45DF7A027FC1FFA0083D460 /* CameraItemCollectionViewCell.swift */; };
 		E4605E2327D47A6E003B1276 /* OwnersAndFavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4605E2227D47A6E003B1276 /* OwnersAndFavoritesTableViewCell.swift */; };
 		E48363E627CF2D1C002F5B7B /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48363E527CF2D1C002F5B7B /* TabBarView.swift */; };
 		E483804E27BFBF09008C686B /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483804D27BFBF09008C686B /* Identifiers.swift */; };
@@ -84,6 +86,8 @@
 		E447CD2327B7A7A60095CB91 /* UIFont+Default+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Default+Rounded.swift"; sourceTree = "<group>"; };
 		E448AB8427D9CC48000DAB15 /* CompactItemCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactItemCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		E448AB8627D9CC84000DAB15 /* CompactItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		E45DF79E27FC1F4B0083D460 /* ARCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCameraViewController.swift; sourceTree = "<group>"; };
+		E45DF7A027FC1FFA0083D460 /* CameraItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		E4605E2227D47A6E003B1276 /* OwnersAndFavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnersAndFavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		E48363E527CF2D1C002F5B7B /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		E483804D27BFBF09008C686B /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
@@ -220,6 +224,7 @@
 		E447CD0D27B7873B0095CB91 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E45DF79D27FC1F160083D460 /* ARCameraViewController */,
 				E447CD0E27B787450095CB91 /* HomeViewController */,
 				7CB7826727C270BF00872546 /* ItemViewController */,
 				E4BA813627F175500075BD09 /* NewsViewController */,
@@ -269,6 +274,7 @@
 				E4C10DAA27BCCFB6002387DC /* CategoryCollectionViewCell.swift */,
 				E4B1DB0A27C9ED5900BF5ECF /* NewsCollectionViewCell.swift */,
 				E448AB8627D9CC84000DAB15 /* CompactItemCollectionViewCell.swift */,
+				E45DF7A027FC1FFA0083D460 /* CameraItemCollectionViewCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -292,6 +298,14 @@
 				E483804D27BFBF09008C686B /* Identifiers.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E45DF79D27FC1F160083D460 /* ARCameraViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E45DF79E27FC1F4B0083D460 /* ARCameraViewController.swift */,
+			);
+			name = ARCameraViewController;
 			sourceTree = "<group>";
 		};
 		E48363E427CF2CDE002F5B7B /* TabBar */ = {
@@ -459,6 +473,7 @@
 				E447CCFB27B786BC0095CB91 /* SceneDelegate.swift in Sources */,
 				E4BA813A27F182070075BD09 /* NewsTableViewCell.swift in Sources */,
 				E4B1DB0C27C9F75D00BF5ECF /* NewsCollectionViewDataSource.swift in Sources */,
+				E45DF7A127FC1FFA0083D460 /* CameraItemCollectionViewCell.swift in Sources */,
 				E4BA813827F1757E0075BD09 /* NewsViewController.swift in Sources */,
 				E447CD2127B78F6E0095CB91 /* Item.swift in Sources */,
 				E447CD1027B7875F0095CB91 /* HomeViewController.swift in Sources */,
@@ -477,6 +492,7 @@
 				E4ECCDBA27BE3EDB0050A6CF /* ItemsCollectionViewDataSource.swift in Sources */,
 				E4605E2327D47A6E003B1276 /* OwnersAndFavoritesTableViewCell.swift in Sources */,
 				E4C10DAD27BCD14F002387DC /* Category.swift in Sources */,
+				E45DF79F27FC1F4B0083D460 /* ARCameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
