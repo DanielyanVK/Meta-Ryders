@@ -10,7 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var homeVC: ARCameraViewController?
+    var homeVC: HomeViewController?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
               window = UIWindow(windowScene: scene)
               window?.makeKeyAndVisible()
-              window?.rootViewController = UINavigationController(rootViewController: ARCameraViewController())
+              window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
       }
 
     func sceneDidDisconnect(_ scene: UIScene) {
