@@ -69,7 +69,6 @@ class HomeViewController: UIViewController {
         mainTableView.separatorColor = .clear
         mainTableView.showsHorizontalScrollIndicator = false
         mainTableView.showsVerticalScrollIndicator = false
-        
         mainTableView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(100)
             make.leading.trailing.bottom.equalToSuperview()
@@ -146,7 +145,7 @@ class HomeViewController: UIViewController {
         itemsCollectionViewDataSource.itemSubject.sink { item in
             let vc = ItemViewController(item: item, heroId: item.imageName, items: self.items)
             vc.hero.isEnabled = true
-            vc.modalPresentationStyle = .custom
+            vc.hero.modalAnimationType = .selectBy(presenting: .zoom, dismissing: .zoomOut)
             self.present(vc, animated: true, completion: nil)
         }.store(in: &subscriptions)
         notFallableCollectionViewDataSource.itemSubject = itemsCollectionViewDataSource.itemSubject
@@ -224,7 +223,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case .notFallable:
             return 390
         case .news:
-            return 260
+            return 440
         }
     }
     

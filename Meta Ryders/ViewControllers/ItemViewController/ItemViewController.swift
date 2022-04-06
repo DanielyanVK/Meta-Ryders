@@ -44,7 +44,6 @@ class ItemViewController: UIViewController {
     private var item: Item?
     private var items: [Item]?
     private var heroId: String?
-    var datasHome: [String] = []
     
     convenience init(item: Item, heroId: String? = nil, items: [Item]) {
         self.init()
@@ -62,6 +61,7 @@ class ItemViewController: UIViewController {
         collectionViewItemSelected()
         addMainTableView()
         addReturnButton()
+        configureHeroTransition()
     }
     
     // MARK: View Controller's elements configuration
@@ -113,6 +113,12 @@ class ItemViewController: UIViewController {
             make.top.equalTo(40)
         }
     }
+    
+    private func configureHeroTransition() {
+        mainTableView?.hero.id = heroId
+
+    }
+    
     @objc private func returnButtonTapped() {
         dismiss(animated: true, completion: nil)
         // option if we want to return to homeVC immediatly after browsing similar items on itemVC. Not sure how u want it. We can maybe to regular dismiss with swipe and do full dismiss to homeVC with return button. Up to you, commenting this out for now
@@ -153,7 +159,7 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
         switch section {
         case .priceAndImage:
             let cell = mainTableView?.dequeueReusableCell(withIdentifier: PriceAndImageTableViewCell.identifier, for: indexPath) as! PriceAndImageTableViewCell
-            cell.configurePriceAndImageCell(by: item!, hero: heroId ?? "")
+            cell.configurePriceAndImageCell(by: item!)
             return cell
             
         case .ownersAndFavorites:

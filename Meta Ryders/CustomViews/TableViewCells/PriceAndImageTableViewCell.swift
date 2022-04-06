@@ -31,10 +31,9 @@ class PriceAndImageTableViewCell: UITableViewCell {
         addDegreesLabel()
     }
     
-    public func configurePriceAndImageCell(by item: Item, hero: String) {
+    public func configurePriceAndImageCell(by item: Item) {
         heroImageView.image = UIImage(named: item.imageName)
         priceLabel.text = "ETH \(item.price.description)"
-        heroImageView.hero.id = hero
         // scene configuration
         // 1: Load .obj file
         let scene = SCNScene(named: item.modelName)
