@@ -39,5 +39,14 @@ class NetworkingService {
             promise(.success(items))
         }
     }
-   
+    
+    public func fetchNotifications() -> Future<[Notification], Error> {
+        return Future { promise in
+            let notifications: [Notification] = [
+                Notification(title: "Check out our most popular NFTs", description: "Hello dear User, please check out our trendiest NFTs. Don't miss the opportunity to make money!", imageName: "chart"),
+                Notification(title: "Please update your application.", description: "New version is released and it's better then ever! Please update your application via AppStore!", imageName: "updated")
+            ]
+            promise(.success(notifications))
+        }
+    }
 }

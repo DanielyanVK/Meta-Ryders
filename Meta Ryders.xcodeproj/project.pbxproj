@@ -14,6 +14,9 @@
 		E4186DDB27D5DF3B004E3FA3 /* PurchaseAndOfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4186DDA27D5DF3B004E3FA3 /* PurchaseAndOfferTableViewCell.swift */; };
 		E4186DDD27D5F7A9004E3FA3 /* SaleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4186DDC27D5F7A9004E3FA3 /* SaleTableViewCell.swift */; };
 		E4186DDF27D601DA004E3FA3 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4186DDE27D601DA004E3FA3 /* HeaderTableViewCell.swift */; };
+		E4445EA92801513100F155AE /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4445EA82801513100F155AE /* NotificationsViewController.swift */; };
+		E4445EAB280151FE00F155AE /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4445EAA280151FE00F155AE /* Notification.swift */; };
+		E4445EAD2801592100F155AE /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4445EAC2801592100F155AE /* NotificationTableViewCell.swift */; };
 		E447CC0E27DDB3D7005065F9 /* converse_obj.obj in Resources */ = {isa = PBXBuildFile; fileRef = E447CC0927DDB3D6005065F9 /* converse_obj.obj */; };
 		E447CC0F27DDB3D7005065F9 /* converse_bump.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E447CC0A27DDB3D6005065F9 /* converse_bump.jpg */; };
 		E447CC1027DDB3D7005065F9 /* converse_obj.mtl in Resources */ = {isa = PBXBuildFile; fileRef = E447CC0B27DDB3D6005065F9 /* converse_obj.mtl */; };
@@ -67,6 +70,9 @@
 		E4186DDA27D5DF3B004E3FA3 /* PurchaseAndOfferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseAndOfferTableViewCell.swift; sourceTree = "<group>"; };
 		E4186DDC27D5F7A9004E3FA3 /* SaleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleTableViewCell.swift; sourceTree = "<group>"; };
 		E4186DDE27D601DA004E3FA3 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		E4445EA82801513100F155AE /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		E4445EAA280151FE00F155AE /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		E4445EAC2801592100F155AE /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		E447CC0927DDB3D6005065F9 /* converse_obj.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = converse_obj.obj; sourceTree = "<group>"; };
 		E447CC0A27DDB3D6005065F9 /* converse_bump.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = converse_bump.jpg; sourceTree = "<group>"; };
 		E447CC0B27DDB3D6005065F9 /* converse_obj.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = converse_obj.mtl; sourceTree = "<group>"; };
@@ -142,6 +148,14 @@
 				E4D9A0CA27FAB1C6008C2AC5 /* Combine.swift */,
 			);
 			path = Typealiases;
+			sourceTree = "<group>";
+		};
+		E4445EA7280150FF00F155AE /* NotificationsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E4445EA82801513100F155AE /* NotificationsViewController.swift */,
+			);
+			path = NotificationsViewController;
 			sourceTree = "<group>";
 		};
 		E447CBFB27DDB382005065F9 /* Objects */ = {
@@ -228,6 +242,7 @@
 				E447CD0E27B787450095CB91 /* HomeViewController */,
 				7CB7826727C270BF00872546 /* ItemViewController */,
 				E4BA813627F175500075BD09 /* NewsViewController */,
+				E4445EA7280150FF00F155AE /* NotificationsViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -263,6 +278,7 @@
 				E4186DDE27D601DA004E3FA3 /* HeaderTableViewCell.swift */,
 				E4D5F34827D88EFB00AEBDD1 /* ChartTableViewCell.swift */,
 				E4BA813927F182070075BD09 /* NewsTableViewCell.swift */,
+				E4445EAC2801592100F155AE /* NotificationTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -285,6 +301,7 @@
 				E447CD2027B78F6E0095CB91 /* Item.swift */,
 				E4C10DAC27BCD14F002387DC /* Category.swift */,
 				E4B1DB0827C9EA9900BF5ECF /* News.swift */,
+				E4445EAA280151FE00F155AE /* Notification.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -458,6 +475,7 @@
 				E4A0FDA027BB8F7D0099EEDB /* UIColor+Hex.swift in Sources */,
 				E448AB8527D9CC48000DAB15 /* CompactItemCollectionViewDataSource.swift in Sources */,
 				E4B0F09227BCFC8000965A17 /* CategoriesCollectionViewDataSource.swift in Sources */,
+				E4445EA92801513100F155AE /* NotificationsViewController.swift in Sources */,
 				E4D9A0CE27FAB476008C2AC5 /* NetworkingService.swift in Sources */,
 				E4A0FDA227BB91470099EEDB /* UIColor+Additionals.swift in Sources */,
 				E411BB9527D3498200C1BA60 /* ItemViewController.swift in Sources */,
@@ -478,6 +496,7 @@
 				E447CD2127B78F6E0095CB91 /* Item.swift in Sources */,
 				E447CD1027B7875F0095CB91 /* HomeViewController.swift in Sources */,
 				E483804E27BFBF09008C686B /* Identifiers.swift in Sources */,
+				E4445EAD2801592100F155AE /* NotificationTableViewCell.swift in Sources */,
 				E448AB8727D9CC84000DAB15 /* CompactItemCollectionViewCell.swift in Sources */,
 				7CB7827127C2724300872546 /* Closures.swift in Sources */,
 				E4B0F08F27BCFC3F00965A17 /* HorizontalCollectionViewDataSource.swift in Sources */,
@@ -490,6 +509,7 @@
 				E48363E627CF2D1C002F5B7B /* TabBarView.swift in Sources */,
 				E4186DDB27D5DF3B004E3FA3 /* PurchaseAndOfferTableViewCell.swift in Sources */,
 				E4ECCDBA27BE3EDB0050A6CF /* ItemsCollectionViewDataSource.swift in Sources */,
+				E4445EAB280151FE00F155AE /* Notification.swift in Sources */,
 				E4605E2327D47A6E003B1276 /* OwnersAndFavoritesTableViewCell.swift in Sources */,
 				E4C10DAD27BCD14F002387DC /* Category.swift in Sources */,
 				E45DF79F27FC1F4B0083D460 /* ARCameraViewController.swift in Sources */,

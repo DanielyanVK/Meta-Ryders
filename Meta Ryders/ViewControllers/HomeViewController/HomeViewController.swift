@@ -190,10 +190,10 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func notificationsButtonTapped(_ sender: UIButton) {
-        categories.insert(Category(name: "Combine, Baby!"), at: 0)
-        print("Notifications - tapped")
-    }
-    
+        let vc = NotificationsViewController()
+        vc.modalPresentationStyle = .pageSheet
+        self.present(vc, animated: true, completion: nil)
+    }    
 }
 
 // MARK: TableView Extensions
@@ -207,7 +207,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // this one looks too clean to refactor atm. If you want I can bind it to enum as well
         let cell = mainTableView?.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
         cell.configureTableViewCell(with: dataSources[indexPath.section], layout: dataSources[indexPath.section].collectionViewLayout, for: .lightBackground)
         return cell
@@ -261,12 +260,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        let dataSource = dataSources[section]
-        if dataSource is CategoriesCollectionViewDataSource {
+        let section = sections[section]
+        switch section {
+        case .categories:
             return 18
-        } else if dataSource is ItemsCollectionViewDataSource {
-            return 36
-        } else {
+        case . items:
+            return 34
+        default:
             return 0
         }
     }
