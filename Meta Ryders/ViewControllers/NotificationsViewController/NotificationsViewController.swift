@@ -13,6 +13,10 @@ class NotificationsViewController: UIViewController {
     private var notifications: [Notification] = []
     private let networkingService = NetworkingService()
     private var subscriptions: Set<AnyCancellable> = []
+    private var selectedIndex : IndexPath = .init()
+    private var selectedCategory: Notification?
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,10 +65,21 @@ extension NotificationsViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: NotificationTableViewCell.identifier, for: indexPath) as! NotificationTableViewCell
         let notification = notifications[indexPath.item]
         cell.configure(by: notification)
+        cell.animate()
         return cell
     }
     // will get rid of these throughout whole project once I figure out how
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+    // will try to implement some method to return value to 70 when tapped again. Not sure how yet
+        if selectedIndex == indexPath { return 120 }
+        return 74
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = indexPath
+        tableView.beginUpdates()
+        tableView.reloadRows(at: [selectedIndex], with: .none)
+        tableView.endUpdates()
     }
 }
