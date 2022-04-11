@@ -12,6 +12,8 @@ class NotificationTableViewCell: UITableViewCell {
     private let notificationLabel = UILabel()
     private let descriptionLabel = UILabel()
     private let containerView = UIView()
+    let expandIcon = UIImageView()
+    
 
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -21,22 +23,20 @@ class NotificationTableViewCell: UITableViewCell {
         addNotificationImageView()
         addNotificationLabel()
         addDescriptionLabel()
+        addExpandIcon()
     }
+    
     public func configure(by notification: Notification) {
         notificationImageView.image = UIImage(named: notification.imageName)
         notificationLabel.text = notification.title
         descriptionLabel.text = notification.description
     }
-    public func animate() {
-        UIView.animate(withDuration: 0.5, delay: 0.3, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseIn) {
-            self.contentView.layoutIfNeeded()
-        }
-    }
+   
     private func addContainerView() {
         addSubview(containerView)
         containerView.snp.makeConstraints { make in
-            make.leading.equalTo(2)
-            make.trailing.equalTo(-2)
+            make.leading.equalTo(16)
+            make.trailing.equalTo(-16)
             make.top.equalTo(10)
             make.bottom.equalToSuperview()
         }
@@ -47,10 +47,9 @@ class NotificationTableViewCell: UITableViewCell {
         notificationImageView.clipsToBounds = true
         notificationImageView.layer.cornerRadius = 12
         notificationImageView.contentMode = .scaleAspectFill
-        
         notificationImageView.snp.makeConstraints { make in
             make.top.equalTo(10)
-            make.leading.equalTo(2)
+            make.leading.equalTo(16)
             make.width.equalTo(62)
             make.height.equalTo(62)
         }
@@ -61,9 +60,10 @@ class NotificationTableViewCell: UITableViewCell {
         notificationLabel.numberOfLines = 1
         notificationLabel.font = .rounded(ofSize: 16, weight: .semibold)
         notificationLabel.snp.makeConstraints { make in
-            make.top.equalTo(10)
-            make.leading.equalTo(notificationImageView.snp.trailing)
-            make.trailing.equalTo(-2)
+            make.top.equalTo(containerView.snp.top)
+            make.leading.equalTo(notificationImageView.snp.trailing).offset(6)
+            make.height.equalTo(64)
+            make.trailing.equalTo(-16)
         }
     }
     private func addDescriptionLabel() {
@@ -73,10 +73,21 @@ class NotificationTableViewCell: UITableViewCell {
         descriptionLabel.textAlignment = .left
         descriptionLabel.lineBreakMode = .byWordWrapping
         descriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(notificationLabel.snp.bottom)
+            make.bottom.equalToSuperview()
+            make.leading.equalTo(notificationImageView.snp.trailing).offset(6)
+            make.trailing.equalTo(-16)
+        }
+    }
+    private func addExpandIcon() {
+        addSubview(expandIcon)
+        expandIcon.image = UIImage(named: "expand")
+        expandIcon.clipsToBounds = true
+        expandIcon.snp.makeConstraints { make in
+            make.trailing.equalTo(-10)
+            make.height.equalTo(20)
+            make.width.equalTo(20)
             make.top.equalTo(30)
-            make.bottom.equalTo(containerView.snp.bottom)
-            make.leading.equalTo(notificationImageView.snp.trailing)
-            make.trailing.equalTo(-2)
         }
     }
 }

@@ -15,8 +15,7 @@ class NotificationsViewController: UIViewController {
     private var subscriptions: Set<AnyCancellable> = []
     private var selectedIndex : IndexPath = .init()
     private var selectedCategory: Notification?
-
-
+    private var isExpanded = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,21 +64,25 @@ extension NotificationsViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: NotificationTableViewCell.identifier, for: indexPath) as! NotificationTableViewCell
         let notification = notifications[indexPath.item]
         cell.configure(by: notification)
-        cell.animate()
+        // Тут мне нужна твоя помощь исправить небольшой недочет. Если мы раскроем одну клетку, а затем, не закрывая ее раскроем вторую, первая клетка свернется, но expandIcon не вернется на место. Если можешь, взгляни, пожалуйста, буду благодарен
+        cell.expandIcon.isHidden = isExpanded == true
         return cell
     }
-    // will get rid of these throughout whole project once I figure out how
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    // will try to implement some method to return value to 70 when tapped again. Not sure how yet
-        if selectedIndex == indexPath { return 120 }
-        return 74
-        
+        if selectedIndex == indexPath && isExpanded == true {
+            return 140
+        } else {
+            return 74
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath
         tableView.beginUpdates()
-        tableView.reloadRows(at: [selectedIndex], with: .none)
+        isExpanded.toggle()
+        tableView.layoutIfNeeded()
+        tableView.reloadRows(at: [selectedIndex], with: .automatic)
         tableView.endUpdates()
     }
 }
