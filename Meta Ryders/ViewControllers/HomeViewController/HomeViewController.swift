@@ -14,8 +14,13 @@ class HomeViewController: UIViewController {
     private var dataSources: [HorizontalCollectionViewDataSource] = []
     private var tabBarView: UIView {
         let tabBarView = TabBarView()
-        tabBarView.presentationClosure = {
+        tabBarView.cameraPresentClosure = {
             let vc = ARCameraViewController(items: self.items)
+            vc.modalPresentationStyle = .custom
+            self.present(vc, animated: true, completion: nil)
+        }
+        tabBarView.settingsPresentClosure = {
+            let vc = SettingsViewController()
             vc.modalPresentationStyle = .custom
             self.present(vc, animated: true, completion: nil)
         }

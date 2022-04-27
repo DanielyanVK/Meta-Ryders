@@ -8,13 +8,19 @@
 import UIKit
 
 class TabBarView: UIView {
+    enum Buttons {
+        case camera
+        case settings
+    }
     private let homeButton = UIButton(frame: .zero)
     private let graphsButton = UIButton(frame: .zero)
     private let cameraButton = UIButton(frame: .zero)
     private let settingsButton = UIButton(frame: .zero)
     private let itemListButton = UIButton(frame: .zero)
     private let frameImageView = UIImageView()
-    var presentationClosure = {}
+    // for now I'm making few empty closures to set up navigation. Later on we can find cleaner way around, maybe coordinator pattern?
+    var cameraPresentClosure = {}
+    var settingsPresentClosure = {}
   
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -28,7 +34,7 @@ class TabBarView: UIView {
         addItemListButton()
         addSettingsButton()
     }
-    
+   
     private func setupTabBar() {
         layer.cornerRadius = 26
         
@@ -113,11 +119,11 @@ class TabBarView: UIView {
     }
     
     @objc private func cameraButtonTapped() {
-       presentationClosure()
+       cameraPresentClosure()
     }
     
     @objc private func settingsButtonTapped() {
-        print("Settings Button - Tapped")
+        settingsPresentClosure()
     }
     
     @objc private func itemListButtonTapped() {
