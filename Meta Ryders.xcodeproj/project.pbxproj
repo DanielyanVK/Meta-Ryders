@@ -14,6 +14,7 @@
 		E4186DDB27D5DF3B004E3FA3 /* PurchaseAndOfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4186DDA27D5DF3B004E3FA3 /* PurchaseAndOfferTableViewCell.swift */; };
 		E4186DDD27D5F7A9004E3FA3 /* SaleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4186DDC27D5F7A9004E3FA3 /* SaleTableViewCell.swift */; };
 		E4186DDF27D601DA004E3FA3 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4186DDE27D601DA004E3FA3 /* HeaderTableViewCell.swift */; };
+		E42C51B6281A574000842830 /* UserMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C51B5281A574000842830 /* UserMenuTableViewCell.swift */; };
 		E42F7A3E281907B300759171 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42F7A3D281907B300759171 /* User.swift */; };
 		E42F7A4028190B3500759171 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42F7A3F28190B3500759171 /* UserTableViewCell.swift */; };
 		E4445EA92801513100F155AE /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4445EA82801513100F155AE /* NotificationsViewController.swift */; };
@@ -41,6 +42,7 @@
 		E45DF7A127FC1FFA0083D460 /* CameraItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45DF7A027FC1FFA0083D460 /* CameraItemCollectionViewCell.swift */; };
 		E4605E2327D47A6E003B1276 /* OwnersAndFavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4605E2227D47A6E003B1276 /* OwnersAndFavoritesTableViewCell.swift */; };
 		E46BF2BF2817F0E9003E8A2C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46BF2BE2817F0E9003E8A2C /* SettingsViewController.swift */; };
+		E474686A281A4B52008BFB61 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4746869281A4B52008BFB61 /* UserViewController.swift */; };
 		E48363E627CF2D1C002F5B7B /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48363E527CF2D1C002F5B7B /* TabBarView.swift */; };
 		E483804E27BFBF09008C686B /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483804D27BFBF09008C686B /* Identifiers.swift */; };
 		E4A0FDA027BB8F7D0099EEDB /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0FD9F27BB8F7D0099EEDB /* UIColor+Hex.swift */; };
@@ -73,6 +75,7 @@
 		E4186DDA27D5DF3B004E3FA3 /* PurchaseAndOfferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseAndOfferTableViewCell.swift; sourceTree = "<group>"; };
 		E4186DDC27D5F7A9004E3FA3 /* SaleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleTableViewCell.swift; sourceTree = "<group>"; };
 		E4186DDE27D601DA004E3FA3 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		E42C51B5281A574000842830 /* UserMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuTableViewCell.swift; sourceTree = "<group>"; };
 		E42F7A3D281907B300759171 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E42F7A3F28190B3500759171 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		E4445EA82801513100F155AE /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +104,7 @@
 		E45DF7A027FC1FFA0083D460 /* CameraItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		E4605E2227D47A6E003B1276 /* OwnersAndFavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnersAndFavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		E46BF2BE2817F0E9003E8A2C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E4746869281A4B52008BFB61 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		E48363E527CF2D1C002F5B7B /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		E483804D27BFBF09008C686B /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		E4A0FD9F27BB8F7D0099EEDB /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
@@ -250,6 +254,7 @@
 				E4445EA7280150FF00F155AE /* NotificationsViewController */,
 				E45DF79D27FC1F160083D460 /* ARCameraViewController */,
 				E46BF2BB2817E389003E8A2C /* SettingsViewController */,
+				E474686B281A4B69008BFB61 /* UserViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 				E4BA813927F182070075BD09 /* NewsTableViewCell.swift */,
 				E4445EAC2801592100F155AE /* NotificationTableViewCell.swift */,
 				E42F7A3F28190B3500759171 /* UserTableViewCell.swift */,
+				E42C51B5281A574000842830 /* UserMenuTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -340,6 +346,14 @@
 				E46BF2BE2817F0E9003E8A2C /* SettingsViewController.swift */,
 			);
 			path = SettingsViewController;
+			sourceTree = "<group>";
+		};
+		E474686B281A4B69008BFB61 /* UserViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E4746869281A4B52008BFB61 /* UserViewController.swift */,
+			);
+			path = UserViewController;
 			sourceTree = "<group>";
 		};
 		E48363E427CF2CDE002F5B7B /* TabBar */ = {
@@ -490,6 +504,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4A0FDA027BB8F7D0099EEDB /* UIColor+Hex.swift in Sources */,
+				E474686A281A4B52008BFB61 /* UserViewController.swift in Sources */,
 				E448AB8527D9CC48000DAB15 /* CompactItemCollectionViewDataSource.swift in Sources */,
 				E46BF2BF2817F0E9003E8A2C /* SettingsViewController.swift in Sources */,
 				E4B0F09227BCFC8000965A17 /* CategoriesCollectionViewDataSource.swift in Sources */,
@@ -517,6 +532,7 @@
 				E483804E27BFBF09008C686B /* Identifiers.swift in Sources */,
 				E4445EAD2801592100F155AE /* NotificationTableViewCell.swift in Sources */,
 				E448AB8727D9CC84000DAB15 /* CompactItemCollectionViewCell.swift in Sources */,
+				E42C51B6281A574000842830 /* UserMenuTableViewCell.swift in Sources */,
 				7CB7827127C2724300872546 /* Closures.swift in Sources */,
 				E4B0F08F27BCFC3F00965A17 /* HorizontalCollectionViewDataSource.swift in Sources */,
 				E447CD2427B7A7A60095CB91 /* UIFont+Default+Rounded.swift in Sources */,

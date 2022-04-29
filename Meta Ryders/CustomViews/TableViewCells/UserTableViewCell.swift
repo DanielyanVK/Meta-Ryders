@@ -20,10 +20,13 @@ class UserTableViewCell: UITableViewCell {
         addUserNameLabel()
         addArrowIconView()
     }
+    public func configure(by user: User) {
+        userNameLabel.text = user.username
+        profileImageView.image = UIImage(named: user.profilePictureName)
+    }
 
     private func addProfileImageView() {
         addSubview(profileImageView)
-        profileImageView.image = UIImage(named: "BellaDoll")
         profileImageView.clipsToBounds = true
         profileImageView.layer.cornerRadius = 40
         profileImageView.snp.makeConstraints { make in
@@ -38,7 +41,6 @@ class UserTableViewCell: UITableViewCell {
     private func addUserNameLabel() {
         addSubview(userNameLabel)
         // we will set max lenght in extension
-        userNameLabel.text = "Veguyasu"
         userNameLabel.numberOfLines = 1
         userNameLabel.font = .rounded(ofSize: 22, weight: .semibold)
         userNameLabel.snp.makeConstraints { make in
@@ -53,7 +55,7 @@ class UserTableViewCell: UITableViewCell {
         arrowIconView.image = UIImage(systemName: "chevron.right")
         arrowIconView.tintColor = .lightweightGray
         arrowIconView.snp.makeConstraints { make in
-            make.trailing.equalTo(-6)
+            make.trailing.equalTo(-20)
             make.centerY.equalToSuperview()
         }
         

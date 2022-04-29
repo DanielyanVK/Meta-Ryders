@@ -50,10 +50,10 @@ class NetworkingService {
         }
     }
     
-    public func getUser() -> Future<[User], Error> {
+    public func getUser() -> Future<User, Error> {
         return Future { promise in
-            let users: [User] = [User(username: "Veguyasu", profilePictureName: "person.fill")]
-            promise(.success(users))
+            let user: User = User(username: "Veguyasu", profilePictureName: "BellaDoll", blockhainAdress: "1BoatSLRHtKNngkdXEeobR76b53LETtpyT")
+            promise(.success(user))
         }
     }
 }

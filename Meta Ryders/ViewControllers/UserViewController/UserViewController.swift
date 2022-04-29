@@ -1,54 +1,38 @@
 //
-//  SettingsViewController.swift
+//  UserViewController.swift
 //  Meta Ryders
 //
-//  Created by Vladislav on 26.04.2022.
+//  Created by Vladislav on 28.04.2022.
 //
 
 import UIKit
 import SnapKit
-import Combine
 
-class SettingsViewController: UIViewController {
+class UserViewController: UIViewController {
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
-    private let categories: [CellContentCategory] = CellContentCategory.allCases
-    private let returnButton = UIButton(frame: .zero)
-    private let networkingService = NetworkingService()
-    private var subscriptions: Set<AnyCancellable> = []
     private var user: User?
+    private let categories: [CellCategory] = CellCategory.allCases
+    private let returnButton = UIButton(frame: .zero)
     
+    convenience init(user: User) {
+        self.init()
+        self.user = user
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .mediumWeightGray
-        getUser()
         addTableView()
         addReturnButton()
     }
-    private func getUser() {
-        networkingService.getUser()
-            .receive(on: DispatchQueue.main)
-            .sink { completion in
-                switch completion {
-                case .finished:
-                    print("User Fetched Succesfully")
-                case .failure(let error):
-                    print("Error occured while fetching user: \(error)")
-                }
-            } receiveValue: { [weak self] (user) in
-                self?.user = user
-                self?.tableView.reloadData()
-            }.store(in: &subscriptions)
 
-    }
-    
     private func addTableView() {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .mediumWeightGray
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
-        tableView.register(UserTableViewCell.self, forCellReuseIdentifier: UserTableViewCell.identifier)
-        
+        tableView.register(UserMenuTableViewCell.self, forCellReuseIdentifier: UserMenuTableViewCell.identifier)
         tableView.snp.makeConstraints { make in
             make.top.equalTo(60)
             make.leading.trailing.bottom.equalToSuperview()
@@ -70,27 +54,38 @@ class SettingsViewController: UIViewController {
         }
     }
     @objc private func returnButtonTapped() {
-        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }
 
-extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
+extension UserViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let category = categories[indexPath.section]
         
         switch category {
         case .user:
-            let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.identifier, for: indexPath) as! UserTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: UserMenuTableViewCell.identifier, for: indexPath) as! UserMenuTableViewCell
             cell.configure(by: user!)
             return cell
             
-        case .support,.main:
+        case .main:
             let contentCase = category.cases[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
             cell.tintColor = .purpleHeaderButton
             var configuration = cell.defaultContentConfiguration()
             configuration.image = contentCase.icon
             configuration.text = contentCase.title
+            cell.contentConfiguration = configuration
+            return cell
+        
+        case .logout:
+            let contentCase = category.cases[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
+            cell.tintColor = .red
+            var configuration = cell.defaultContentConfiguration()
+            configuration.image = contentCase.icon
+            configuration.text = contentCase.title
+            configuration.textProperties.color = .red
             cell.contentConfiguration = configuration
             return cell
         }
@@ -102,25 +97,21 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let contentCase = category.cases[indexPath.row]
         
         switch contentCase {
-        case .support:
-            print("Support pressed")
-        case .rateApp:
-            print("Rate app pressed")
-        case .shareApp:
-            print("Share app pressed")
-        case.privacyPolicy:
-            print("Privacy Policy pressed")
-        case.termsOfUse:
-            print("Terms of Use pressed")
+        case .personalDetails:
+            print("Personal Details Pressed")
+        case .passwordAndSecurity:
+            print("Password and Security Pressed")
+        case .clearCache:
+            print("Clear Cache pressed")
+        case.logout:
+            print("Logout pressed")
         case .userProfile:
-            let vc = UserViewController(user: user!)
-            vc.modalPresentationStyle = .custom
-            self.present(vc, animated: true, completion: nil)
+            print("User profile pressed")
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 100
+            return 160
         } else {
             return 49
         }
@@ -134,81 +125,60 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return categories.count
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return categories[section].title
-    }
 }
 
-extension SettingsViewController {
-    enum CellContentCategory: CaseIterable {
+extension UserViewController {
+    enum CellCategory: CaseIterable {
         case user
         case main
-        case support
+        case logout
         
-        var title: String? {
-            switch self {
-            case .user:
-                return ""
-            // leaving this field empty like most app's do
-            case .main:
-                return ""
-            case .support:
-                return "Help developer"
-            }
-        }
-        
-        var cases: [CellContentCase] {
+        var cases: [CellContent] {
             switch self {
             case .user:
                 return [.userProfile]
             case .main:
-                return [.support, .privacyPolicy, .termsOfUse]
+                return [.personalDetails, .passwordAndSecurity, .clearCache]
                     
-            case .support:
-                return [.rateApp, .shareApp]
+            case .logout:
+                return [.logout]
             }
         }
     }
     
-    enum CellContentCase: CaseIterable {
-        case support
-        case privacyPolicy
-        case termsOfUse
-        case rateApp
-        case shareApp
+    enum CellContent: CaseIterable {
+        case personalDetails
+        case passwordAndSecurity
+        case clearCache
+        case logout
         case userProfile
         
         var title: String {
             switch self {
-            case .support:
-                return "Ask a Question"
-            case .privacyPolicy:
-                return "Privacy Policy"
-            case .termsOfUse:
-                return "Terms of Use"
-            case .rateApp:
-                return "Rate App"
-            case .shareApp:
-                return "Share with Friends"
+            case .personalDetails:
+                return "Personal Details"
+            case .passwordAndSecurity:
+                return "Password and Security"
+            case .clearCache:
+                return "Clear Cache"
             case .userProfile:
                 return ""
+            case .logout:
+                return "Logout"
             }
         }
         
         var icon: UIImage {
             let iconName: String
             switch self {
-            case .support:
-                iconName = "person.fill.questionmark"
-            case .privacyPolicy:
-                iconName = "newspaper.fill"
-            case .termsOfUse:
-                iconName = "text.book.closed.fill"
-            case .rateApp:
-                iconName = "star.leadinghalf.fill"
-            case .shareApp:
-                iconName = "square.and.arrow.up.fill"
+            case .personalDetails:
+                iconName = "person.fill"
+            case .passwordAndSecurity:
+                iconName = "key.fill"
+            case .clearCache:
+                iconName = "trash.fill"
+            case .logout:
+                iconName = "rectangle.portrait.and.arrow.right"
             case .userProfile:
                 iconName = "person.fill"
             }
