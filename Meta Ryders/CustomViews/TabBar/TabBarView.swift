@@ -21,6 +21,7 @@ class TabBarView: UIView {
     // for now I'm making few empty closures to set up navigation. Later on we can find cleaner way around, maybe coordinator pattern?
     var cameraPresentClosure = {}
     var settingsPresentClosure = {}
+    var homeButtonClosure = {}
   
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -111,7 +112,7 @@ class TabBarView: UIView {
     }
     
     @objc private func homeButtonTapped() {
-        print("Home Button - Tapped")
+        homeButtonClosure()
     }
     
     @objc private func graphsButtonTapped() {

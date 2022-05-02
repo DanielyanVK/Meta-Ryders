@@ -24,6 +24,12 @@ class HomeViewController: UIViewController {
             vc.modalPresentationStyle = .custom
             self.present(vc, animated: true, completion: nil)
         }
+        
+        tabBarView.homeButtonClosure = {
+            let topIndex = IndexPath(row: 0, section: 0)
+            // we will add condition: If we are on home vc, tapping button will just scoll to the top of the view, if not we will present home vc
+            self.mainTableView?.scrollToRow(at: topIndex, at: .top, animated: true)
+        }
         return tabBarView
     }
     private enum Sections {

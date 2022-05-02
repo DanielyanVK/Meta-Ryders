@@ -103,7 +103,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch contentCase {
         case .support:
-            print("Support pressed")
+            print("Ask a Question pressed")
         case .rateApp:
             print("Rate app pressed")
         case .shareApp:
